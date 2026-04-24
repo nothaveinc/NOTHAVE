@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skills | NOTHAVE</title>
+    <meta
+      name="description"
+      content="NOTHAVEのスキルセット。HTML5・CSS3・JavaScript・レスポンシブデザイン・SEO・WordPressに対応。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__inner">
+        <a href="../" class="header__logo">NOTHAVE</a>
+        <nav class="header__nav" id="nav">
+          <ul class="header__nav-list">
+            <li><a href="../about/" class="header__nav-link">About</a></li>
+            <li><a href="../works/" class="header__nav-link">Works</a></li>
+            <li><a href="./" class="header__nav-link header__nav-link--active">Skills</a></li>
+            <li><a href="../plan/" class="header__nav-link">Plan</a></li>
+            <li><a href="../contact/" class="header__nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <p class="page-hero__label">NOTHAVE</p>
+        <h1 class="page-hero__title">Skills</h1>
+      </div>
+    </section>
+
+    <section class="skills">
+      <div class="container">
+        <div class="skills__grid fade-in">
+          <div class="skills__card">
+            <p class="skills__card-name">HTML5</p>
+            <p class="skills__card-sub">マークアップ</p>
+          </div>
+          <div class="skills__card">
+            <p class="skills__card-name">CSS3</p>
+            <p class="skills__card-sub">スタイリング</p>
+          </div>
+          <div class="skills__card">
+            <p class="skills__card-name">JavaScript</p>
+            <p class="skills__card-sub">インタラクション</p>
+          </div>
+          <div class="skills__card">
+            <p class="skills__card-name">レスポンシブデザイン</p>
+            <p class="skills__card-sub">マルチデバイス対応</p>
+          </div>
+          <div class="skills__card">
+            <p class="skills__card-name">SEO 対策</p>
+            <p class="skills__card-sub">検索最適化</p>
+          </div>
+          <div class="skills__card">
+            <p class="skills__card-name">WordPress</p>
+            <p class="skills__card-sub">CMS 構築</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__copy">&copy; 2026 NOTHAVE. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

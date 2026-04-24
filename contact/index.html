@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | NOTHAVE</title>
+    <meta
+      name="description"
+      content="NOTHAVEへのお問い合わせ。Webサイト制作のご依頼・ご相談はこちらから。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__inner">
+        <a href="../" class="header__logo">NOTHAVE</a>
+        <nav class="header__nav" id="nav">
+          <ul class="header__nav-list">
+            <li><a href="../about/" class="header__nav-link">About</a></li>
+            <li><a href="../works/" class="header__nav-link">Works</a></li>
+            <li><a href="../skills/" class="header__nav-link">Skills</a></li>
+            <li><a href="../plan/" class="header__nav-link">Plan</a></li>
+            <li><a href="./" class="header__nav-link header__nav-link--active">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <p class="page-hero__label">NOTHAVE</p>
+        <h1 class="page-hero__title">Contact</h1>
+      </div>
+    </section>
+
+    <section class="contact">
+      <div class="container">
+        <p class="contact__email fade-in">dummy@example.com</p>
+        <form class="contact__form fade-in" action="#">
+          <div class="contact__form-group">
+            <label for="name" class="contact__label">お名前</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="contact__input"
+              placeholder="山田 花子"
+              required
+            />
+          </div>
+          <div class="contact__form-group">
+            <label for="email" class="contact__label">メールアドレス</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="contact__input"
+              placeholder="example@email.com"
+              required
+            />
+          </div>
+          <div class="contact__form-group">
+            <label for="message" class="contact__label">メッセージ</label>
+            <textarea
+              id="message"
+              name="message"
+              class="contact__textarea"
+              rows="6"
+              placeholder="Webサイト制作について相談したいです。"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="contact__submit">送信する</button>
+        </form>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__copy">&copy; 2026 NOTHAVE. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

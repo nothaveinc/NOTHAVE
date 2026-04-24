@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ig_02_portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #FAFAF8;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #0A0A0A;
+  }
+  .canvas {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    padding: 135px 80px;
+    display: flex;
+    flex-direction: column;
+  }
+  .frame {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    border: 1px solid #0A0A0A;
+    pointer-events: none;
+  }
+  .top-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .badge {
+    background: #0A0A0A;
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 22px;
+    letter-spacing: 0.2em;
+    padding: 10px 22px;
+    border-radius: 999px;
+  }
+  .date {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: #666666;
+    letter-spacing: 0.15em;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .browser {
+    width: 860px;
+    background: #FFFFFF;
+    border: 1px solid #0A0A0A;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 18px 20px 0 #0A0A0A;
+  }
+  .browser-bar {
+    display: flex;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #E5E5E0;
+    background: #F2F2EE;
+  }
+  .dots { display: flex; gap: 8px; }
+  .dot {
+    width: 13px; height: 13px; border-radius: 50%;
+    background: #0A0A0A;
+  }
+  .dot.d2 { background: #666666; }
+  .dot.d3 { background: #CCCCCC; }
+  .url {
+    margin-left: 24px;
+    flex: 1;
+    background: #FAFAF8;
+    border: 1px solid #E5E5E0;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    color: #666666;
+  }
+  .browser-content {
+    padding: 100px 60px 120px;
+    text-align: center;
+  }
+  .browser-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 38px;
+    font-weight: 900;
+    color: #0A0A0A;
+    letter-spacing: 0.02em;
+    margin-bottom: 28px;
+  }
+  .browser-hero {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: #0A0A0A;
+  }
+  .browser-line {
+    width: 80px;
+    height: 2px;
+    background: #0A0A0A;
+    margin: 40px auto 0;
+  }
+  .bottom-zone {
+    text-align: left;
+  }
+  .announce {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: #0A0A0A;
+  }
+  .sub {
+    margin-top: 20px;
+    font-size: 28px;
+    color: #666666;
+    font-weight: 400;
+  }
+  .sub .arrow {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    margin-left: 6px;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="frame"></div>
+
+  <div class="top-zone">
+    <div class="badge">NEW</div>
+    <div class="date">2026 / PORTFOLIO</div>
+  </div>
+
+  <div class="main">
+    <div class="browser">
+      <div class="browser-bar">
+        <div class="dots">
+          <div class="dot"></div>
+          <div class="dot d2"></div>
+          <div class="dot d3"></div>
+        </div>
+        <div class="url">k-portfolio.netlify.app</div>
+      </div>
+      <div class="browser-content">
+        <div class="browser-title">K. PORTFOLIO</div>
+        <div class="browser-hero">コードで、<br>想いを形に。</div>
+        <div class="browser-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-zone">
+    <div class="announce">ポートフォリオ<br>公開しました。</div>
+    <div class="sub">プロフィールのリンクから<span class="arrow">↗</span></div>
+  </div>
+</div>
+</body>
+</html>

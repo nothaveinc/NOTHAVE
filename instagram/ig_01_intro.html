@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ig_01_intro</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #0A0A0A;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #FFFFFF;
+  }
+  .canvas {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 135px 90px;
+  }
+  .top-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
+    color: #666666;
+    letter-spacing: 0.15em;
+    font-weight: 400;
+  }
+  .top-zone .handle {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+  }
+  .top-zone .category {
+    border: 1px solid #666666;
+    padding: 8px 18px;
+    border-radius: 2px;
+    font-size: 20px;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .hero {
+    font-size: 140px;
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+  }
+  .hero-sub {
+    margin-top: 40px;
+    font-size: 28px;
+    color: #666666;
+    letter-spacing: 0.3em;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+  }
+  .divider {
+    margin-top: 60px;
+    width: 220px;
+    height: 1px;
+    background: #666666;
+  }
+  .bottom-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+  }
+  .tags {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .tag {
+    font-size: 22px;
+    color: #999999;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+  }
+  .tag + .tag::before {
+    content: '/';
+    margin-right: 14px;
+    color: #444444;
+  }
+  .location {
+    font-size: 22px;
+    color: #999999;
+    letter-spacing: 0.1em;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-zone">
+    <div class="handle">@k.portfolio</div>
+    <div class="category">Webコーダー</div>
+  </div>
+
+  <div class="main">
+    <div class="hero">
+      コードで、<br>想いを形に。
+    </div>
+    <div class="divider"></div>
+    <div class="hero-sub">HELLO, I'M K.</div>
+  </div>
+
+  <div class="bottom-zone">
+    <div class="tags">
+      <span class="tag">HTML</span>
+      <span class="tag">CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">WordPress</span>
+    </div>
+    <div class="location">📍 福岡</div>
+  </div>
+</div>
+</body>
+</html>

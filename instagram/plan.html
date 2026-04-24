@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Instagram運用プラン — Web制作フリーランス</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0f0f;
+    --surface: #1a1a1a;
+    --border: #2a2a2a;
+    --text: #e8e8e8;
+    --muted: #888;
+    --accent: #00FF94;
+    --accent-dim: rgba(0,255,148,0.15);
+    --white: #fff;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Noto Sans JP', sans-serif;
+    line-height: 1.8;
+    padding: 0;
+  }
+
+  /* --- Navigation --- */
+  .toc {
+    position: fixed;
+    top: 0; left: 0;
+    width: 260px;
+    height: 100vh;
+    background: #111;
+    border-right: 1px solid var(--border);
+    padding: 40px 24px;
+    overflow-y: auto;
+    z-index: 100;
+  }
+  .toc h3 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+  .toc a {
+    display: block;
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 13px;
+    padding: 8px 0;
+    border-bottom: 1px solid #1a1a1a;
+    transition: color 0.2s;
+  }
+  .toc a:hover { color: var(--accent); }
+
+  /* --- Main Content --- */
+  .main {
+    margin-left: 260px;
+    max-width: 900px;
+    padding: 60px 60px 120px;
+  }
+
+  /* --- Hero --- */
+  .hero {
+    margin-bottom: 80px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 15px;
+  }
+
+  /* --- Section --- */
+  .section {
+    margin-bottom: 72px;
+  }
+  .section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    color: var(--accent);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 32px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  /* --- Bio Card --- */
+  .bio-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 32px;
+    margin-bottom: 20px;
+  }
+  .bio-card .label {
+    font-size: 12px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .bio-card .bio-text {
+    font-size: 15px;
+    white-space: pre-line;
+    line-height: 1.9;
+  }
+  .bio-card .char-count {
+    margin-top: 10px;
+    font-size: 12px;
+    color: var(--muted);
+    text-align: right;
+  }
+
+  /* --- Highlight --- */
+  .highlight-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+  .highlight-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+  }
+  .highlight-item h4 {
+    font-size: 16px;
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .highlight-item h4 .emoji { margin-right: 6px; }
+  .highlight-item ul {
+    list-style: none;
+    font-size: 13px;
+    color: var(--muted);
+  }
+  .highlight-item ul li { padding: 3px 0; }
+  .highlight-item ul li::before {
+    content: '—';
+    margin-right: 8px;
+    color: #444;
+  }
+
+  /* --- Post Card --- */
+  .post-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 28px;
+  }
+  .post-card .post-number {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+  .post-card h3 {
+    font-size: 20px;
+    color: var(--white);
+    margin-bottom: 6px;
+  }
+  .post-card .filename {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 20px;
+  }
+  .post-card .caption {
+    font-size: 14px;
+    line-height: 2;
+    white-space: pre-line;
+    margin-bottom: 24px;
+    padding: 20px 24px;
+    background: #111;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+  .post-card .hashtags {
+    font-size: 12px;
+    color: #6aa;
+    line-height: 2;
+    word-break: break-all;
+  }
+
+  /* --- Schedule Table --- */
+  .schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  .schedule-table th {
+    background: #181818;
+    color: var(--accent);
+    font-weight: 500;
+    text-align: left;
+    padding: 14px 16px;
+    border-bottom: 2px solid var(--accent);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .schedule-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .schedule-table tr:hover td {
+    background: rgba(255,255,255,0.02);
+  }
+  .week-label {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    color: var(--white);
+    white-space: nowrap;
+  }
+
+  /* --- Story Ideas --- */
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .story-item {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 18px 22px;
+    font-size: 14px;
+  }
+  .story-item strong {
+    color: var(--white);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 14px;
+  }
+  .story-item span {
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  /* --- Strategy --- */
+  .phase {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin-bottom: 20px;
+  }
+  .phase h3 {
+    font-size: 18px;
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .phase h3 .badge {
+    display: inline-block;
+    background: var(--accent-dim);
+    color: var(--accent);
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-left: 10px;
+    vertical-align: middle;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+  }
+  .phase ul {
+    list-style: none;
+    font-size: 14px;
+  }
+  .phase ul li {
+    padding: 6px 0;
+    padding-left: 20px;
+    position: relative;
+  }
+  .phase ul li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+  }
+
+  /* --- Responsive --- */
+  @media (max-width: 900px) {
+    .toc { display: none; }
+    .main { margin-left: 0; padding: 32px 20px 80px; }
+    .story-grid { grid-template-columns: 1fr; }
+    .highlight-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== TOC ===== -->
+<nav class="toc">
+  <h3>Contents</h3>
+  <a href="#bio">1. プロフィール文（Bio）</a>
+  <a href="#highlights">2. ハイライト構成</a>
+  <a href="#captions">3. 投稿キャプション（全8投稿）</a>
+  <a href="#schedule">4. 8週間スケジュール</a>
+  <a href="#stories">5. ストーリー運用アイデア</a>
+  <a href="#growth">6. フォロワー成長戦略</a>
+</nav>
+
+<!-- ===== Main ===== -->
+<div class="main">
+
+<!-- Hero -->
+<div class="hero">
+  <h1>Instagram 運用プラン</h1>
+  <p>福岡フリーランスWebコーダー — 集客・ブランディング戦略ドキュメント</p>
+</div>
+
+<!-- ========================================== -->
+<!-- 1. プロフィール文 -->
+<!-- ========================================== -->
+<div class="section" id="bio">
+  <div class="section-title">Section 01</div>
+  <h2>プロフィール文（Bio）</h2>
+
+  <div class="bio-card">
+    <div class="label">Pattern A — シンプル＆直球型</div>
+    <div class="bio-text">💻 福岡のフリーランスWebコーダー
+🎨 おしゃれで集客できるHP作ります
+📱 レスポンシブ対応 / WordPress / SEO
+🗓 ご相談・お見積り無料
+⬇ ポートフォリオはこちら</div>
+    <div class="char-count">88文字</div>
+  </div>
+
+  <div class="bio-card">
+    <div class="label">Pattern B — 信頼感＆実績訴求型</div>
+    <div class="bio-text">福岡拠点のWebコーダー 🖥
+HTML/CSS/JS/WordPressでサイト制作
+✅ レスポンシブ対応
+✅ SEO内部対策込み
+✅ お見積り無料
+制作実績はポートフォリオから👇</div>
+    <div class="char-count">101文字</div>
+  </div>
+
+  <div class="bio-card">
+    <div class="label">Pattern C — ターゲット明確型</div>
+    <div class="bio-text">📍 福岡 ｜ フリーランスWebコーダー
+サロン・カフェ・中小企業のHP制作
+デザインを「伝わるサイト」にコーディング ✨
+WordPress / レスポンシブ / SEO対応
+制作実績・ご依頼は下のリンクから 👇</div>
+    <div class="char-count">118文字</div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- 2. ハイライト構成 -->
+<!-- ========================================== -->
+<div class="section" id="highlights">
+  <div class="section-title">Section 02</div>
+  <h2>ハイライト構成案</h2>
+
+  <div class="highlight-grid">
+    <div class="highlight-item">
+      <h4><span class="emoji">💼</span>制作実績</h4>
+      <ul>
+        <li>各制作案件のビフォーアフター</li>
+        <li>完成サイトのスクロール動画</li>
+        <li>制作の裏話・こだわりポイント</li>
+      </ul>
+    </div>
+    <div class="highlight-item">
+      <h4><span class="emoji">🛠</span>スキル</h4>
+      <ul>
+        <li>使用技術の紹介</li>
+        <li>コーディング画面のタイムラプス</li>
+        <li>「〇〇ってなに？」初心者向け解説</li>
+      </ul>
+    </div>
+    <div class="highlight-item">
+      <h4><span class="emoji">📋</span>制作の流れ</h4>
+      <ul>
+        <li>お問い合わせ〜納品までのステップ</li>
+        <li>料金の目安</li>
+        <li>よくある質問（Q&A）</li>
+      </ul>
+    </div>
+    <div class="highlight-item">
+      <h4><span class="emoji">🗣</span>お客様の声</h4>
+      <ul>
+        <li>納品後のフィードバック紹介</li>
+        <li>ビフォーアフター比較</li>
+        <li>成果報告（PV向上など）</li>
+      </ul>
+    </div>
+    <div class="highlight-item">
+      <h4><span class="emoji">📍</span>福岡Web情報</h4>
+      <ul>
+        <li>福岡の店舗サイト紹介・分析</li>
+        <li>地域ビジネスのWeb活用Tips</li>
+        <li>福岡のクリエイターイベント情報</li>
+      </ul>
+    </div>
+    <div class="highlight-item">
+      <h4><span class="emoji">✉️</span>ご依頼方法</h4>
+      <ul>
+        <li>依頼・相談の手順</li>
+        <li>DMテンプレート案内</li>
+        <li>対応可能な制作範囲</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- 3. 投稿キャプション -->
+<!-- ========================================== -->
+<div class="section" id="captions">
+  <div class="section-title">Section 03</div>
+  <h2>投稿キャプション（全8投稿）</h2>
+
+  <!-- POST 1 -->
+  <div class="post-card">
+    <div class="post-number">Post 01</div>
+    <h3>自己紹介・アカウント開設</h3>
+    <div class="filename">ig_01_intro</div>
+    <div class="caption">はじめまして 💻
+
+福岡を拠点に活動している
+フリーランスのWebコーダーです。
+
+HTML / CSS / JavaScript / WordPress を使って
+「見やすくて、集客につながるサイト」を
+コーディングしています。
+
+こんな方のお役に立てます 👇
+✅ ホームページを作りたい個人事業主さん
+✅ サイトをリニューアルしたい中小企業さん
+✅ デザインはあるけどコーディングだけ頼みたい方
+
+このアカウントでは
+📸 制作実績
+💡 Web制作に役立つ情報
+🛠 コーディングの裏側
+
+などを発信していきます。
+
+お気軽にフォロー＆DMください 🙌</div>
+    <div class="hashtags">#Webコーダー #フリーランス #Web制作 #ホームページ制作 #コーディング #福岡フリーランス #福岡Web制作 #WordPress #HTML #CSS #JavaScript #レスポンシブデザイン #SEO対策 #サイト制作 #個人事業主 #中小企業 #ホームページ作成 #Webデザイン #フリーランスエンジニア #Web制作会社 #福岡起業 #福岡ビジネス #福岡カフェ #福岡サロン #webdeveloper #freelancer #webdesign #coding #fukuoka #htmlcss</div>
+  </div>
+
+  <!-- POST 2 -->
+  <div class="post-card">
+    <div class="post-number">Post 02</div>
+    <h3>ポートフォリオサイト公開</h3>
+    <div class="filename">ig_02_portfolio</div>
+    <div class="caption">📢 ポートフォリオサイト、公開しました！
+
+これまでの制作実績をまとめた
+ポートフォリオサイトを作りました ✨
+
+サイトでは
+🔹 実際に制作したWebサイト
+🔹 使用した技術・こだわりポイント
+🔹 ご依頼の流れ・料金目安
+
+などをご覧いただけます。
+
+「こんなサイトが欲しい」
+「自分のお店にはどんなデザインが合う？」
+
+そんなイメージ作りにも
+ぜひ活用してください 💡
+
+🔗 プロフィールのリンクからどうぞ
+
+ご質問・ご相談はDMでお気軽に 📩</div>
+    <div class="hashtags">#ポートフォリオ #Web制作 #ポートフォリオサイト #制作実績 #Webコーダー #フリーランス #福岡Web制作 #福岡フリーランス #ホームページ制作 #WordPress #HTMLコーディング #CSSデザイン #レスポンシブ #個人事業主向け #サロンホームページ #カフェホームページ #中小企業サイト #集客サイト #Webデザイナー #サイト制作依頼 #コーディング代行 #福岡起業家 #福岡ビジネス #webdeveloper #portfolio #webdesign #freelancecoder #frontend #coding #fukuokajapan</div>
+  </div>
+
+  <!-- POST 3 -->
+  <div class="post-card">
+    <div class="post-number">Post 03</div>
+    <h3>カフェサイト制作実績 — Cafe MOKUREN</h3>
+    <div class="filename">ig_03_cafe</div>
+    <div class="caption">☕ 制作実績｜カフェサイト「Cafe MOKUREN」
+
+福岡・薬院の隠れ家カフェをイメージした
+架空サイトを制作しました。
+
+🍃 こだわりポイント
+━━━━━━━━━━
+▶ 温かみのある和モダンなデザイン
+▶ メニューをカード型で見やすく配置
+▶ スマホでも快適に閲覧できるレスポンシブ対応
+▶ スクロールアニメーションで雰囲気UP
+
+使用技術：HTML / CSS / JavaScript
+
+「うちのカフェもこんなサイトが欲しい！」
+そんなオーナーさん、ぜひDMください 😊
+
+制作の詳細はプロフィールのリンクから 🔗</div>
+    <div class="hashtags">#カフェホームページ #カフェサイト #飲食店ホームページ #飲食店集客 #Webコーダー #Web制作 #制作実績 #福岡カフェ #福岡薬院 #カフェ開業 #カフェ経営 #ホームページ制作 #レスポンシブデザイン #HTMLコーディング #JavaScriptアニメーション #フリーランス #福岡フリーランス #福岡Web制作 #おしゃれサイト #サイトデザイン #カフェデザイン #webdesign #cafewebsite #webdeveloper #coding #fukuokacafe #frontend #restaurantwebsite #cafestyle #webportfolio</div>
+  </div>
+
+  <!-- POST 4 -->
+  <div class="post-card">
+    <div class="post-number">Post 04</div>
+    <h3>コーポレートサイト制作実績</h3>
+    <div class="filename">ig_04_corporate</div>
+    <div class="caption">🏢 制作実績｜コーポレートサイト
+「株式会社ネクストブリッジ」
+
+信頼感と先進性を両立した
+企業サイトを制作しました。
+
+💡 こだわりポイント
+━━━━━━━━━━
+▶ クリーンで洗練されたレイアウト
+▶ 事業内容・企業情報を分かりやすく構成
+▶ スマホ・タブレットでも崩れないレスポンシブ対応
+▶ スムーズなページ内遷移
+
+使用技術：HTML / CSS / JavaScript
+
+コーポレートサイトは「会社の顔」。
+第一印象で信頼感を伝えることが大切です。
+
+サイト制作のご相談、お気軽にDMください 📩</div>
+    <div class="hashtags">#コーポレートサイト #企業サイト #会社ホームページ #Webコーダー #Web制作 #制作実績 #ホームページ制作 #福岡Web制作 #福岡フリーランス #中小企業 #企業ブランディング #コーディング #HTMLコーディング #レスポンシブ #サイトリニューアル #ビジネスサイト #フリーランス #クリーンデザイン #集客サイト #会社案内サイト #corporatesite #webdesign #webdeveloper #businesswebsite #coding #frontend #cleandesign #fukuoka #japanese #professionalweb</div>
+  </div>
+
+  <!-- POST 5 -->
+  <div class="post-card">
+    <div class="post-number">Post 05</div>
+    <h3>クリエイティブサイト制作実績</h3>
+    <div class="filename">ig_05_creative</div>
+    <div class="caption">🎨 制作実績｜クリエイティブサイト
+「VOID CREATIVE」
+
+クリエイティブエージェンシーの
+ダークテーマサイトを制作しました。
+
+✨ こだわりポイント
+━━━━━━━━━━
+▶ マウスに追従するカーソルエフェクト
+▶ テキストが浮かび上がるアニメーション
+▶ ダークモードで洗練された世界観
+▶ Vanilla JSのみで軽量実装
+
+使用技術：HTML / CSS / Vanilla JS
+
+「動きのあるかっこいいサイトが欲しい」
+そんな方はぜひご相談ください 🚀
+
+ポートフォリオはプロフのリンクから 🔗</div>
+    <div class="hashtags">#クリエイティブサイト #ダークテーマ #Webアニメーション #カーソルエフェクト #Webコーダー #Web制作 #制作実績 #JavaScript #VanillaJS #HTMLコーディング #CSSアニメーション #フリーランス #福岡フリーランス #福岡Web制作 #モダンデザイン #かっこいいサイト #Webデザイン #コーディング #フロントエンド #クリエイティブ #creativewebsite #darktheme #webanimation #webdesign #webdeveloper #frontend #coding #interactivedesign #uidesign #fukuoka</div>
+  </div>
+
+  <!-- POST 6 -->
+  <div class="post-card">
+    <div class="post-number">Post 06</div>
+    <h3>ウェルネスサイト制作実績</h3>
+    <div class="filename">ig_06_wellness</div>
+    <div class="caption">🧘 制作実績｜ウェルネスサイト
+「LUMIÈRE Wellness」
+
+ピラティス＆ウェルネススタジオの
+上品で柔らかなサイトを制作しました。
+
+🌿 こだわりポイント
+━━━━━━━━━━
+▶ ナチュラルで洗練された配色
+▶ 料金プラン・レッスン内容を分かりやすく表示
+▶ 予約導線を意識したCTAボタン配置
+▶ スマホファーストのレスポンシブ対応
+
+使用技術：HTML / CSS / JavaScript
+
+サロン・スタジオ系のサイトは
+世界観の表現がとても大切。
+「雰囲気が伝わるサイト」を作ります ✨
+
+ご相談はDMからどうぞ 📩</div>
+    <div class="hashtags">#ウェルネスサイト #サロンホームページ #ピラティス #ヨガスタジオ #サロン集客 #サロン開業 #Webコーダー #Web制作 #制作実績 #ホームページ制作 #福岡サロン #福岡ピラティス #福岡Web制作 #福岡フリーランス #レスポンシブ #ナチュラルデザイン #上品デザイン #フリーランス #集客サイト #サロンブランディング #wellnesswebsite #salonwebsite #webdesign #webdeveloper #pilates #beautyindustry #coding #frontend #fukuoka #elegantdesign</div>
+  </div>
+
+  <!-- POST 7 -->
+  <div class="post-card">
+    <div class="post-number">Post 07</div>
+    <h3>スキル・技術紹介</h3>
+    <div class="filename">ig_07_skills</div>
+    <div class="caption">🛠 私のスキルセットを紹介します
+
+Webサイト制作で使っている
+技術スタックをまとめました 👇
+
+━━━━━━━━━━
+💻 HTML / CSS — 構造とデザインの基本
+⚡ JavaScript — 動きと操作性をプラス
+📝 WordPress — 自分で更新できるサイト構築
+📱 レスポンシブ — スマホ対応は必須
+🔍 SEO — 検索に強いサイト設計
+
+━━━━━━━━━━
+
+デザインカンプからのコーディングはもちろん
+「何から始めればいいか分からない」
+という方も大歓迎です 🙆
+
+まずはお気軽にDMでご相談ください 💬
+
+#スキルの詳細はポートフォリオから</div>
+    <div class="hashtags">#Webスキル #技術スタック #Webコーダー #HTML #CSS #JavaScript #WordPress #SEO対策 #レスポンシブデザイン #Web制作 #フリーランス #福岡フリーランス #福岡Web制作 #ホームページ制作 #コーディング #フロントエンド #Webデザイン #サイト制作 #プログラミング #Web技術 #コーディング代行 #個人事業主 #中小企業向け #webdeveloper #frontend #coding #htmlcss #wordpress #javascript #techstack</div>
+  </div>
+
+  <!-- POST 8 -->
+  <div class="post-card">
+    <div class="post-number">Post 08</div>
+    <h3>お仕事依頼受付中</h3>
+    <div class="filename">ig_08_cta</div>
+    <div class="caption">📢 お仕事のご依頼、受付中です！
+
+こんなお悩みありませんか？ 🤔
+
+「自分のお店のホームページが欲しい」
+「今のサイトが古くてリニューアルしたい」
+「デザインはあるけどコーディングだけ頼みたい」
+「スマホで見づらいサイトを直したい」
+
+━━━━━━━━━━
+
+🔹 新規サイト制作
+🔹 サイトリニューアル
+🔹 コーディング代行
+🔹 レスポンシブ対応
+🔹 WordPress構築
+
+すべて対応可能です 💪
+
+━━━━━━━━━━
+
+📩 まずはDMでお気軽にご相談ください
+💰 お見積りは無料です
+
+プロフィールのリンクから
+制作実績もご覧いただけます 🔗</div>
+    <div class="hashtags">#お仕事依頼受付中 #Web制作依頼 #ホームページ制作 #サイト制作依頼 #コーディング代行 #Webコーダー #フリーランス #福岡フリーランス #福岡Web制作 #WordPress構築 #サイトリニューアル #レスポンシブ対応 #SEO対策 #個人事業主 #中小企業 #サロンオーナー #カフェオーナー #飲食店オーナー #お店のホームページ #集客 #Webデザイン #福岡起業 #福岡ビジネス #お見積り無料 #webdesign #webdeveloper #freelancer #hireacoder #fukuoka #websitecreation</div>
+  </div>
+
+</div>
+
+<!-- ========================================== -->
+<!-- 4. 8週間投稿スケジュール -->
+<!-- ========================================== -->
+<div class="section" id="schedule">
+  <div class="section-title">Section 04</div>
+  <h2>8週間 投稿スケジュール</h2>
+  <p style="color:var(--muted);font-size:14px;margin-bottom:24px;">週2回（火曜・金曜）投稿 ＋ ストーリー週3〜5回</p>
+
+  <table class="schedule-table">
+    <thead>
+      <tr>
+        <th>週</th>
+        <th>日程</th>
+        <th>投稿内容</th>
+        <th>目標・テーマ</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="week-label">Week 1</span></td>
+        <td>火：4/14<br>金：4/17</td>
+        <td>火：ig_01_intro（自己紹介）<br>金：ig_02_portfolio（ポートフォリオ公開）</td>
+        <td>アカウント開設を周知。プロフィール完成。ハイライト「制作の流れ」「ご依頼方法」を先に作成。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 2</span></td>
+        <td>火：4/21<br>金：4/24</td>
+        <td>火：ig_03_cafe（Cafe MOKUREN）<br>金：ig_04_corporate（コーポレートサイト）</td>
+        <td>制作実績を2連投で「仕事ができる人」の印象を定着。福岡ローカルタグ強化。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 3</span></td>
+        <td>火：4/28<br>金：5/1</td>
+        <td>火：ig_05_creative（VOID CREATIVE）<br>金：ig_06_wellness（LUMIÈRE Wellness）</td>
+        <td>バリエーション豊かな制作力をアピール。ストーリーで制作過程を公開。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 4</span></td>
+        <td>火：5/5<br>金：5/8</td>
+        <td>火：ig_07_skills（スキル紹介）<br>金：ig_08_cta（お仕事依頼受付中）</td>
+        <td>最初の8投稿完了。CTA投稿でDM誘導を本格化。プロフィールリンク最終確認。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 5</span></td>
+        <td>火：5/12<br>金：5/15</td>
+        <td>火：Web Tips（「なぜホームページが必要か」）<br>金：制作裏話（コーディング画面紹介）</td>
+        <td>保存されやすいTips系コンテンツ開始。エンゲージメント向上を狙う。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 6</span></td>
+        <td>火：5/19<br>金：5/22</td>
+        <td>火：ビフォーアフター系（レスポンシブ対応例）<br>金：福岡ローカルネタ（福岡の気になるWebサイト紹介）</td>
+        <td>ローカルコミュニティとの接点強化。福岡タグで地元リーチ拡大。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 7</span></td>
+        <td>火：5/26<br>金：5/29</td>
+        <td>火：Q&A（よくある質問まとめ）<br>金：制作フロー解説</td>
+        <td>依頼のハードルを下げるコンテンツ。ハイライト「制作の流れ」を充実。</td>
+      </tr>
+      <tr>
+        <td><span class="week-label">Week 8</span></td>
+        <td>火：6/2<br>金：6/5</td>
+        <td>火：新規制作実績 or リール<br>金：CTA再投稿（キャンペーン告知など）</td>
+        <td>2ヶ月目の総括。反応の良かった投稿の傾向を分析し、次月の方針を決定。</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ========================================== -->
+<!-- 5. ストーリー運用アイデア -->
+<!-- ========================================== -->
+<div class="section" id="stories">
+  <div class="section-title">Section 05</div>
+  <h2>ストーリー運用アイデア（顔出しなし）</h2>
+  <p style="color:var(--muted);font-size:14px;margin-bottom:24px;">週3〜5回更新。すべて顔出しなしで継続可能なネタ。</p>
+
+  <div class="story-grid">
+    <div class="story-item">
+      <strong>1. コーディング画面タイムラプス</strong>
+      <span>VSCodeやブラウザでコードを書いている様子を5〜10倍速で。BGMを付けて「作業してる感」を演出。</span>
+    </div>
+    <div class="story-item">
+      <strong>2. 今日のデスク環境</strong>
+      <span>作業デスク・PC・ドリンクなどを撮影。「今日も制作中☕」のテキストを添えて日常感を出す。</span>
+    </div>
+    <div class="story-item">
+      <strong>3. ビフォーアフタースライド</strong>
+      <span>制作前のワイヤーフレーム → 完成サイトを2枚スライドで。質問スタンプ「どちらが好み？」で参加促進。</span>
+    </div>
+    <div class="story-item">
+      <strong>4. Web豆知識カード</strong>
+      <span>「SEOとは？」「レスポンシブとは？」など、1枚画像で解説。保存＆シェアされやすい。</span>
+    </div>
+    <div class="story-item">
+      <strong>5. 制作進捗シェア</strong>
+      <span>「今こんなサイト作ってます」とスクリーンショットを共有。アンケートスタンプで配色や要素の好みを聞く。</span>
+    </div>
+    <div class="story-item">
+      <strong>6. コードスニペット紹介</strong>
+      <span>CSSアニメーションやJSの便利な書き方を短く紹介。同業者からのフォローも獲得。</span>
+    </div>
+    <div class="story-item">
+      <strong>7. 手元撮影ノート＆スケッチ</strong>
+      <span>ワイヤーフレームやサイト構成を手書きで考えている様子。アナログ感が親近感を生む。</span>
+    </div>
+    <div class="story-item">
+      <strong>8. 「質問募集」スタンプ</strong>
+      <span>「Web制作について気になることある？」で質問を募集。回答はハイライトに保存してコンテンツ化。</span>
+    </div>
+    <div class="story-item">
+      <strong>9. 新規投稿のお知らせ</strong>
+      <span>フィード投稿をストーリーでシェア＋一言コメント追加。フィード到達率を補完。</span>
+    </div>
+    <div class="story-item">
+      <strong>10. 福岡スポット＆散歩</strong>
+      <span>作業の合間に近所のカフェや街並みを撮影。福岡タグで地元ユーザーとの接点を増やす。</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================== -->
+<!-- 6. フォロワー成長戦略 -->
+<!-- ========================================== -->
+<div class="section" id="growth">
+  <div class="section-title">Section 06</div>
+  <h2>フォロワー成長戦略</h2>
+
+  <!-- Phase 1 -->
+  <div class="phase">
+    <h3>0 → 100人フェーズ <span class="badge">開始1〜2ヶ月</span></h3>
+    <ul>
+      <li><strong>毎日30分のアクティブ交流</strong> — 福岡のカフェ・サロン・中小企業のアカウントに「いいね」「コメント」を積極的に。1日20〜30アカウントを目安に。</li>
+      <li><strong>ハッシュタグ戦略</strong> — 投稿数1万〜10万のミドルタグを中心に。大タグ（#Web制作）＋ 中タグ（#福岡Web制作）＋ 小タグ（#福岡サロンホームページ）をバランスよく30個。</li>
+      <li><strong>位置情報タグ「福岡」を毎回追加</strong> — 発見タブで福岡ユーザーに表示されやすくなる。</li>
+      <li><strong>同業フリーランスとの相互フォロー</strong> — Web制作者・デザイナーのアカウントをフォロー。コメントで存在を認知してもらう。</li>
+      <li><strong>フィード投稿をストーリーで必ず再シェア</strong> — ストーリーのリーチはフォロワー外にも届きやすい。</li>
+      <li><strong>プロフィールの完成度を最大に</strong> — アイコン・Bio・ハイライトカバー・リンクを初日に整える。</li>
+      <li><strong>リール1本チャレンジ</strong> — コーディングのタイムラプス動画（15〜30秒）を1本投稿。リールは非フォロワーへのリーチが格段に高い。</li>
+    </ul>
+  </div>
+
+  <!-- Phase 2 -->
+  <div class="phase">
+    <h3>100 → 1,000人フェーズ <span class="badge">3〜6ヶ月</span></h3>
+    <ul>
+      <li><strong>保存される投稿を意識</strong> — 「ホームページ制作の料金相場」「SEOチェックリスト」など、役立つ情報をカルーセル投稿に。保存数がアルゴリズム評価に直結。</li>
+      <li><strong>リールを週1回に増やす</strong> — 15〜30秒のショート動画。コーディング過程、ビフォーアフター、Tips解説など。</li>
+      <li><strong>コラボ投稿</strong> — 福岡のデザイナー・カメラマン・ライターと共同投稿。互いのフォロワーにリーチ。</li>
+      <li><strong>投稿の分析と改善</strong> — インサイトで保存数・リーチ・プロフィールアクセスを週次確認。反応の良いジャンルに寄せる。</li>
+      <li><strong>DM対応の迅速化</strong> — 問い合わせには24時間以内に返信。テンプレートを用意しておく。</li>
+      <li><strong>ストーリーでのアンケート・質問を週2回</strong> — 「スマホ対応してますか？」「HP持ってますか？」でターゲット層を巻き込む。</li>
+    </ul>
+  </div>
+
+  <!-- Engagement Tips -->
+  <div class="phase">
+    <h3>エンゲージメントを上げるコツ</h3>
+    <ul>
+      <li><strong>キャプションの1行目にフック</strong> — 「知ってましたか？」「〇〇な方必見」など、続きを読みたくなる書き出し。</li>
+      <li><strong>CTA（行動喚起）を毎回入れる</strong> — 「保存してね📌」「気になったらDMへ📩」「どう思う？コメントで教えて」。</li>
+      <li><strong>投稿後30分はアクティブに</strong> — 投稿直後のエンゲージメントがアルゴリズム上重要。コメント返信・いいね回りを集中的に。</li>
+      <li><strong>統一感のあるフィード</strong> — 投稿画像のトンマナを揃える。ダーク基調で統一すると世界観が出やすい。</li>
+      <li><strong>投稿時間の最適化</strong> — ターゲット（経営者・個人事業主）の活動時間は朝7〜9時、昼12〜13時、夜20〜22時。火・金の12時 or 20時投稿を推奨。</li>
+    </ul>
+  </div>
+
+  <!-- 福岡企業リーチ -->
+  <div class="phase">
+    <h3>福岡の企業にリーチする方法</h3>
+    <ul>
+      <li><strong>福岡ローカルハッシュタグの活用</strong> — #福岡起業 #福岡ビジネス #福岡カフェ #天神 #博多 #薬院 #大名 など地域名タグを積極的に。</li>
+      <li><strong>福岡の店舗アカウントに「いいね」コメント</strong> — 「素敵なお店ですね！」など自然なコメントで認知される。営業DMは逆効果なので絶対に避ける。</li>
+      <li><strong>福岡の商工会議所・経営者コミュニティのフォロー</strong> — 地元ビジネスイベント情報を得つつ、コミュニティ内での認知を獲得。</li>
+      <li><strong>地元メディア・フリーペーパーのWebサイトをリサーチ</strong> — 「このサイト、こう改善できます」という投稿ネタとして活用（批判ではなく提案として）。</li>
+      <li><strong>福岡のコワーキングスペースで名刺にInstagramのQRコードを記載</strong> — オフラインとオンラインの接点を作る。</li>
+      <li><strong>Googleマップで「ホームページなし」の店舗を発見</strong> — その業種向けのサンプルサイトを投稿ネタにする。直接の営業はせず「こんなサイト作れます」のポートフォリオとして発信。</li>
+    </ul>
+  </div>
+
+</div>
+
+</div><!-- .main -->
+
+</body>
+</html>

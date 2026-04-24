@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NOTHAVE | Web制作</title>
+    <meta
+      name="description"
+      content="福岡を拠点に活動するWeb制作チーム、NOTHAVEのポートフォリオサイト。コードで、想いを形に。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__inner">
+        <a href="./" class="header__logo">NOTHAVE</a>
+        <nav class="header__nav" id="nav">
+          <ul class="header__nav-list">
+            <li><a href="about/" class="header__nav-link">About</a></li>
+            <li><a href="works/" class="header__nav-link">Works</a></li>
+            <li><a href="skills/" class="header__nav-link">Skills</a></li>
+            <li><a href="plan/" class="header__nav-link">Plan</a></li>
+            <li><a href="contact/" class="header__nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="hero__content">
+        <p class="hero__label fade-in">Web Creation / Fukuoka</p>
+        <h1 class="hero__title fade-in">想いを形に、<br>可能性を信じて</h1>
+        <a href="contact/" class="hero__cta fade-in">お仕事の依頼はこちら</a>
+      </div>
+      <div class="hero__scroll-indicator" aria-hidden="true">
+        <span class="hero__scroll-text">Scroll</span>
+        <span class="hero__scroll-line"></span>
+      </div>
+    </section>
+
+    <section class="intro">
+      <div class="container">
+        <p class="intro__text fade-in">
+          NOTHAVEは、福岡を拠点とするWeb制作チームです。<br>
+          HTML・CSS・JavaScriptを軸に、クライアントのビジョンをていねいにWebで形にします。
+        </p>
+        <nav class="intro__nav fade-in" aria-label="サイトナビゲーション">
+          <a href="about/" class="intro__nav-item">About</a>
+          <a href="works/" class="intro__nav-item">Works</a>
+          <a href="skills/" class="intro__nav-item">Skills</a>
+          <a href="contact/" class="intro__nav-item">Contact</a>
+        </nav>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__copy">&copy; 2026 NOTHAVE. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

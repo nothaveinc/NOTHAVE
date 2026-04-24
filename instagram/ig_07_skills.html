@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>Skills</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #1E1E2E;
+    font-family: 'JetBrains Mono', 'Noto Sans JP', monospace;
+    color: #fff;
+  }
+  .frame { width: 1080px; height: 1350px; position: relative; }
+  .tabs {
+    display: flex;
+    background: #181825;
+    padding: 0 30px;
+    padding-top: 135px;
+    border-bottom: 1px solid #313244;
+  }
+  .tab {
+    padding: 18px 26px;
+    font-size: 20px;
+    color: #6c7086;
+    background: #181825;
+    border-right: 1px solid #313244;
+  }
+  .tab.active {
+    background: #1E1E2E;
+    color: #fff;
+    border-top: 2px solid #00BFFF;
+  }
+  .dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #00BFFF;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  .code {
+    padding: 70px 100px;
+  }
+  .line-category {
+    font-size: 26px;
+    color: #6c7086;
+    margin-top: 40px;
+    letter-spacing: 0.02em;
+  }
+  .line-category:first-child { margin-top: 0; }
+  .line-skills {
+    font-size: 32px;
+    color: #fff;
+    margin-top: 14px;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+  .mark { color: #00BFFF; margin-right: 12px; }
+  .cat-name { color: #00BFFF; }
+  .footer {
+    position: absolute;
+    bottom: 135px;
+    left: 100px;
+    right: 100px;
+    font-size: 22px;
+    color: #6c7086;
+    border-top: 1px solid #313244;
+    padding-top: 28px;
+    letter-spacing: 0.02em;
+  }
+  .tag {
+    position: absolute;
+    top: 90px;
+    right: 40px;
+    font-size: 14px;
+    color: #6c7086;
+    letter-spacing: 0.2em;
+  }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="tag">~/portfolio/skills</div>
+  <div class="tabs">
+    <div class="tab active"><span class="dot"></span>skills.js</div>
+    <div class="tab">about.md</div>
+    <div class="tab">contact.html</div>
+  </div>
+  <div class="code">
+    <div class="line-category">// <span class="cat-name">マークアップ</span></div>
+    <div class="line-skills"><span class="mark">✦</span>HTML5 &nbsp; <span class="mark">✦</span>CSS3</div>
+
+    <div class="line-category">// <span class="cat-name">スクリプト</span></div>
+    <div class="line-skills"><span class="mark">✦</span>JavaScript &nbsp; <span class="mark">✦</span>jQuery</div>
+
+    <div class="line-category">// <span class="cat-name">構築・対応</span></div>
+    <div class="line-skills"><span class="mark">✦</span>WordPress &nbsp; <span class="mark">✦</span>レスポンシブ</div>
+
+    <div class="line-category">// <span class="cat-name">その他</span></div>
+    <div class="line-skills"><span class="mark">✦</span>SEO対策 &nbsp; <span class="mark">✦</span>アニメーション</div>
+  </div>
+  <div class="footer">// ご依頼はDMかプロフリンクから</div>
+</div>
+</body>
+</html>

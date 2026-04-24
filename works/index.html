@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Works | NOTHAVE</title>
+    <meta
+      name="description"
+      content="NOTHAVEの制作実績。飲食店・コーポレート・クリエイティブ・ウェルネスなど幅広いジャンルのWebサイト制作事例。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../style.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header__inner">
+        <a href="../" class="header__logo">NOTHAVE</a>
+        <nav class="header__nav" id="nav">
+          <ul class="header__nav-list">
+            <li><a href="../about/" class="header__nav-link">About</a></li>
+            <li><a href="./" class="header__nav-link header__nav-link--active">Works</a></li>
+            <li><a href="../skills/" class="header__nav-link">Skills</a></li>
+            <li><a href="../plan/" class="header__nav-link">Plan</a></li>
+            <li><a href="../contact/" class="header__nav-link">Contact</a></li>
+          </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+          <span class="hamburger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <section class="page-hero">
+      <div class="page-hero__inner">
+        <p class="page-hero__label">NOTHAVE</p>
+        <h1 class="page-hero__title">Works</h1>
+      </div>
+    </section>
+
+    <section class="works">
+      <div class="container">
+        <div class="works__grid">
+          <a href="restaurant/" class="works__card fade-in">
+            <div class="works__card-image works__card-image--restaurant"></div>
+            <div class="works__card-overlay">
+              <h2 class="works__card-title">Cafe MOKUREN</h2>
+              <span class="works__card-tag">飲食店</span>
+            </div>
+          </a>
+          <a href="corporate/" class="works__card fade-in">
+            <div class="works__card-image works__card-image--corporate"></div>
+            <div class="works__card-overlay">
+              <h2 class="works__card-title">株式会社ネクストブリッジ</h2>
+              <span class="works__card-tag">コーポレート</span>
+            </div>
+          </a>
+          <a href="creative/" class="works__card fade-in">
+            <div class="works__card-image works__card-image--creative"></div>
+            <div class="works__card-overlay">
+              <h2 class="works__card-title">VOID CREATIVE</h2>
+              <span class="works__card-tag">クリエイティブ</span>
+            </div>
+          </a>
+          <a href="wellness/" class="works__card fade-in">
+            <div class="works__card-image works__card-image--wellness"></div>
+            <div class="works__card-overlay">
+              <h2 class="works__card-title">LUMIERE Wellness</h2>
+              <span class="works__card-tag">ウェルネス</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <p class="footer__copy">&copy; 2026 NOTHAVE. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script src="../script.js"></script>
+  </body>
+</html>

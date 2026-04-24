@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>ig_04_corporate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #0D2137;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #FFFFFF;
+  }
+  .canvas {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    padding: 135px 90px;
+    display: flex;
+    flex-direction: column;
+  }
+  .top-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1A6ECC;
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    letter-spacing: 0.2em;
+  }
+  .top-zone .label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .top-zone .works {
+    font-weight: 900;
+    font-size: 24px;
+  }
+  .top-zone .dash { color: #1A6ECC; }
+  .top-zone .brand {
+    font-weight: 700;
+    font-size: 22px;
+    color: #FFFFFF;
+    opacity: 0.7;
+    letter-spacing: 0.15em;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 90px;
+  }
+  .hero-block {
+    text-align: left;
+  }
+  .hero-overline {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: 0.35em;
+    color: #1A6ECC;
+    margin-bottom: 28px;
+  }
+  .hero-name {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 78px;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+  }
+  .accent-line {
+    width: 200px;
+    height: 2px;
+    background: #1A6ECC;
+    margin: 40px 0 32px;
+  }
+  .hero-sub {
+    font-size: 30px;
+    color: rgba(255, 255, 255, 0.65);
+    letter-spacing: 0.15em;
+    font-weight: 400;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border-top: 1px solid rgba(26, 110, 204, 0.4);
+    border-bottom: 1px solid rgba(26, 110, 204, 0.4);
+    padding: 50px 0;
+  }
+  .stat {
+    text-align: center;
+    position: relative;
+  }
+  .stat + .stat::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15%;
+    bottom: 15%;
+    width: 1px;
+    background: rgba(26, 110, 204, 0.4);
+  }
+  .stat .num {
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 1;
+    color: #1A6ECC;
+    letter-spacing: -0.02em;
+  }
+  .stat .num .unit {
+    font-size: 36px;
+    margin-left: 2px;
+  }
+  .stat .lbl {
+    margin-top: 18px;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2em;
+  }
+  .bottom-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stack {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    color: rgba(255, 255, 255, 0.7);
+    letter-spacing: 0.2em;
+  }
+  .stack span + span::before {
+    content: '｜';
+    margin: 0 10px;
+    color: rgba(26, 110, 204, 0.6);
+  }
+  .credit {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 22px;
+    color: #1A6ECC;
+    letter-spacing: 0.12em;
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="top-zone">
+    <div class="label">
+      <span class="works">Works.02</span>
+      <span class="dash">──</span>
+      <span>コーポレートサイト</span>
+    </div>
+    <div class="brand">K. PORTFOLIO</div>
+  </div>
+
+  <div class="main">
+    <div class="hero-block">
+      <div class="hero-overline">CORPORATE WEBSITE</div>
+      <div class="hero-name">NEXT BRIDGE<br>Inc.</div>
+      <div class="accent-line"></div>
+      <div class="hero-sub">コーポレートWebサイト制作</div>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="num">520<span class="unit">件+</span></div>
+        <div class="lbl">累計案件</div>
+      </div>
+      <div class="stat">
+        <div class="num">98<span class="unit">%</span></div>
+        <div class="lbl">満足度</div>
+      </div>
+      <div class="stat">
+        <div class="num">18<span class="unit">年</span></div>
+        <div class="lbl">の実績</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom-zone">
+    <div class="stack">
+      <span>HTML</span><span>CSS</span><span>JS</span><span>レスポンシブ</span>
+    </div>
+    <div class="credit">Web制作 by K.</div>
+  </div>
+</div>
+</body>
+</html>
