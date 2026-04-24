@@ -25,8 +25,8 @@
             <li><a href="about/" class="header__nav-link">About</a></li>
             <li><a href="works/" class="header__nav-link">Works</a></li>
             <li><a href="skills/" class="header__nav-link">Skills</a></li>
-            <li><a href="plan/" class="header__nav-link">Plan</a></li>
-            <li><a href="contact/" class="header__nav-link">Contact</a></li>
+            <li><a href="#plan" class="header__nav-link">Plan</a></li>
+            <li><a href="#contact" class="header__nav-link">Contact</a></li>
           </ul>
         </nav>
         <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
@@ -41,7 +41,7 @@
       <div class="hero__content">
         <p class="hero__label fade-in">Web Creation / Fukuoka</p>
         <h1 class="hero__title fade-in">想いを形に、<br>可能性を信じて</h1>
-        <a href="contact/" class="hero__cta fade-in">お仕事の依頼はこちら</a>
+        <a href="#contact" class="hero__cta fade-in">お仕事の依頼はこちら</a>
       </div>
       <div class="hero__scroll-indicator" aria-hidden="true">
         <span class="hero__scroll-text">Scroll</span>
@@ -59,8 +59,195 @@
           <a href="about/" class="intro__nav-item">About</a>
           <a href="works/" class="intro__nav-item">Works</a>
           <a href="skills/" class="intro__nav-item">Skills</a>
-          <a href="contact/" class="intro__nav-item">Contact</a>
+          <a href="#plan" class="intro__nav-item">Plan</a>
+          <a href="#contact" class="intro__nav-item">Contact</a>
         </nav>
+      </div>
+    </section>
+
+    <!-- Plan -->
+    <section class="plan-cards-section" id="plan">
+      <div class="container">
+        <h2 class="section-title fade-in">Plan</h2>
+        <p class="plan-intro fade-in">
+          ご要望・ご予算に合わせた5つのプランをご用意しています。<br>
+          Starter以外はすべてオリジナルデザイン・スマホ対応込みの価格です。
+        </p>
+        <div class="plan-cards fade-in">
+
+          <div class="plan-card">
+            <p class="plan-card__name">Starter</p>
+            <p class="plan-card__price">¥50,000<span class="plan-card__price-suffix">〜</span></p>
+            <p class="plan-card__note">テンプレートベース</p>
+            <ul class="plan-card__summary">
+              <li>1ページ</li>
+              <li>5日〜15日</li>
+            </ul>
+            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+          </div>
+
+          <div class="plan-card">
+            <p class="plan-card__name">Light</p>
+            <p class="plan-card__price">¥300,000<span class="plan-card__price-suffix">〜</span></p>
+            <p class="plan-card__note">オリジナルデザイン</p>
+            <ul class="plan-card__summary">
+              <li>1ページ</li>
+              <li>10日〜30日</li>
+            </ul>
+            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+          </div>
+
+          <div class="plan-card plan-card--featured">
+            <p class="plan-card__badge">人気</p>
+            <p class="plan-card__name">Standard</p>
+            <p class="plan-card__price">¥500,000<span class="plan-card__price-suffix">〜</span></p>
+            <p class="plan-card__note">オリジナルデザイン</p>
+            <ul class="plan-card__summary">
+              <li>3ページ</li>
+              <li>20日〜40日</li>
+            </ul>
+            <a href="#contact" class="plan-card__cta plan-card__cta--featured">お問い合わせ</a>
+          </div>
+
+          <div class="plan-card">
+            <p class="plan-card__name">Pro</p>
+            <p class="plan-card__price">¥700,000<span class="plan-card__price-suffix">〜</span></p>
+            <p class="plan-card__note">オリジナルデザイン</p>
+            <ul class="plan-card__summary">
+              <li>5ページ</li>
+              <li>30日〜60日</li>
+            </ul>
+            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+          </div>
+
+          <div class="plan-card">
+            <p class="plan-card__name">Enterprise</p>
+            <p class="plan-card__price">¥1,500,000<span class="plan-card__price-suffix">〜</span></p>
+            <p class="plan-card__note">オリジナルデザイン</p>
+            <ul class="plan-card__summary">
+              <li>応相談</li>
+              <li>30日〜90日</li>
+            </ul>
+            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Plan Comparison Table -->
+    <section class="plan-table-section">
+      <div class="container">
+        <h2 class="plan-table-title fade-in">プラン比較</h2>
+        <div class="plan-table-wrap fade-in">
+          <table class="plan-table">
+            <thead>
+              <tr>
+                <th class="plan-table__feature"></th>
+                <th>Starter</th>
+                <th>Light</th>
+                <th class="plan-table__th--featured">Standard</th>
+                <th>Pro</th>
+                <th>Enterprise</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="plan-table__label">初期費用</td>
+                <td>¥50,000〜</td>
+                <td>¥300,000〜</td>
+                <td class="plan-table__td--featured">¥500,000〜</td>
+                <td>¥700,000〜</td>
+                <td>¥1,500,000〜</td>
+              </tr>
+              <tr>
+                <td class="plan-table__label">制作期間</td>
+                <td>5日〜15日</td>
+                <td>10日〜30日</td>
+                <td class="plan-table__td--featured">20日〜40日</td>
+                <td>30日〜60日</td>
+                <td>30日〜90日</td>
+              </tr>
+              <tr>
+                <td class="plan-table__label">ページ数</td>
+                <td>1P</td>
+                <td>1P</td>
+                <td class="plan-table__td--featured">3P</td>
+                <td>5P</td>
+                <td>応相談</td>
+              </tr>
+              <tr>
+                <td class="plan-table__label">拡張型投稿機能</td>
+                <td><span class="plan-table__cross" aria-label="なし">—</span></td>
+                <td><span class="plan-table__cross" aria-label="なし">—</span></td>
+                <td class="plan-table__td--featured"><span class="plan-table__cross" aria-label="なし">—</span></td>
+                <td><span class="plan-table__check" aria-label="あり">✓</span></td>
+                <td><span class="plan-table__check" aria-label="あり">✓</span></td>
+              </tr>
+              <tr>
+                <td class="plan-table__label">デザイン</td>
+                <td class="plan-table__val--muted">テンプレート</td>
+                <td>オリジナル</td>
+                <td class="plan-table__td--featured">オリジナル</td>
+                <td>オリジナル</td>
+                <td>オリジナル</td>
+              </tr>
+              <tr>
+                <td class="plan-table__label">スマホ対応</td>
+                <td><span class="plan-table__check" aria-label="あり">✓</span></td>
+                <td><span class="plan-table__check" aria-label="あり">✓</span></td>
+                <td class="plan-table__td--featured"><span class="plan-table__check" aria-label="あり">✓</span></td>
+                <td><span class="plan-table__check" aria-label="あり">✓</span></td>
+                <td><span class="plan-table__check" aria-label="あり">✓</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="plan-note fade-in">※ 表示価格はすべて税別です。詳細なお見積りはお問い合わせください。</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2 class="section-title fade-in">Contact</h2>
+        <p class="contact__email fade-in">dummy@example.com</p>
+        <form class="contact__form fade-in" action="#">
+          <div class="contact__form-group">
+            <label for="name" class="contact__label">お名前</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              class="contact__input"
+              placeholder="山田 花子"
+              required
+            />
+          </div>
+          <div class="contact__form-group">
+            <label for="email" class="contact__label">メールアドレス</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="contact__input"
+              placeholder="example@email.com"
+              required
+            />
+          </div>
+          <div class="contact__form-group">
+            <label for="message" class="contact__label">メッセージ</label>
+            <textarea
+              id="message"
+              name="message"
+              class="contact__textarea"
+              rows="6"
+              placeholder="Webサイト制作について相談したいです。"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="contact__submit">送信する</button>
+        </form>
       </div>
     </section>
 
