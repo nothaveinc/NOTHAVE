@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KYOTO PHOENIX FC | 公式サイト</title>
+  <meta name="description" content="京都フェニックスFCの公式ウェブサイト。試合日程・結果、選手情報、チケット情報などを掲載しています。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ========== Header ========== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="header-logo">
+        <div class="header-crest" aria-hidden="true"></div>
+        <div class="header-logo-text">
+          <span>KYOTO</span>
+          <em>PHOENIX FC</em>
+        </div>
+      </a>
+      <nav class="header-nav" id="headerNav">
+        <a href="#news">ニュース</a>
+        <a href="#schedule">試合日程</a>
+        <a href="#players">選手</a>
+        <a href="#club">クラブ</a>
+        <a href="#tickets" class="header-btn">チケット購入</a>
+      </nav>
+      <button class="header-toggle" id="headerToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ========== Hero ========== -->
+  <section class="hero" id="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <p class="hero-league">J1リーグ 2026</p>
+      <div class="hero-crest-wrap">
+        <svg class="hero-crest-svg" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M40 4L76 19V52C76 72 60 84 40 89C20 84 4 72 4 52V19L40 4Z" fill="#4C1D95" stroke="#F59E0B" stroke-width="2.5"/>
+          <path d="M40 22C40 22 26 34 26 46C26 56 33 63 40 65C47 63 54 56 54 46C54 34 40 22 40 22Z" fill="#F59E0B"/>
+          <path d="M32 40L37 50L40 43L43 50L48 40" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="40" y="82" text-anchor="middle" font-family="Inter" font-weight="900" font-size="8" fill="rgba(255,255,255,0.5)" letter-spacing="1">KYOTO</text>
+        </svg>
+      </div>
+      <h1 class="hero-title">KYOTO<br>PHOENIX FC</h1>
+      <p class="hero-tagline">翔け、不死鳥よ。</p>
+      <div class="hero-actions">
+        <a href="#tickets" class="btn-primary">チケット購入</a>
+        <a href="#schedule" class="btn-outline">試合日程を見る</a>
+      </div>
+    </div>
+    <div class="hero-scroll" aria-hidden="true">
+      <span>SCROLL</span>
+      <div class="hero-scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ========== Next Match ========== -->
+  <section class="next-match">
+    <div class="container">
+      <div class="next-match-header">
+        <span class="label-tag">NEXT MATCH</span>
+        <h2>次の試合</h2>
+      </div>
+      <div class="next-match-card">
+        <div class="match-competition">
+          <span>J1リーグ 第18節</span>
+          <span class="match-home-badge">HOME</span>
+        </div>
+        <div class="match-teams">
+          <div class="match-team">
+            <div class="team-crest team-crest--phoenix"></div>
+            <span class="team-name">京都フェニックスFC</span>
+          </div>
+          <div class="match-vs-block">
+            <span class="match-vs">VS</span>
+            <div class="match-datetime">
+              <div class="match-date">2026.05.03 SUN</div>
+              <div class="match-time">14:00 K.O.</div>
+            </div>
+          </div>
+          <div class="match-team match-team--away">
+            <div class="team-crest team-crest--opponent"></div>
+            <span class="team-name">ガンバ大阪</span>
+          </div>
+        </div>
+        <div class="match-venue">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="currentColor"/></svg>
+          京都パープルスタジアム（収容25,000人）
+        </div>
+        <div class="match-countdown" id="countdown" data-match-date="2026-05-03T14:00:00+09:00">
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-days">--</span>
+            <span class="countdown-label">DAYS</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-hours">--</span>
+            <span class="countdown-label">HRS</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-mins">--</span>
+            <span class="countdown-label">MIN</span>
+          </div>
+          <span class="countdown-sep">:</span>
+          <div class="countdown-item">
+            <span class="countdown-num" id="cd-secs">--</span>
+            <span class="countdown-label">SEC</span>
+          </div>
+        </div>
+        <a href="#tickets" class="btn-primary btn-lg">チケットを購入する →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== News ========== -->
+  <section class="news" id="news">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-en">NEWS</p>
+        <h2 class="section-title">最新ニュース</h2>
+      </div>
+      <div class="news-grid">
+        <a href="#" class="news-card fade-in">
+          <div class="news-img news-img--1" role="img" aria-label="J1第15節 vs FC大阪 勝利の瞬間"></div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span class="news-cat news-cat--match">試合速報</span>
+              <time class="news-date" datetime="2026-04-27">2026.04.27</time>
+            </div>
+            <h3 class="news-title">【速報】J1第15節 vs FC大阪 2-0で勝利！5連勝達成・首位浮上</h3>
+            <p class="news-excerpt">ホーム・京都パープルスタジアムで行われたJ1リーグ第15節。橘 蓮の2ゴールでFC大阪を2-0で撃破し、5連勝を達成。ついに単独首位に立った。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in">
+          <div class="news-img news-img--2" role="img" aria-label="橘 蓮選手 日本代表招集"></div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span class="news-cat news-cat--player">選手情報</span>
+              <time class="news-date" datetime="2026-04-22">2026.04.22</time>
+            </div>
+            <h3 class="news-title">橘 蓮選手、日本代表に追加招集。国際Aマッチに向け合流</h3>
+            <p class="news-excerpt">日本サッカー協会は本日、6月国際Aマッチに向けた追加招集選手を発表。MF橘 蓮選手（24）が選出され、クラブを代表して国際舞台へ臨む。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in">
+          <div class="news-img news-img--3" role="img" aria-label="京都パープルスタジアム リニューアル完成"></div>
+          <div class="news-body">
+            <div class="news-meta">
+              <span class="news-cat news-cat--club">クラブ情報</span>
+              <time class="news-date" datetime="2026-04-18">2026.04.18</time>
+            </div>
+            <h3 class="news-title">京都パープルスタジアム リニューアル完了。こけら落としイベント開催</h3>
+            <p class="news-excerpt">全面改修を終えた京都パープルスタジアムが完成。5月3日ホームゲームをこけら落としとし、記念セレモニー・限定グッズ販売などの特別企画を実施します。</p>
+          </div>
+        </a>
+      </div>
+      <div class="section-more fade-in">
+        <a href="#" class="btn-more">ニュース一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Schedule ========== -->
+  <section class="schedule" id="schedule">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-en">SCHEDULE</p>
+        <h2 class="section-title">試合日程</h2>
+      </div>
+      <div class="standing-bar fade-in">
+        <div class="standing-rank">
+          <span class="standing-num">1</span>
+          <span class="standing-unit">位</span>
+        </div>
+        <div class="standing-stats">
+          <div class="s-stat"><span class="s-val">15</span><span class="s-lbl">試合</span></div>
+          <div class="s-stat"><span class="s-val">10</span><span class="s-lbl">勝</span></div>
+          <div class="s-stat"><span class="s-val">3</span><span class="s-lbl">分</span></div>
+          <div class="s-stat"><span class="s-val">2</span><span class="s-lbl">敗</span></div>
+          <div class="s-stat s-stat--pts"><span class="s-val">33</span><span class="s-lbl">pts</span></div>
+        </div>
+        <span class="standing-comp">J1リーグ 2026</span>
+      </div>
+      <div class="schedule-table-wrap fade-in">
+        <p class="schedule-scroll-hint" aria-hidden="true">← 横にスクロールできます →</p>
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th>日程</th>
+              <th>H/A</th>
+              <th>対戦相手</th>
+              <th>競技会</th>
+              <th>会場</th>
+              <th>チケット</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="row--next">
+              <td>
+                <span class="td-date">05/03</span>
+                <span class="td-day">日</span>
+                <span class="td-time">14:00</span>
+              </td>
+              <td><span class="ha ha--home">H</span></td>
+              <td class="td-opponent">ガンバ大阪</td>
+              <td>J1リーグ 第18節</td>
+              <td>京都パープルスタジアム</td>
+              <td><a href="#tickets" class="t-link t-link--sale">販売中</a></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="td-date">05/10</span>
+                <span class="td-day">日</span>
+                <span class="td-time">14:00</span>
+              </td>
+              <td><span class="ha ha--away">A</span></td>
+              <td class="td-opponent">アルビレックス新潟</td>
+              <td>J1リーグ 第19節</td>
+              <td>デンカビッグスワンスタジアム</td>
+              <td><a href="#" class="t-link t-link--soon">近日販売</a></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="td-date">05/17</span>
+                <span class="td-day">日</span>
+                <span class="td-time">14:00</span>
+              </td>
+              <td><span class="ha ha--home">H</span></td>
+              <td class="td-opponent">浦和レッズ</td>
+              <td>J1リーグ 第20節</td>
+              <td>京都パープルスタジアム</td>
+              <td><a href="#" class="t-link t-link--soon">近日販売</a></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="td-date">05/24</span>
+                <span class="td-day">日</span>
+                <span class="td-time">15:00</span>
+              </td>
+              <td><span class="ha ha--away">A</span></td>
+              <td class="td-opponent">名古屋グランパス</td>
+              <td>J1リーグ 第21節</td>
+              <td>豊田スタジアム</td>
+              <td><span class="t-link t-link--tbd">未発売</span></td>
+            </tr>
+            <tr>
+              <td>
+                <span class="td-date">06/07</span>
+                <span class="td-day">日</span>
+                <span class="td-time">14:00</span>
+              </td>
+              <td><span class="ha ha--home">H</span></td>
+              <td class="td-opponent">横浜F・マリノス</td>
+              <td>J1リーグ 第22節</td>
+              <td>京都パープルスタジアム</td>
+              <td><span class="t-link t-link--tbd">未発売</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="section-more fade-in">
+        <a href="#" class="btn-more">全試合日程を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Players ========== -->
+  <section class="players" id="players">
+    <div class="container">
+      <div class="section-header fade-in">
+        <p class="section-en section-en--gold">PLAYERS</p>
+        <h2 class="section-title section-title--white">注目選手</h2>
+      </div>
+      <div class="players-grid">
+        <a href="#" class="player-card fade-in">
+          <div class="player-img player-img--1" role="img" aria-label="GK 大西 拓哉 選手">
+            <span class="player-num">#1</span>
+          </div>
+          <div class="player-info">
+            <span class="player-pos">GK</span>
+            <h3 class="player-name">大西 拓哉</h3>
+            <p class="player-name-en">Takuya Onishi</p>
+            <span class="player-nat">🇯🇵 日本</span>
+          </div>
+        </a>
+        <a href="#" class="player-card fade-in">
+          <div class="player-img player-img--2" role="img" aria-label="DF 中村 遼 選手">
+            <span class="player-num">#5</span>
+          </div>
+          <div class="player-info">
+            <span class="player-pos">DF</span>
+            <h3 class="player-name">中村 遼</h3>
+            <p class="player-name-en">Ryo Nakamura</p>
+            <span class="player-nat">🇯🇵 日本</span>
+          </div>
+        </a>
+        <a href="#" class="player-card player-card--ace fade-in">
+          <div class="player-img player-img--3" role="img" aria-label="MF 橘 蓮 選手（日本代表）">
+            <span class="player-num">#10</span>
+            <span class="player-badge">日本代表</span>
+          </div>
+          <div class="player-info">
+            <span class="player-pos">MF</span>
+            <h3 class="player-name">橘 蓮</h3>
+            <p class="player-name-en">Ren Tachibana</p>
+            <span class="player-nat">🇯🇵 日本</span>
+          </div>
+        </a>
+        <a href="#" class="player-card fade-in">
+          <div class="player-img player-img--4" role="img" aria-label="FW ルカス・シルバ 選手">
+            <span class="player-num">#9</span>
+          </div>
+          <div class="player-info">
+            <span class="player-pos">FW</span>
+            <h3 class="player-name">ルカス・シルバ</h3>
+            <p class="player-name-en">Lucas Silva</p>
+            <span class="player-nat">🇧🇷 ブラジル</span>
+          </div>
+        </a>
+      </div>
+      <div class="section-more fade-in">
+        <a href="#" class="btn-more btn-more--light">選手一覧を見る</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Club ========== -->
+  <section class="club" id="club">
+    <div class="container">
+      <div class="club-grid">
+        <div class="club-text fade-in">
+          <p class="section-en">CLUB INFO</p>
+          <h2 class="section-title section-title--left">クラブについて</h2>
+          <p class="club-lead">古都・京都から、世界へ。</p>
+          <p class="club-body">京都フェニックスFCは、2012年に「不死鳥のように地域と共に蘇る」という理念のもと設立されました。千年の都・京都が誇る伝統と革新の精神を胸に、2018年にJ1リーグへの昇格を果たし、現在はリーグ優勝を目指して日々戦い続けています。ホームの京都パープルスタジアムは25,000人の観客を収容できる最新鋭の施設であり、熱狂的なサポーターとともに数々の感動を生み出しています。</p>
+          <a href="#" class="btn-secondary">クラブ詳細を見る</a>
+        </div>
+        <div class="club-stats fade-in">
+          <div class="club-stat-grid">
+            <div class="club-stat">
+              <span class="cs-num">2012</span>
+              <span class="cs-lbl">設立年</span>
+            </div>
+            <div class="club-stat">
+              <span class="cs-num">J1</span>
+              <span class="cs-lbl">所属リーグ</span>
+            </div>
+            <div class="club-stat">
+              <span class="cs-num">25,000</span>
+              <span class="cs-lbl">スタジアム収容人数</span>
+            </div>
+            <div class="club-stat">
+              <span class="cs-num">準優勝</span>
+              <span class="cs-lbl">リーグ最高位（2024）</span>
+            </div>
+          </div>
+          <div class="club-stadium-img"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Tickets ========== -->
+  <section class="tickets" id="tickets">
+    <div class="tickets-bg">
+      <div class="container">
+        <div class="tickets-header fade-in">
+          <p class="section-en section-en--gold">TICKETS</p>
+          <h2 class="tickets-title">チケット購入</h2>
+          <p class="tickets-match">次のホームゲーム：2026.05.03（日） vs ガンバ大阪</p>
+        </div>
+        <div class="ticket-cards fade-in">
+          <div class="ticket-card">
+            <div class="ticket-type">自由席</div>
+            <div class="ticket-price">¥2,000<span class="ticket-tax">〜（税込）</span></div>
+            <ul class="ticket-list">
+              <li>メインスタンド自由席</li>
+              <li>バックスタンド自由席</li>
+              <li>当日券あり</li>
+            </ul>
+            <a href="#" class="btn-ticket">購入する</a>
+          </div>
+          <div class="ticket-card ticket-card--featured">
+            <span class="ticket-popular">人気No.1</span>
+            <div class="ticket-type">指定席</div>
+            <div class="ticket-price">¥3,500<span class="ticket-tax">〜（税込）</span></div>
+            <ul class="ticket-list">
+              <li>メインスタンド指定席</li>
+              <li>バックスタンド指定席</li>
+              <li>早期購入割引あり</li>
+            </ul>
+            <a href="#" class="btn-ticket btn-ticket--featured">購入する</a>
+          </div>
+          <div class="ticket-card">
+            <div class="ticket-type">VIP席</div>
+            <div class="ticket-price">¥12,000<span class="ticket-tax">〜（税込）</span></div>
+            <ul class="ticket-list">
+              <li>プレミアムラウンジ利用</li>
+              <li>選手入場セレモニー鑑賞</li>
+              <li>限定グッズプレゼント</li>
+            </ul>
+            <a href="#" class="btn-ticket">購入する</a>
+          </div>
+        </div>
+        <p class="tickets-note fade-in">※ファンクラブ会員は各種割引特典あり。<a href="#">ファンクラブ詳細はこちら</a></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Sponsors ========== -->
+  <section class="sponsors">
+    <div class="container">
+      <p class="sponsors-label fade-in">OFFICIAL PARTNERS</p>
+      <div class="sponsors-grid fade-in">
+        <div class="sponsor-item"><span>京都銀行</span></div>
+        <div class="sponsor-item"><span>京セラ</span></div>
+        <div class="sponsor-item"><span>村田製作所</span></div>
+        <div class="sponsor-item"><span>オムロン</span></div>
+        <div class="sponsor-item"><span>任天堂</span></div>
+        <div class="sponsor-item"><span>島津製作所</span></div>
+        <div class="sponsor-item"><span>ワコール</span></div>
+        <div class="sponsor-item"><span>東和銀行</span></div>
+      </div>
+      <div class="sponsors-more fade-in">
+        <a href="#" class="btn-more">パートナーシップについて</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== Footer ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-crest" aria-hidden="true"></div>
+          <div class="footer-brand-text">
+            <p class="footer-club">KYOTO PHOENIX FC</p>
+            <p class="footer-tagline">翔け、不死鳥よ。</p>
+          </div>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="X (Twitter)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.626zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Instagram">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="LINE">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63h2.386c.346 0 .627.285.627.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.63-.63.346 0 .628.285.628.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col">
+          <h4>クラブ情報</h4>
+          <a href="#">クラブ概要</a>
+          <a href="#">チーム情報</a>
+          <a href="#">スタジアム</a>
+          <a href="#">アカデミー</a>
+          <a href="#">スポンサー</a>
+        </div>
+        <div class="footer-nav-col">
+          <h4>試合・選手</h4>
+          <a href="#">試合日程・結果</a>
+          <a href="#">選手・スタッフ</a>
+          <a href="#">フォト・動画</a>
+          <a href="#">ニュース</a>
+          <a href="#">統計データ</a>
+        </div>
+        <div class="footer-nav-col">
+          <h4>チケット・グッズ</h4>
+          <a href="#">チケット購入</a>
+          <a href="#">ファンクラブ</a>
+          <a href="#">オフィシャルショップ</a>
+          <a href="#">イベント情報</a>
+        </div>
+        <div class="footer-nav-col">
+          <h4>その他</h4>
+          <a href="#">サポーターガイド</a>
+          <a href="#">スタジアムアクセス</a>
+          <a href="#">お問い合わせ</a>
+          <a href="#">プライバシーポリシー</a>
+          <a href="#">利用規約</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-addr">〒615-0802 京都府京都市西京区桂北大路町 京都パープルスタジアム内</p>
+        <p class="footer-copy">&copy; 2026 KYOTO PHOENIX FC. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
