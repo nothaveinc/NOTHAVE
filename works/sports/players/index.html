@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>選手・スタッフ | KYOTO PHOENIX FC</title>
+  <meta name="description" content="京都フェニックスFC 2026シーズン選手・スタッフ一覧。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../common.css">
+  <style>
+    .players-page { padding: 80px 0 100px; }
+
+    /* Position section */
+    .position-section { margin-bottom: 64px; }
+    .position-label {
+      display: inline-flex; align-items: center; gap: 10px;
+      font-family: var(--font-en); font-size: 0.72rem; font-weight: 800; letter-spacing: 0.2em;
+      color: var(--white); background: var(--purple); padding: 6px 18px 6px 14px;
+      border-radius: 2px; margin-bottom: 24px;
+    }
+    .position-label-icon {
+      width: 24px; height: 24px; border-radius: 50%; background: rgba(255,255,255,0.2);
+      display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 900;
+    }
+
+    /* Player grid */
+    .player-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+    .player-card {
+      background: var(--white); border-radius: 6px; overflow: hidden;
+      border: 1px solid var(--gray-200); transition: transform var(--ease), border-color var(--ease), box-shadow var(--ease);
+      display: block; color: var(--black);
+    }
+    .player-card:hover {
+      transform: translateY(-4px); border-color: var(--purple);
+      box-shadow: 0 8px 24px rgba(91,33,182,0.14);
+    }
+    .player-card--ace { border-color: rgba(245,158,11,0.5); }
+    .player-card--ace:hover { border-color: var(--gold); box-shadow: 0 8px 24px rgba(245,158,11,0.18); }
+
+    .player-photo {
+      height: 180px; background-size: cover; background-position: center top;
+      position: relative; display: flex; align-items: flex-start; justify-content: space-between; padding: 10px;
+    }
+    .player-photo--gk-1  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--gk-2  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--df-1  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1551698618-1dfe5d97d256?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--df-2  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--df-3  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--df-4  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1524015368236-bbf8a5de3e3f?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--df-5  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--mf-1  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--mf-2  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--mf-3  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--mf-ace{ background-image: linear-gradient(to bottom,rgba(30,5,80,.15) 0%,rgba(30,5,80,.65) 100%), url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--mf-5  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1517649763962-0c623066013b?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--fw-1  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--fw-2  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--fw-3  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--fw-4  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1571019613577-8210e29e9979?auto=format&fit=crop&w=400&q=80'); }
+    .player-photo--fw-5  { background-image: linear-gradient(to bottom,rgba(30,5,80,.2) 0%,rgba(30,5,80,.7) 100%), url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=400&q=80'); }
+
+    .player-num {
+      font-family: var(--font-en); font-size: 0.88rem; font-weight: 900;
+      color: rgba(255,255,255,0.92); background: rgba(0,0,0,0.38);
+      backdrop-filter: blur(4px); padding: 2px 7px; border-radius: 3px;
+    }
+    .player-badge-tag {
+      font-family: var(--font-ja); font-size: 0.6rem; font-weight: 700;
+      background: var(--gold); color: var(--black); padding: 2px 7px; border-radius: 2px;
+    }
+    .captain-tag {
+      font-family: var(--font-en); font-size: 0.6rem; font-weight: 900;
+      background: var(--white); color: var(--purple); padding: 2px 7px; border-radius: 2px;
+    }
+
+    .player-info { padding: 14px 14px 16px; }
+    .player-pos {
+      font-family: var(--font-en); font-size: 0.6rem; font-weight: 800; letter-spacing: 0.15em;
+      color: var(--purple); display: block; margin-bottom: 3px;
+    }
+    .player-name { font-size: 0.9rem; font-weight: 700; line-height: 1.3; margin-bottom: 2px; }
+    .player-name-en { font-family: var(--font-en); font-size: 0.65rem; color: var(--gray-400); display: block; margin-bottom: 6px; }
+    .player-nat { font-size: 0.72rem; color: var(--gray-600); }
+
+    /* Staff section */
+    .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .staff-card {
+      background: var(--white); border: 1px solid var(--gray-200); border-top: 3px solid var(--purple);
+      border-radius: 6px; padding: 24px 20px; display: flex; align-items: flex-start; gap: 16px;
+      transition: box-shadow var(--ease);
+    }
+    .staff-card:hover { box-shadow: 0 4px 16px rgba(91,33,182,0.1); }
+    .staff-avatar {
+      width: 52px; height: 52px; border-radius: 50%; background: var(--gray-100);
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-en); font-size: 1.1rem; font-weight: 900; color: var(--purple);
+    }
+    .staff-role { font-size: 0.68rem; color: var(--gold); font-weight: 700; display: block; margin-bottom: 4px; letter-spacing: 0.04em; }
+    .staff-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .staff-name-en { font-family: var(--font-en); font-size: 0.68rem; color: var(--gray-400); display: block; margin-bottom: 6px; }
+    .staff-note { font-size: 0.75rem; color: var(--gray-600); line-height: 1.6; }
+
+    @media (max-width: 1024px) { .player-grid { grid-template-columns: repeat(4, 1fr); } }
+    @media (max-width: 768px)  { .player-grid { grid-template-columns: repeat(3, 1fr); } .staff-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 560px)  { .player-grid { grid-template-columns: repeat(2, 1fr); } .staff-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="../" class="header-logo">
+        <div class="header-crest" aria-hidden="true"></div>
+        <div class="header-logo-text"><span>KYOTO</span><em>PHOENIX FC</em></div>
+      </a>
+      <nav class="header-nav" id="headerNav">
+        <a href="../news/">ニュース</a>
+        <a href="../schedule/">試合日程</a>
+        <a href="./" class="is-current">選手</a>
+        <a href="../club/">クラブ</a>
+        <a href="../tickets/" class="header-btn">チケット購入</a>
+      </nav>
+      <button class="header-toggle" id="headerToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="../">HOME</a><span class="breadcrumb-sep">›</span><span>PLAYERS</span>
+      </nav>
+      <span class="page-hero-label">PLAYERS &amp; STAFF</span>
+      <h1 class="page-hero-title">選手・スタッフ</h1>
+      <p class="page-hero-sub">2026シーズン登録選手一覧</p>
+    </div>
+  </div>
+
+  <section class="players-page">
+    <div class="container">
+
+      <!-- GK -->
+      <div class="position-section fade-in">
+        <div class="position-label"><span class="position-label-icon">G</span>GOALKEEPER</div>
+        <div class="player-grid">
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--gk-1" role="img" aria-label="GK 大西 拓哉"><span class="player-num">#1</span></div>
+            <div class="player-info"><span class="player-pos">GK</span><h3 class="player-name">大西 拓哉</h3><span class="player-name-en">Takuya Onishi</span><span class="player-nat">🇯🇵 日本 / 28歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--gk-2" role="img" aria-label="GK 前田 誠也"><span class="player-num">#21</span></div>
+            <div class="player-info"><span class="player-pos">GK</span><h3 class="player-name">前田 誠也</h3><span class="player-name-en">Seiya Maeda</span><span class="player-nat">🇯🇵 日本 / 25歳</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- DF -->
+      <div class="position-section fade-in">
+        <div class="position-label"><span class="position-label-icon">D</span>DEFENDER</div>
+        <div class="player-grid">
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--df-1" role="img" aria-label="DF 吉田 浩二"><span class="player-num">#2</span></div>
+            <div class="player-info"><span class="player-pos">DF</span><h3 class="player-name">吉田 浩二</h3><span class="player-name-en">Koji Yoshida</span><span class="player-nat">🇯🇵 日本 / 29歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--df-2" role="img" aria-label="DF 松本 健太"><span class="player-num">#3</span></div>
+            <div class="player-info"><span class="player-pos">DF</span><h3 class="player-name">松本 健太</h3><span class="player-name-en">Kenta Matsumoto</span><span class="player-nat">🇯🇵 日本 / 23歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--df-3" role="img" aria-label="DF 中村 遼"><span class="player-num">#5</span></div>
+            <div class="player-info"><span class="player-pos">DF</span><h3 class="player-name">中村 遼</h3><span class="player-name-en">Ryo Nakamura</span><span class="player-nat">🇯🇵 日本 / 26歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--df-4" role="img" aria-label="DF マテウス・コスタ"><span class="player-num">#6</span></div>
+            <div class="player-info"><span class="player-pos">DF</span><h3 class="player-name">マテウス・コスタ</h3><span class="player-name-en">Mateus Costa</span><span class="player-nat">🇧🇷 ブラジル / 28歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--df-5" role="img" aria-label="DF 西野 大輔"><span class="player-num">#22</span></div>
+            <div class="player-info"><span class="player-pos">DF</span><h3 class="player-name">西野 大輔</h3><span class="player-name-en">Daisuke Nishino</span><span class="player-nat">🇯🇵 日本 / 31歳</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- MF -->
+      <div class="position-section fade-in">
+        <div class="position-label"><span class="position-label-icon">M</span>MIDFIELDER</div>
+        <div class="player-grid">
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--mf-1" role="img" aria-label="MF 藤井 翔"><span class="player-num">#4</span></div>
+            <div class="player-info"><span class="player-pos">MF</span><h3 class="player-name">藤井 翔</h3><span class="player-name-en">Sho Fujii</span><span class="player-nat">🇯🇵 日本 / 27歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--mf-2" role="img" aria-label="MF パウロ・ロドリゲス"><span class="player-num">#7</span></div>
+            <div class="player-info"><span class="player-pos">MF</span><h3 class="player-name">パウロ・ロドリゲス</h3><span class="player-name-en">Paulo Rodriguez</span><span class="player-nat">🇪🇸 スペイン / 26歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--mf-3" role="img" aria-label="MF 山本 雄介"><span class="player-num">#8</span></div>
+            <div class="player-info"><span class="player-pos">MF</span><h3 class="player-name">山本 雄介</h3><span class="player-name-en">Yusuke Yamamoto</span><span class="player-nat">🇯🇵 日本 / 24歳</span></div>
+          </a>
+          <a href="#" class="player-card player-card--ace">
+            <div class="player-photo player-photo--mf-ace" role="img" aria-label="MF 橘 蓮 選手（主将・日本代表）">
+              <span class="player-num">#10</span>
+              <div style="display:flex;flex-direction:column;gap:4px;align-items:flex-end">
+                <span class="captain-tag">C</span>
+                <span class="player-badge-tag">日本代表</span>
+              </div>
+            </div>
+            <div class="player-info"><span class="player-pos">MF</span><h3 class="player-name">橘 蓮</h3><span class="player-name-en">Ren Tachibana</span><span class="player-nat">🇯🇵 日本 / 24歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--mf-5" role="img" aria-label="MF 清水 拓也"><span class="player-num">#13</span></div>
+            <div class="player-info"><span class="player-pos">MF</span><h3 class="player-name">清水 拓也</h3><span class="player-name-en">Takuya Shimizu</span><span class="player-nat">🇯🇵 日本 / 22歳</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- FW -->
+      <div class="position-section fade-in">
+        <div class="position-label"><span class="position-label-icon">F</span>FORWARD</div>
+        <div class="player-grid">
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--fw-1" role="img" aria-label="FW ルカス・シルバ"><span class="player-num">#9</span></div>
+            <div class="player-info"><span class="player-pos">FW</span><h3 class="player-name">ルカス・シルバ</h3><span class="player-name-en">Lucas Silva</span><span class="player-nat">🇧🇷 ブラジル / 27歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--fw-2" role="img" aria-label="FW 堀内 陽大"><span class="player-num">#11</span></div>
+            <div class="player-info"><span class="player-pos">FW</span><h3 class="player-name">堀内 陽大</h3><span class="player-name-en">Haruta Horiuchi</span><span class="player-nat">🇯🇵 日本 / 25歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--fw-3" role="img" aria-label="FW カルロス・ヒメネス"><span class="player-num">#15</span></div>
+            <div class="player-info"><span class="player-pos">FW</span><h3 class="player-name">カルロス・ヒメネス</h3><span class="player-name-en">Carlos Jimenez</span><span class="player-nat">🇲🇽 メキシコ / 30歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--fw-4" role="img" aria-label="FW ディエゴ・メンデス"><span class="player-num">#17</span></div>
+            <div class="player-info"><span class="player-pos">FW</span><h3 class="player-name">ディエゴ・メンデス</h3><span class="player-name-en">Diego Mendes</span><span class="player-nat">🇦🇷 アルゼンチン / 29歳</span></div>
+          </a>
+          <a href="#" class="player-card">
+            <div class="player-photo player-photo--fw-5" role="img" aria-label="FW 田中 大地"><span class="player-num">#18</span></div>
+            <div class="player-info"><span class="player-pos">FW</span><h3 class="player-name">田中 大地</h3><span class="player-name-en">Daichi Tanaka</span><span class="player-nat">🇯🇵 日本 / 21歳</span></div>
+          </a>
+        </div>
+      </div>
+
+      <!-- Staff -->
+      <div class="position-section fade-in">
+        <div class="position-label" style="background: var(--gray-800);"><span class="position-label-icon">S</span>COACHING STAFF</div>
+        <div class="staff-grid">
+          <div class="staff-card">
+            <div class="staff-avatar">F</div>
+            <div>
+              <span class="staff-role">監督</span>
+              <h3 class="staff-name">藤原 健太郎</h3>
+              <span class="staff-name-en">Kentaro Fujiwara</span>
+              <p class="staff-note">2022年就任。元日本代表MF。攻撃的なポゼッションサッカーを標榜し、クラブ史上最高成績を牽引。</p>
+            </div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">U</div>
+            <div>
+              <span class="staff-role">ヘッドコーチ</span>
+              <h3 class="staff-name">上田 誠一郎</h3>
+              <span class="staff-name-en">Seiichiro Ueda</span>
+              <p class="staff-note">守備組織の構築を担当。欧州での指導経験も持つ戦術家。</p>
+            </div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">T</div>
+            <div>
+              <span class="staff-role">GKコーチ</span>
+              <h3 class="staff-name">谷口 幸平</h3>
+              <span class="staff-name-en">Kohei Taniguchi</span>
+              <p class="staff-note">元Jリーグ守護神。GK技術と精神面の強化を一手に担う。</p>
+            </div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">B</div>
+            <div>
+              <span class="staff-role">フィジカルコーチ</span>
+              <h3 class="staff-name">アントワーヌ・ベルナール</h3>
+              <span class="staff-name-en">Antoine Bernard</span>
+              <p class="staff-note">フランス出身。スポーツ科学に基づくトレーニングメソッドでチームのコンディションを管理。</p>
+            </div>
+          </div>
+          <div class="staff-card">
+            <div class="staff-avatar">M</div>
+            <div>
+              <span class="staff-role">分析コーチ</span>
+              <h3 class="staff-name">三田 祐司</h3>
+              <span class="staff-name-en">Yuji Mita</span>
+              <p class="staff-note">データ分析・映像解析を担当。対戦相手の戦術研究と自チームのパフォーマンス改善を行う。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-crest" aria-hidden="true"></div>
+          <div><p class="footer-club">KYOTO PHOENIX FC</p><p class="footer-tagline">翔け、不死鳥よ。</p></div>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.626zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col"><h4>クラブ情報</h4><a href="../club/">クラブ概要</a><a href="./">チーム情報</a><a href="../stadium/">スタジアム</a></div>
+        <div class="footer-nav-col"><h4>試合・選手</h4><a href="../schedule/">試合日程・結果</a><a href="./">選手・スタッフ</a><a href="../news/">ニュース</a></div>
+        <div class="footer-nav-col"><h4>チケット・グッズ</h4><a href="../tickets/">チケット購入</a><a href="../tickets/#fanclub">ファンクラブ</a></div>
+        <div class="footer-nav-col"><h4>その他</h4><a href="../stadium/#access">スタジアムアクセス</a><a href="../club/#contact">お問い合わせ</a><a href="../club/#privacy">プライバシーポリシー</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-addr">〒615-0802 京都府京都市西京区桂北大路町1番地 京都パープルスタジアム内</p>
+        <p class="footer-copy">&copy; 2026 KYOTO PHOENIX FC. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../subpage.js"></script>
+</body>
+</html>

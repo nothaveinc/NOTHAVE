@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>チケット | KYOTO PHOENIX FC</title>
+  <meta name="description" content="京都フェニックスFCのチケット情報。試合日程・座席・料金・購入方法をご確認ください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../common.css">
+  <style>
+    /* ── Page layout ── */
+    .tickets-page { padding: 80px 0 100px; background: var(--gray-100); }
+
+    /* ── Next match banner ── */
+    .next-match-banner {
+      background: linear-gradient(120deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+      color: var(--white); padding: 40px 0; margin-bottom: 64px;
+    }
+    .nmb-inner {
+      max-width: var(--max-w); margin: 0 auto; padding: 0 var(--pad);
+      display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+    }
+    .nmb-label {
+      font-family: var(--font-en); font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px;
+    }
+    .nmb-match { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .nmb-team { font-size: 1rem; font-weight: 700; }
+    .nmb-vs { font-family: var(--font-en); font-size: 1.4rem; font-weight: 900; color: var(--gold); padding: 0 8px; }
+    .nmb-info { font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-top: 6px; letter-spacing: 0.04em; }
+    .nmb-info span { color: rgba(255,255,255,0.9); font-weight: 600; }
+    .nmb-cta { flex-shrink: 0; }
+
+    /* ── Section wrapper ── */
+    .tickets-section { margin-bottom: 80px; }
+
+    /* ── Seat type cards ── */
+    .seat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .seat-card {
+      background: var(--white); border-radius: 8px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform var(--ease), box-shadow var(--ease);
+      display: flex; flex-direction: column;
+    }
+    .seat-card:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,0.1); }
+    .seat-card--featured { border: 2px solid var(--gold); }
+
+    .seat-card-head {
+      padding: 28px 28px 20px;
+      background: var(--purple-deep);
+      color: var(--white); position: relative;
+    }
+    .seat-card--featured .seat-card-head { background: linear-gradient(135deg, var(--purple-dark) 0%, #7C3AED 100%); }
+    .seat-badge {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--gold); color: var(--black);
+      font-family: var(--font-en); font-size: 0.6rem; font-weight: 800;
+      letter-spacing: 0.1em; padding: 4px 10px; border-radius: 2px; text-transform: uppercase;
+    }
+    .seat-type { font-family: var(--font-en); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .seat-name { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+    .seat-desc { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.7; }
+
+    .seat-card-body { padding: 24px 28px; flex: 1; display: flex; flex-direction: column; }
+    .seat-price { margin-bottom: 20px; }
+    .seat-price-label { font-size: 0.72rem; color: var(--gray-400); margin-bottom: 4px; }
+    .seat-price-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 4px; }
+    .seat-price-tag { font-size: 0.7rem; font-weight: 700; color: var(--gray-600); min-width: 52px; }
+    .seat-price-val { font-family: var(--font-en); font-size: 1.1rem; font-weight: 800; color: var(--black); }
+    .seat-price-unit { font-size: 0.72rem; color: var(--gray-400); }
+    .seat-features { flex: 1; }
+    .seat-features li {
+      font-size: 0.8rem; color: var(--gray-600); padding: 7px 0;
+      border-bottom: 1px solid var(--gray-100); display: flex; align-items: flex-start; gap: 8px;
+    }
+    .seat-features li:last-child { border-bottom: none; }
+    .seat-features li::before { content: "✓"; color: var(--purple); font-weight: 800; flex-shrink: 0; margin-top: 1px; }
+    .seat-card-foot { padding: 20px 28px 28px; }
+
+    /* ── Schedule ticket table ── */
+    .ticket-status { display: inline-block; font-size: 0.72rem; font-weight: 700; padding: 4px 12px; border-radius: 12px; white-space: nowrap; }
+    .ticket-status--sale  { background: #dcfce7; color: #15803d; }
+    .ticket-status--soon  { background: #fef3c7; color: #b45309; }
+    .ticket-status--sold  { background: #fee2e2; color: #b91c1c; }
+    .ticket-status--tbd   { background: var(--gray-100); color: var(--gray-400); }
+
+    /* ── Fan club section ── */
+    .fanclub-section {
+      background: linear-gradient(135deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+      padding: 80px 0;
+    }
+    .fanclub-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .fanclub-content { color: var(--white); }
+    .fanclub-plans { display: flex; flex-direction: column; gap: 16px; }
+    .fanclub-plan {
+      background: rgba(255,255,255,0.07); border-radius: 6px; padding: 20px 24px;
+      border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 20px;
+    }
+    .fanclub-plan--gold { border-color: var(--gold); background: rgba(245,158,11,0.08); }
+    .fanclub-plan-name { font-weight: 700; font-size: 0.95rem; color: var(--white); min-width: 80px; }
+    .fanclub-plan--gold .fanclub-plan-name { color: var(--gold); }
+    .fanclub-plan-fee { font-family: var(--font-en); font-size: 1rem; font-weight: 800; color: var(--white); min-width: 80px; }
+    .fanclub-plan-perks { font-size: 0.78rem; color: rgba(255,255,255,0.55); line-height: 1.7; flex: 1; }
+
+    /* ── How to buy ── */
+    .howto-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .howto-step { text-align: center; }
+    .howto-num {
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--purple); color: var(--white);
+      font-family: var(--font-en); font-size: 1.1rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+    }
+    .howto-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; }
+    .howto-desc { font-size: 0.78rem; color: var(--gray-600); line-height: 1.75; }
+
+    /* ── FAQ ── */
+    .faq-list { display: flex; flex-direction: column; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid var(--gray-200); }
+    .faq-item { background: var(--white); }
+    .faq-item + .faq-item { border-top: 1px solid var(--gray-200); }
+    .faq-q {
+      padding: 20px 24px; font-size: 0.88rem; font-weight: 700; color: var(--black);
+      display: flex; align-items: flex-start; gap: 14px; cursor: pointer;
+    }
+    .faq-q::before { content: "Q"; font-family: var(--font-en); font-weight: 900; color: var(--purple); flex-shrink: 0; font-size: 0.9rem; }
+    .faq-a { padding: 0 24px 20px 54px; font-size: 0.82rem; color: var(--gray-600); line-height: 1.85; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .seat-grid { grid-template-columns: 1fr; max-width: 460px; margin: 0 auto; }
+      .fanclub-inner { grid-template-columns: 1fr; gap: 40px; }
+      .howto-steps { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .howto-steps { grid-template-columns: 1fr; }
+      .nmb-match { flex-direction: column; gap: 8px; }
+      .fanclub-plan { flex-direction: column; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../" class="header-logo" aria-label="KYOTO PHOENIX FC トップページ">
+      <div class="header-crest"></div>
+      <div class="header-logo-text">KYOTO PHOENIX FC<em>京都フェニックスFC</em></div>
+    </a>
+    <nav class="header-nav" id="headerNav">
+      <a href="../news/">NEWS</a>
+      <a href="../schedule/">SCHEDULE</a>
+      <a href="../players/">PLAYERS</a>
+      <a href="../club/">CLUB</a>
+      <a href="../stadium/">STADIUM</a>
+      <a href="../tickets/" class="header-btn is-current">TICKETS</a>
+    </nav>
+    <button class="header-toggle" id="headerToggle" aria-label="メニュー" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="../">HOME</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>TICKETS</span>
+    </nav>
+    <span class="page-hero-label">Tickets</span>
+    <h1 class="page-hero-title">チケット</h1>
+    <p class="page-hero-sub">ホームゲームへのご来場をお待ちしております</p>
+  </div>
+</div>
+
+<!-- NEXT MATCH BANNER -->
+<div class="next-match-banner">
+  <div class="nmb-inner">
+    <div>
+      <p class="nmb-label">Next Home Match — 第18節</p>
+      <div class="nmb-match">
+        <span class="nmb-team">京都フェニックスFC</span>
+        <span class="nmb-vs">VS</span>
+        <span class="nmb-team">フォレスト仙台FC</span>
+      </div>
+      <p class="nmb-info">
+        <span>2026年5月3日（日）14:00 KO</span>　|　京都パープルスタジアム
+      </p>
+    </div>
+    <div class="nmb-cta">
+      <a href="#schedule" class="btn-primary">チケットを購入</a>
+    </div>
+  </div>
+</div>
+
+<!-- SEAT TYPES -->
+<section class="tickets-page">
+  <div class="container">
+
+    <div class="tickets-section">
+      <div class="section-header fade-in">
+        <span class="section-en">Seat Types</span>
+        <h2 class="section-title">座席種別・料金</h2>
+      </div>
+      <div class="seat-grid">
+        <!-- 自由席 -->
+        <div class="seat-card fade-in">
+          <div class="seat-card-head">
+            <p class="seat-type">General</p>
+            <h3 class="seat-name">自由席（ゴール裏）</h3>
+            <p class="seat-desc">熱狂的なサポーターと共にゴール裏から声援を送る、スタジアムで最も熱いエリア。</p>
+          </div>
+          <div class="seat-card-body">
+            <div class="seat-price">
+              <p class="seat-price-label">チケット料金</p>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">一般</span>
+                <span class="seat-price-val">¥2,200</span>
+                <span class="seat-price-unit">（税込）</span>
+              </div>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">学生</span>
+                <span class="seat-price-val">¥1,400</span>
+              </div>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">小中学生</span>
+                <span class="seat-price-val">¥700</span>
+              </div>
+            </div>
+            <ul class="seat-features">
+              <li>ゴール裏スタンド（南・北）</li>
+              <li>入退場自由（再入場可）</li>
+              <li>応援グッズ持ち込み可</li>
+              <li>ファミリーゾーン設置あり</li>
+            </ul>
+          </div>
+          <div class="seat-card-foot">
+            <a href="#schedule" class="btn-outline" style="width:100%;text-align:center;">購入する</a>
+          </div>
+        </div>
+
+        <!-- 指定席 -->
+        <div class="seat-card seat-card--featured fade-in" style="transition-delay:0.1s">
+          <div class="seat-card-head">
+            <span class="seat-badge">人気No.1</span>
+            <p class="seat-type">Reserved</p>
+            <h3 class="seat-name">指定席（メインスタンド）</h3>
+            <p class="seat-desc">全席指定で快適に観戦。見やすい角度とゆったりとした座席で試合を楽しめます。</p>
+          </div>
+          <div class="seat-card-body">
+            <div class="seat-price">
+              <p class="seat-price-label">チケット料金</p>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">一般</span>
+                <span class="seat-price-val">¥3,800</span>
+                <span class="seat-price-unit">（税込）</span>
+              </div>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">学生</span>
+                <span class="seat-price-val">¥2,400</span>
+              </div>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">小中学生</span>
+                <span class="seat-price-val">¥1,200</span>
+              </div>
+            </div>
+            <ul class="seat-features">
+              <li>メインスタンド全席指定</li>
+              <li>バックスタンド指定席も選択可</li>
+              <li>座席番号・列指定可能</li>
+              <li>売店・飲食エリア隣接</li>
+              <li>車いすスペース対応席あり</li>
+            </ul>
+          </div>
+          <div class="seat-card-foot">
+            <a href="#schedule" class="btn-primary" style="width:100%;text-align:center;">購入する</a>
+          </div>
+        </div>
+
+        <!-- VIP -->
+        <div class="seat-card fade-in" style="transition-delay:0.2s">
+          <div class="seat-card-head">
+            <p class="seat-type">Premium</p>
+            <h3 class="seat-name">VIPラウンジシート</h3>
+            <p class="seat-desc">最上級のホスピタリティで試合観戦。専用ラウンジと特別サービスをご提供します。</p>
+          </div>
+          <div class="seat-card-body">
+            <div class="seat-price">
+              <p class="seat-price-label">チケット料金</p>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">1名</span>
+                <span class="seat-price-val">¥12,000</span>
+                <span class="seat-price-unit">（税込）</span>
+              </div>
+              <div class="seat-price-row">
+                <span class="seat-price-tag">ペア</span>
+                <span class="seat-price-val">¥22,000</span>
+              </div>
+            </div>
+            <ul class="seat-features">
+              <li>専用VIPラウンジご利用</li>
+              <li>ドリンク・軽食サービス付き</li>
+              <li>選手入場時の特別観覧エリア</li>
+              <li>限定グッズプレゼント</li>
+              <li>専任スタッフによるご案内</li>
+            </ul>
+          </div>
+          <div class="seat-card-foot">
+            <a href="#schedule" class="btn-secondary" style="width:100%;text-align:center;">お申し込み</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATCH SCHEDULE TABLE -->
+    <div class="tickets-section" id="schedule">
+      <div class="section-header fade-in">
+        <span class="section-en">Home Schedule</span>
+        <h2 class="section-title">ホームゲーム チケット販売状況</h2>
+      </div>
+      <div class="table-wrap fade-in">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>節</th>
+              <th>日時</th>
+              <th style="min-width:140px">対戦相手</th>
+              <th>自由席</th>
+              <th>指定席</th>
+              <th>VIP</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>第18節</td>
+              <td>5月3日（日）14:00</td>
+              <td>フォレスト仙台FC</td>
+              <td><span class="ticket-status ticket-status--sale">販売中</span></td>
+              <td><span class="ticket-status ticket-status--sale">販売中</span></td>
+              <td><span class="ticket-status ticket-status--sold">残席わずか</span></td>
+            </tr>
+            <tr>
+              <td>第20節</td>
+              <td>5月17日（日）13:00</td>
+              <td>オービック大阪FC</td>
+              <td><span class="ticket-status ticket-status--sale">販売中</span></td>
+              <td><span class="ticket-status ticket-status--sale">販売中</span></td>
+              <td><span class="ticket-status ticket-status--sale">販売中</span></td>
+            </tr>
+            <tr>
+              <td>第22節</td>
+              <td>5月31日（日）14:00</td>
+              <td>FC広島サンライズ</td>
+              <td><span class="ticket-status ticket-status--soon">近日発売</span></td>
+              <td><span class="ticket-status ticket-status--soon">近日発売</span></td>
+              <td><span class="ticket-status ticket-status--soon">近日発売</span></td>
+            </tr>
+            <tr>
+              <td>第24節</td>
+              <td>6月14日（日）19:00</td>
+              <td>東京ユナイテッドFC</td>
+              <td><span class="ticket-status ticket-status--tbd">未定</span></td>
+              <td><span class="ticket-status ticket-status--tbd">未定</span></td>
+              <td><span class="ticket-status ticket-status--tbd">未定</span></td>
+            </tr>
+            <tr>
+              <td>第26節</td>
+              <td>6月28日（日）14:00</td>
+              <td>北海道コンサドルーFC</td>
+              <td><span class="ticket-status ticket-status--tbd">未定</span></td>
+              <td><span class="ticket-status ticket-status--tbd">未定</span></td>
+              <td><span class="ticket-status ticket-status--tbd">未定</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:12px;font-size:0.75rem;color:var(--gray-400)">※ 席数に限りがございます。お早めにご購入ください。</p>
+    </div>
+
+    <!-- HOW TO BUY -->
+    <div class="tickets-section">
+      <div class="section-header fade-in">
+        <span class="section-en">How to Buy</span>
+        <h2 class="section-title">チケット購入方法</h2>
+      </div>
+      <div class="howto-steps">
+        <div class="howto-step fade-in">
+          <div class="howto-num">1</div>
+          <h3 class="howto-title">試合を選択</h3>
+          <p class="howto-desc">上記の試合日程表から観戦したいホームゲームを選択してください。</p>
+        </div>
+        <div class="howto-step fade-in" style="transition-delay:0.08s">
+          <div class="howto-num">2</div>
+          <h3 class="howto-title">座席・枚数を選択</h3>
+          <p class="howto-desc">座席種別（自由席・指定席・VIP）と枚数を選んでカートに追加します。</p>
+        </div>
+        <div class="howto-step fade-in" style="transition-delay:0.16s">
+          <div class="howto-num">3</div>
+          <h3 class="howto-title">お支払い</h3>
+          <p class="howto-desc">クレジットカード・コンビニ決済・電子マネーによるお支払いが可能です。</p>
+        </div>
+        <div class="howto-step fade-in" style="transition-delay:0.24s">
+          <div class="howto-num">4</div>
+          <h3 class="howto-title">入場</h3>
+          <p class="howto-desc">発行されたQRチケットをスマートフォンで提示するか、印刷してご来場ください。</p>
+        </div>
+      </div>
+
+      <div style="background:var(--white);border-radius:8px;padding:32px;margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;border:1px solid var(--gray-200);" class="fade-in">
+        <div>
+          <p style="font-weight:700;margin-bottom:4px;">窓口・コンビニでも購入できます</p>
+          <p style="font-size:0.8rem;color:var(--gray-600)">当日券はスタジアム窓口（試合開始2時間前〜）にて販売。ローソン・ファミリーマート各店舗でもお求めいただけます。</p>
+        </div>
+        <a href="#" class="btn-outline" style="flex-shrink:0;">購入サイトへ</a>
+      </div>
+    </div>
+
+    <!-- FAQ -->
+    <div class="tickets-section">
+      <div class="section-header fade-in">
+        <span class="section-en">FAQ</span>
+        <h2 class="section-title">よくあるご質問</h2>
+      </div>
+      <div class="faq-list fade-in">
+        <div class="faq-item">
+          <div class="faq-q">チケットの払い戻しはできますか？</div>
+          <div class="faq-a">公式戦が雨天中止・延期になった場合は払い戻しの対応をいたします。通常の試合では、お客様都合による払い戻しはお受けしておりません。詳しくはお問い合わせください。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">障がい者割引はありますか？</div>
+          <div class="faq-a">障がい者手帳をお持ちの方は本人および付添い1名まで50%割引でご案内しております。当日窓口または事前申請にてご利用いただけます。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">スタジアムへの飲食持ち込みは可能ですか？</div>
+          <div class="faq-a">ペットボトル（キャップ付き）や密封容器に入った飲食物の持ち込みは可能です。缶・瓶類は持ち込み不可となります。アルコール飲料はスタジアム内売店にてお求めください。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">当日券はありますか？</div>
+          <div class="faq-a">座席に空きがある場合、試合開始2時間前よりスタジアム窓口にて当日券を販売いたします。人気カードでは完売となる場合もありますので、事前購入をおすすめします。</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-q">ファン・クラブ会員特典はありますか？</div>
+          <div class="faq-a">ファン・クラブ会員の方は先行販売・割引価格でのご購入が可能です。詳しくは下記ファン・クラブ情報をご確認ください。</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /container -->
+</section>
+
+<!-- FAN CLUB -->
+<section class="fanclub-section">
+  <div class="container">
+    <div class="fanclub-inner">
+      <div class="fanclub-content fade-in">
+        <span class="section-en section-en--gold">Fan Club</span>
+        <h2 class="section-title section-title--white" style="margin-bottom:16px">ファン・クラブ</h2>
+        <p style="font-size:0.88rem;color:rgba(255,255,255,0.6);line-height:1.85;margin-bottom:32px">
+          ファン・クラブに入会すると、チケット先行販売・割引購入・限定グッズなど、年間を通じてお得な特典が受けられます。クラブと一緒に京都フェニックスFCを支えてください。
+        </p>
+        <a href="../club/" class="btn-primary">詳しく見る</a>
+      </div>
+      <div class="fanclub-plans fade-in" style="transition-delay:0.1s">
+        <div class="fanclub-plan fanclub-plan--gold">
+          <span class="fanclub-plan-name">ゴールド</span>
+          <span class="fanclub-plan-fee">¥8,000/年</span>
+          <span class="fanclub-plan-perks">全ホームゲーム先行購入・15%割引、限定ユニフォーム贈呈、選手サイン会参加権</span>
+        </div>
+        <div class="fanclub-plan">
+          <span class="fanclub-plan-name">シルバー</span>
+          <span class="fanclub-plan-fee">¥4,500/年</span>
+          <span class="fanclub-plan-perks">全ホームゲーム先行購入・10%割引、会員限定グッズ（マフラータオル）贈呈</span>
+        </div>
+        <div class="fanclub-plan">
+          <span class="fanclub-plan-name">ジュニア</span>
+          <span class="fanclub-plan-fee">¥1,500/年</span>
+          <span class="fanclub-plan-perks">中学生以下対象。全ホームゲーム先行購入・無料入場（自由席）、限定カード贈呈</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-crest"></div>
+          <div>
+            <p class="footer-club">KYOTO PHOENIX FC</p>
+            <p class="footer-tagline">RISE. FIGHT. NEVER YIELD.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Twitter/X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-nav-col">
+        <h4>Club</h4>
+        <a href="../club/">クラブ概要</a>
+        <a href="../club/#history">クラブ史</a>
+        <a href="../club/#philosophy">クラブ理念</a>
+        <a href="../club/#sponsors">スポンサー</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Team</h4>
+        <a href="../players/">選手一覧</a>
+        <a href="../schedule/">試合日程・結果</a>
+        <a href="../news/">ニュース</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Tickets</h4>
+        <a href="#schedule">ホームゲーム</a>
+        <a href="#fanclub">ファン・クラブ</a>
+        <a href="#">グッズショップ</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Info</h4>
+        <a href="../stadium/">スタジアムアクセス</a>
+        <a href="../club/#contact">お問い合わせ</a>
+        <a href="../club/#privacy">プライバシーポリシー</a>
+      </div>
+    </nav>
+    <div class="footer-bottom">
+      <p class="footer-addr">〒615-8501 京都市西京区桂北大路町1番地 京都パープルスタジアム内</p>
+      <p class="footer-copy">&copy; 2026 KYOTO PHOENIX FC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../subpage.js"></script>
+</body>
+</html>

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>試合日程・結果 | KYOTO PHOENIX FC</title>
+  <meta name="description" content="京都フェニックスFC 2026シーズン試合日程・結果一覧。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../common.css">
+  <style>
+    .schedule-page { padding: 80px 0 100px; }
+
+    /* Standing banner */
+    .standing-banner {
+      background: linear-gradient(135deg, var(--purple) 0%, var(--purple-dark) 100%);
+      border-radius: 8px; padding: 24px 28px; margin-bottom: 36px;
+      display: flex; align-items: center; gap: 24px; flex-wrap: wrap; color: var(--white);
+    }
+    .rank-block { display: flex; align-items: baseline; gap: 2px; }
+    .rank-num { font-family: var(--font-en); font-size: 2.75rem; font-weight: 900; color: var(--gold); line-height: 1; }
+    .rank-unit { font-size: 1rem; font-weight: 700; color: var(--gold); }
+    .stat-group { display: flex; gap: 20px; flex: 1; flex-wrap: wrap; }
+    .stat-item { display: flex; flex-direction: column; align-items: center; }
+    .stat-val { font-family: var(--font-en); font-size: 1.3rem; font-weight: 800; color: var(--white); line-height: 1; }
+    .stat-val--pts { color: var(--gold); font-size: 1.5rem; }
+    .stat-lbl { font-size: 0.66rem; color: rgba(255,255,255,0.5); margin-top: 2px; }
+    .comp-label { font-family: var(--font-en); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em; color: rgba(255,255,255,0.3); margin-left: auto; white-space: nowrap; }
+
+    /* Tabs */
+    .tab-nav { display: flex; gap: 0; margin-bottom: 28px; border-bottom: 2px solid var(--gray-200); }
+    .tab-btn {
+      font-family: var(--font-ja); font-size: 0.88rem; font-weight: 700;
+      padding: 14px 28px; background: none; border: none; cursor: pointer;
+      color: var(--gray-400); border-bottom: 2px solid transparent; margin-bottom: -2px; transition: color var(--ease), border-color var(--ease);
+    }
+    .tab-btn:hover { color: var(--purple); }
+    .tab-btn.is-active { color: var(--purple); border-bottom-color: var(--purple); }
+
+    .tab-pane { display: none; }
+    .tab-pane.is-active { display: block; }
+
+    /* Table additions */
+    .td-date-wrap { display: flex; flex-direction: column; gap: 1px; }
+    .td-date { font-family: var(--font-en); font-size: 0.95rem; font-weight: 700; color: var(--black); }
+    .td-day  { font-size: 0.68rem; color: var(--gray-400); }
+    .td-time { font-family: var(--font-en); font-size: 0.68rem; color: var(--gray-600); }
+    .td-opp  { font-weight: 700; font-size: 0.88rem; }
+    .row-next { background: #fffbeb; }
+    .row-next:hover { background: #fef3c7 !important; }
+
+    .scroll-hint { display: none; text-align: center; font-size: 0.7rem; color: var(--gray-400); padding: 6px 0 2px; }
+
+    @media (max-width: 768px) {
+      .standing-banner { padding: 18px 20px; gap: 14px; }
+      .stat-group { gap: 14px; }
+      .comp-label { width: 100%; margin-left: 0; }
+      .scroll-hint { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="../" class="header-logo">
+        <div class="header-crest" aria-hidden="true"></div>
+        <div class="header-logo-text"><span>KYOTO</span><em>PHOENIX FC</em></div>
+      </a>
+      <nav class="header-nav" id="headerNav">
+        <a href="../news/">ニュース</a>
+        <a href="./" class="is-current">試合日程</a>
+        <a href="../players/">選手</a>
+        <a href="../club/">クラブ</a>
+        <a href="../tickets/" class="header-btn">チケット購入</a>
+      </nav>
+      <button class="header-toggle" id="headerToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="../">HOME</a><span class="breadcrumb-sep">›</span><span>SCHEDULE</span>
+      </nav>
+      <span class="page-hero-label">SCHEDULE &amp; RESULTS</span>
+      <h1 class="page-hero-title">試合日程・結果</h1>
+      <p class="page-hero-sub">2026シーズン J1リーグ</p>
+    </div>
+  </div>
+
+  <section class="schedule-page">
+    <div class="container">
+
+      <div class="standing-banner fade-in">
+        <div class="rank-block"><span class="rank-num">1</span><span class="rank-unit">位</span></div>
+        <div class="stat-group">
+          <div class="stat-item"><span class="stat-val">15</span><span class="stat-lbl">試合</span></div>
+          <div class="stat-item"><span class="stat-val">10</span><span class="stat-lbl">勝</span></div>
+          <div class="stat-item"><span class="stat-val">3</span><span class="stat-lbl">分</span></div>
+          <div class="stat-item"><span class="stat-val">2</span><span class="stat-lbl">敗</span></div>
+          <div class="stat-item"><span class="stat-val">28</span><span class="stat-lbl">得点</span></div>
+          <div class="stat-item"><span class="stat-val">12</span><span class="stat-lbl">失点</span></div>
+          <div class="stat-item"><span class="stat-val stat-val--pts">33</span><span class="stat-lbl">勝点</span></div>
+        </div>
+        <span class="comp-label">J1 LEAGUE 2026</span>
+      </div>
+
+      <div class="tab-nav fade-in">
+        <button class="tab-btn is-active" data-tab="upcoming">今後の試合</button>
+        <button class="tab-btn" data-tab="results">試合結果</button>
+      </div>
+
+      <!-- Upcoming -->
+      <div data-pane="upcoming" class="tab-pane is-active fade-in">
+        <p class="scroll-hint">← 横にスクロールできます →</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>日程</th><th>H/A</th><th>対戦相手</th><th>競技会</th><th>会場</th><th>チケット</th></tr></thead>
+            <tbody>
+              <tr class="row-next">
+                <td><div class="td-date-wrap"><span class="td-date">05/03</span><span class="td-day">日</span><span class="td-time">14:00</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">オービック大阪FC</td>
+                <td>J1リーグ 第18節</td>
+                <td>京都パープルスタジアム</td>
+                <td><a href="../tickets/" class="t-link t-link--sale">販売中</a></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">05/10</span><span class="td-day">日</span><span class="td-time">14:00</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">新潟サンダースFC</td>
+                <td>J1リーグ 第19節</td>
+                <td>新潟ノーザンアリーナ</td>
+                <td><a href="#" class="t-link t-link--soon">近日販売</a></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">05/17</span><span class="td-day">日</span><span class="td-time">14:00</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">北浦和ユナイテッドFC</td>
+                <td>J1リーグ 第20節</td>
+                <td>京都パープルスタジアム</td>
+                <td><a href="#" class="t-link t-link--soon">近日販売</a></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">05/24</span><span class="td-day">日</span><span class="td-time">15:00</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">名古屋スティールFC</td>
+                <td>J1リーグ 第21節</td>
+                <td>名古屋スティールドーム</td>
+                <td><span class="t-link t-link--tbd">未発売</span></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">06/07</span><span class="td-day">日</span><span class="td-time">14:00</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">横浜マリンズFC</td>
+                <td>J1リーグ 第22節</td>
+                <td>京都パープルスタジアム</td>
+                <td><span class="t-link t-link--tbd">未発売</span></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">06/14</span><span class="td-day">日</span><span class="td-time">14:00</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">神戸エストFC</td>
+                <td>J1リーグ 第23節</td>
+                <td>神戸ハーバースタジアム</td>
+                <td><span class="t-link t-link--tbd">未発売</span></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">06/21</span><span class="td-day">日</span><span class="td-time">14:00</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">東京アスレティックFC</td>
+                <td>J1リーグ 第24節</td>
+                <td>京都パープルスタジアム</td>
+                <td><span class="t-link t-link--tbd">未発売</span></td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">07/05</span><span class="td-day">日</span><span class="td-time">19:00</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">仙台ノースFC</td>
+                <td>J1リーグ 第25節</td>
+                <td>仙台ノーザンフィールド</td>
+                <td><span class="t-link t-link--tbd">未発売</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Results -->
+      <div data-pane="results" class="tab-pane fade-in">
+        <p class="scroll-hint">← 横にスクロールできます →</p>
+        <div class="table-wrap">
+          <table class="data-table">
+            <thead><tr><th>日程</th><th>H/A</th><th>対戦相手</th><th>競技会</th><th>結果</th><th>スコア</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/27</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">セントラル大阪FC</td>
+                <td>J1リーグ 第15節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">2 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/20</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">新潟サンダースFC</td>
+                <td>J1リーグ 第14節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">1 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/13</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">北浦和ユナイテッドFC</td>
+                <td>J1リーグ 第13節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">3 - 1</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/12</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">広島パシフィックFC</td>
+                <td>J1リーグ 第9節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">4 - 1</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/08</span><span class="td-day">水</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">川崎リバーFC</td>
+                <td>J1リーグ 第8節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">1 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/05</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">大阪サンシャインFC</td>
+                <td>J1リーグ 第7節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">3 - 1</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/19</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">浦和ノーススターズ</td>
+                <td>J1リーグ 第11節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">1 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/22</span><span class="td-day">水</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">セントラル大阪FC</td>
+                <td>J1リーグ 第12節</td>
+                <td><span class="result-draw">△</span></td>
+                <td class="result-score">2 - 2</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">04/16</span><span class="td-day">木</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">鹿島スターズFC</td>
+                <td>J1リーグ 第10節</td>
+                <td><span class="result-loss">×</span></td>
+                <td class="result-score">0 - 1</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">03/29</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">神戸エストFC</td>
+                <td>J1リーグ 第6節</td>
+                <td><span class="result-draw">△</span></td>
+                <td class="result-score">0 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">03/22</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">福岡ウィンドFC</td>
+                <td>J1リーグ 第5節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">2 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">03/15</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">東京アスレティックFC</td>
+                <td>J1リーグ 第4節</td>
+                <td><span class="result-loss">×</span></td>
+                <td class="result-score">0 - 1</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">03/08</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">仙台ノースFC</td>
+                <td>J1リーグ 第3節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">3 - 0</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">03/01</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--away">A</span></td>
+                <td class="td-opp">名古屋スティールFC</td>
+                <td>J1リーグ 第2節</td>
+                <td><span class="result-draw">△</span></td>
+                <td class="result-score">1 - 1</td>
+              </tr>
+              <tr>
+                <td><div class="td-date-wrap"><span class="td-date">02/22</span><span class="td-day">日</span></div></td>
+                <td><span class="ha ha--home">H</span></td>
+                <td class="td-opp">横浜マリンズFC</td>
+                <td>J1リーグ 第1節</td>
+                <td><span class="result-win">○</span></td>
+                <td class="result-score">2 - 1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-crest" aria-hidden="true"></div>
+          <div><p class="footer-club">KYOTO PHOENIX FC</p><p class="footer-tagline">翔け、不死鳥よ。</p></div>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.626zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col"><h4>クラブ情報</h4><a href="../club/">クラブ概要</a><a href="../players/">チーム情報</a><a href="../stadium/">スタジアム</a></div>
+        <div class="footer-nav-col"><h4>試合・選手</h4><a href="./">試合日程・結果</a><a href="../players/">選手・スタッフ</a><a href="../news/">ニュース</a></div>
+        <div class="footer-nav-col"><h4>チケット・グッズ</h4><a href="../tickets/">チケット購入</a><a href="../tickets/#fanclub">ファンクラブ</a></div>
+        <div class="footer-nav-col"><h4>その他</h4><a href="../stadium/#access">スタジアムアクセス</a><a href="../club/#contact">お問い合わせ</a><a href="../club/#privacy">プライバシーポリシー</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-addr">〒615-0802 京都府京都市西京区桂北大路町1番地 京都パープルスタジアム内</p>
+        <p class="footer-copy">&copy; 2026 KYOTO PHOENIX FC. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../subpage.js"></script>
+</body>
+</html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>クラブ情報 | KYOTO PHOENIX FC</title>
+  <meta name="description" content="京都フェニックスFCのクラブ概要・理念・歴史・経営陣・スポンサー情報。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../common.css">
+  <style>
+    .club-page { padding: 80px 0 0; }
+
+    /* ── Overview section ── */
+    .overview-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      padding: 80px 0;
+    }
+    .overview-crest {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px;
+    }
+    .crest-large {
+      width: 180px; height: 200px;
+      background: linear-gradient(155deg, var(--purple-dark) 0%, var(--purple) 100%);
+      clip-path: polygon(50% 0%, 100% 18%, 100% 62%, 50% 100%, 0% 62%, 0% 18%);
+      position: relative; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 20px 60px rgba(91,33,182,0.35);
+    }
+    .crest-large::after {
+      content: "K"; position: absolute;
+      font-family: var(--font-en); font-weight: 900; font-size: 4.5rem;
+      color: var(--gold); line-height: 1;
+    }
+    .crest-subtitle { font-family: var(--font-en); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; color: var(--gray-400); text-transform: uppercase; }
+
+    .overview-info-table { width: 100%; }
+    .overview-info-table tr { border-bottom: 1px solid var(--gray-100); }
+    .overview-info-table td { padding: 12px 0; font-size: 0.84rem; vertical-align: top; line-height: 1.65; }
+    .overview-info-table td:first-child { color: var(--gray-400); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; min-width: 100px; padding-right: 16px; }
+
+    /* ── Philosophy ── */
+    .philosophy-section {
+      background: linear-gradient(155deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+      padding: 100px 0;
+      color: var(--white);
+    }
+    .philosophy-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .philosophy-quote {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem); font-weight: 700; line-height: 1.7;
+      margin-bottom: 28px; letter-spacing: 0.04em;
+    }
+    .philosophy-quote em {
+      font-style: normal; color: var(--gold); display: inline-block;
+    }
+    .philosophy-sub { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.9; }
+
+    .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 64px; }
+    .mission-card {
+      background: rgba(255,255,255,0.07); border-radius: 8px; padding: 32px 24px;
+      border: 1px solid rgba(255,255,255,0.1); text-align: center;
+    }
+    .mission-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(245,158,11,0.15); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.6rem;
+    }
+    .mission-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--gold); }
+    .mission-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.85; }
+
+    /* ── History ── */
+    .history-section { padding: 100px 0; background: var(--white); }
+    .history-timeline { position: relative; max-width: 720px; margin: 0 auto; }
+    .history-timeline::before {
+      content: ''; position: absolute; left: 80px; top: 0; bottom: 0;
+      width: 2px; background: var(--gray-200);
+    }
+    .history-item { display: flex; gap: 32px; margin-bottom: 40px; position: relative; }
+    .history-year {
+      min-width: 80px; text-align: right; padding-top: 2px;
+      font-family: var(--font-en); font-size: 0.78rem; font-weight: 800; color: var(--purple);
+      letter-spacing: 0.04em; flex-shrink: 0;
+    }
+    .history-dot {
+      position: absolute; left: 72px; top: 6px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--white); border: 3px solid var(--purple); flex-shrink: 0;
+      z-index: 1;
+    }
+    .history-dot--gold { border-color: var(--gold); }
+    .history-content { padding-left: 32px; }
+    .history-event { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .history-detail { font-size: 0.8rem; color: var(--gray-600); line-height: 1.75; }
+    .history-badge {
+      display: inline-block; font-family: var(--font-en); font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.08em; padding: 3px 8px; border-radius: 2px;
+      background: var(--gold); color: var(--black); margin-top: 4px;
+    }
+
+    /* ── Management ── */
+    .management-section { padding: 100px 0; background: var(--gray-100); }
+    .mgmt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .mgmt-card {
+      background: var(--white); border-radius: 8px; padding: 28px 24px; text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .mgmt-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-en); font-size: 1.5rem; font-weight: 900; color: var(--gold);
+    }
+    .mgmt-role { font-family: var(--font-en); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
+    .mgmt-name { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .mgmt-bio { font-size: 0.76rem; color: var(--gray-600); line-height: 1.75; }
+
+    /* ── Achievements ── */
+    .achievements-section { padding: 100px 0; background: var(--black); }
+    .achievements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .achievement-card {
+      text-align: center; padding: 36px 20px;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+    }
+    .achievement-num {
+      font-family: var(--font-en); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 900;
+      color: var(--gold); line-height: 1; margin-bottom: 8px;
+    }
+    .achievement-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+
+    /* ── Sponsors ── */
+    .sponsors-section { padding: 100px 0; background: var(--white); }
+    .sponsor-tier { margin-bottom: 52px; }
+    .sponsor-tier-label {
+      font-family: var(--font-en); font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-400);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+    }
+    .sponsor-tier-label::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+    .sponsor-logos { display: flex; flex-wrap: wrap; gap: 16px; }
+    .sponsor-logo {
+      background: var(--gray-100); border-radius: 6px; padding: 18px 28px;
+      display: flex; align-items: center; justify-content: center;
+      min-width: 160px; height: 68px;
+      font-family: var(--font-en); font-size: 0.78rem; font-weight: 700; color: var(--gray-600);
+      letter-spacing: 0.06em; transition: background var(--ease);
+    }
+    .sponsor-logo:hover { background: var(--gray-200); }
+    .sponsor-logo--main { min-width: 220px; height: 82px; font-size: 0.88rem; background: #f3f0ff; color: var(--purple); }
+
+    /* ── Contact ── */
+    .contact-section { padding: 80px 0; background: var(--gray-100); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-item { background: var(--white); border-radius: 8px; padding: 32px; }
+    .contact-item-title { font-weight: 700; font-size: 1rem; margin-bottom: 12px; }
+    .contact-item-body { font-size: 0.82rem; color: var(--gray-600); line-height: 1.85; }
+    .contact-item-body a { color: var(--purple); }
+
+    /* ── Privacy / Legal ── */
+    .legal-section { padding: 64px 0; background: var(--white); }
+    .legal-text { max-width: 760px; }
+    .legal-text h3 { font-size: 0.95rem; font-weight: 700; margin: 28px 0 8px; }
+    .legal-text p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.85; margin-bottom: 8px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .mission-grid { grid-template-columns: 1fr; max-width: 440px; margin: 48px auto 0; }
+      .mgmt-grid { grid-template-columns: 1fr 1fr; }
+      .achievements-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .mgmt-grid { grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: 1fr 1fr; }
+      .history-timeline::before { left: 60px; }
+      .history-dot { left: 52px; }
+      .history-year { min-width: 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="../" class="header-logo" aria-label="KYOTO PHOENIX FC トップページ">
+      <div class="header-crest"></div>
+      <div class="header-logo-text">KYOTO PHOENIX FC<em>京都フェニックスFC</em></div>
+    </a>
+    <nav class="header-nav" id="headerNav">
+      <a href="../news/">NEWS</a>
+      <a href="../schedule/">SCHEDULE</a>
+      <a href="../players/">PLAYERS</a>
+      <a href="../club/" class="is-current">CLUB</a>
+      <a href="../stadium/">STADIUM</a>
+      <a href="../tickets/" class="header-btn">TICKETS</a>
+    </nav>
+    <button class="header-toggle" id="headerToggle" aria-label="メニュー" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <nav class="breadcrumb" aria-label="パンくずリスト">
+      <a href="../">HOME</a>
+      <span class="breadcrumb-sep">/</span>
+      <span>CLUB</span>
+    </nav>
+    <span class="page-hero-label">Club Info</span>
+    <h1 class="page-hero-title">クラブ情報</h1>
+    <p class="page-hero-sub">京都から世界へ、翼ある挑戦者たちの物語</p>
+  </div>
+</div>
+
+<main class="club-page">
+
+  <!-- OVERVIEW -->
+  <section id="overview" style="background:var(--white);">
+    <div class="container">
+      <div class="overview-grid">
+        <div class="overview-crest fade-in">
+          <div class="crest-large" role="img" aria-label="京都フェニックスFCエンブレム"></div>
+          <span class="crest-subtitle">Est. 2008 · Kyoto, Japan</span>
+        </div>
+        <div class="fade-in" style="transition-delay:0.1s">
+          <span class="section-en">Club Overview</span>
+          <h2 class="section-title section-title--left" style="margin-bottom:24px">クラブ概要</h2>
+          <table class="overview-info-table">
+            <tbody>
+              <tr><td>クラブ名</td><td>京都フェニックスFC（Kyoto Phoenix FC）</td></tr>
+              <tr><td>設立</td><td>2008年4月1日</td></tr>
+              <tr><td>本拠地</td><td>京都府京都市西京区桂北大路町1番地</td></tr>
+              <tr><td>ホームスタジアム</td><td>京都パープルスタジアム（収容人数：25,000人）</td></tr>
+              <tr><td>チームカラー</td><td>パープル &amp; ゴールド</td></tr>
+              <tr><td>愛称</td><td>フェニックス</td></tr>
+              <tr><td>監督</td><td>桑田 誠一郎</td></tr>
+              <tr><td>代表取締役社長</td><td>中西 浩二</td></tr>
+              <tr><td>所属リーグ</td><td>Jリーグ1部</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy-section" id="philosophy">
+    <div class="container">
+      <div class="philosophy-inner">
+        <div class="fade-in">
+          <span class="section-en section-en--gold" style="margin-bottom:20px;display:block">Philosophy</span>
+          <h2 class="section-title section-title--white section-title--center" style="margin-bottom:32px">クラブ理念</h2>
+          <p class="philosophy-quote">
+            炎の中から再び舞い上がる<em>不死鳥</em>のごとく、<br>
+            何度倒れても立ち上がり続ける<em>挑戦者</em>であれ。
+          </p>
+          <p class="philosophy-sub">
+            京都フェニックスFCは、フットボールを通じて京都の文化・誇りを世界に発信し、<br>
+            地域の人々と共に成長し続けるクラブを目指します。
+          </p>
+        </div>
+        <div class="mission-grid">
+          <div class="mission-card fade-in">
+            <div class="mission-icon" aria-hidden="true">⚡</div>
+            <h3 class="mission-title">勝利への意志</h3>
+            <p class="mission-desc">試合ごとに全力を尽くし、妥協なき勝利を追い求める。それがフェニックスの魂。</p>
+          </div>
+          <div class="mission-card fade-in" style="transition-delay:0.08s">
+            <div class="mission-icon" aria-hidden="true">🤝</div>
+            <h3 class="mission-title">地域との絆</h3>
+            <p class="mission-desc">京都の街と人を愛し、地域活性化・青少年育成を通じて社会に貢献する。</p>
+          </div>
+          <div class="mission-card fade-in" style="transition-delay:0.16s">
+            <div class="mission-icon" aria-hidden="true">🌏</div>
+            <h3 class="mission-title">世界への挑戦</h3>
+            <p class="mission-desc">アジアそして世界の舞台で「京都」の名を響かせる、グローバルなクラブへ。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="history-section" id="history">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-en">History</span>
+        <h2 class="section-title">クラブの歩み</h2>
+      </div>
+      <div class="history-timeline">
+        <div class="history-item fade-in">
+          <div class="history-year">2008</div>
+          <div class="history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">京都フェニックスFC 設立</p>
+            <p class="history-detail">京都市の実業家・中西浩二氏が中心となりクラブを設立。当初は地域リーグからのスタート。</p>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2011</div>
+          <div class="history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">Jリーグ加盟・J3昇格</p>
+            <p class="history-detail">Jリーグ百年構想クラブに認定。地域リーグで3連覇を果たし、J3への昇格を決める。</p>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2014</div>
+          <div class="history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">J2昇格 / 京都パープルスタジアム竣工</p>
+            <p class="history-detail">J3で2位となりJ2昇格。同年、京都市西京区に収容25,000人の専用スタジアムが完成。</p>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2018</div>
+          <div class="history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">J1昇格プレーオフ進出（初）</p>
+            <p class="history-detail">J2で5位となり初のJ1昇格プレーオフへ。惜しくも準決勝で敗退するも大きな注目を集める。</p>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2020</div>
+          <div class="history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">J2優勝・J1初昇格</p>
+            <p class="history-detail">桑田誠一郎監督就任1年目でJ2優勝。クラブ史上初のJ1昇格を果たす。</p>
+            <span class="history-badge">J2 CHAMPION</span>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2021</div>
+          <div class="history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">J1初シーズン・残留決定</p>
+            <p class="history-detail">J1デビューシーズンは11位でフィニッシュ。橘蓮が10ゴールを記録し新人王受賞。</p>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2023</div>
+          <div class="history-dot--gold history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">天皇杯 準優勝</p>
+            <p class="history-detail">クラブ史上初の天皇杯決勝進出。延長戦の末に惜敗するも、全国に名を刻む躍進のシーズン。</p>
+            <span class="history-badge" style="background:var(--gray-100);color:var(--gray-600)">天皇杯 RUNNER-UP</span>
+          </div>
+        </div>
+        <div class="history-item fade-in">
+          <div class="history-year">2025</div>
+          <div class="history-dot--gold history-dot"></div>
+          <div class="history-content">
+            <p class="history-event">J1シーズン3位・ACL出場権獲得</p>
+            <p class="history-detail">リーグ戦で過去最高の3位を記録。翌シーズンのAFCチャンピオンズリーグ出場権を獲得。</p>
+            <span class="history-badge">J1 3RD PLACE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT -->
+  <section class="management-section" id="management">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-en">Management</span>
+        <h2 class="section-title">経営陣</h2>
+      </div>
+      <div class="mgmt-grid">
+        <div class="mgmt-card fade-in">
+          <div class="mgmt-avatar">N</div>
+          <p class="mgmt-role">President &amp; CEO</p>
+          <h3 class="mgmt-name">中西 浩二</h3>
+          <p class="mgmt-bio">クラブ創設者。京都市の建設業を営む実業家として2008年にフェニックスFCを設立。「京都から世界へ」のビジョンを掲げてクラブを牽引。</p>
+        </div>
+        <div class="mgmt-card fade-in" style="transition-delay:0.08s">
+          <div class="mgmt-avatar">K</div>
+          <p class="mgmt-role">Head Coach</p>
+          <h3 class="mgmt-name">桑田 誠一郎</h3>
+          <p class="mgmt-bio">現役時代はMFとして活躍。引退後は育成年代でコーチキャリアを積み、2020年に京都フェニックスFC監督に就任。高度なポジショナルプレーを志向する指揮官。</p>
+        </div>
+        <div class="mgmt-card fade-in" style="transition-delay:0.16s">
+          <div class="mgmt-avatar">T</div>
+          <p class="mgmt-role">Director of Football</p>
+          <h3 class="mgmt-name">田畑 健太郎</h3>
+          <p class="mgmt-bio">元日本代表DFとして活躍後、スポーツ経営学を修めた後にフロント入り。スカウティング強化と育成システムの構築を主導。</p>
+        </div>
+        <div class="mgmt-card fade-in">
+          <div class="mgmt-avatar">S</div>
+          <p class="mgmt-role">Vice President</p>
+          <h3 class="mgmt-name">進藤 真由美</h3>
+          <p class="mgmt-bio">外資系コンサルティングファーム出身。マーケティング・ブランディング担当副社長として観客動員数の増加に貢献。2022年就任。</p>
+        </div>
+        <div class="mgmt-card fade-in" style="transition-delay:0.08s">
+          <div class="mgmt-avatar">O</div>
+          <p class="mgmt-role">Sporting Director</p>
+          <h3 class="mgmt-name">奥田 龍之介</h3>
+          <p class="mgmt-bio">Jリーグ・海外リーグでのスカウト経験を持つ。アジア・南米選手の発掘に強みを発揮し、近年の補強を成功に導く。</p>
+        </div>
+        <div class="mgmt-card fade-in" style="transition-delay:0.16s">
+          <div class="mgmt-avatar">H</div>
+          <p class="mgmt-role">Academy Director</p>
+          <h3 class="mgmt-name">橋本 彩花</h3>
+          <p class="mgmt-bio">元なでしこリーガー。ユース育成・地域少年サッカー振興に尽力。フェニックスアカデミーから毎年トップチーム昇格選手を輩出。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS -->
+  <section class="achievements-section" id="achievements">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-en section-en--gold">Achievements</span>
+        <h2 class="section-title section-title--white">クラブ実績</h2>
+      </div>
+      <div class="achievements-grid">
+        <div class="achievement-card fade-in">
+          <p class="achievement-num">5</p>
+          <p class="achievement-label">J1シーズン在籍</p>
+        </div>
+        <div class="achievement-card fade-in" style="transition-delay:0.08s">
+          <p class="achievement-num">1</p>
+          <p class="achievement-label">J2優勝（2020年）</p>
+        </div>
+        <div class="achievement-card fade-in" style="transition-delay:0.16s">
+          <p class="achievement-num">2</p>
+          <p class="achievement-label">天皇杯ベスト4以上</p>
+        </div>
+        <div class="achievement-card fade-in" style="transition-delay:0.24s">
+          <p class="achievement-num">3</p>
+          <p class="achievement-label">J1最高順位（2025年）</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPONSORS -->
+  <section class="sponsors-section" id="sponsors">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-en">Sponsors &amp; Partners</span>
+        <h2 class="section-title">スポンサー・パートナー</h2>
+      </div>
+
+      <div class="sponsor-tier fade-in">
+        <p class="sponsor-tier-label">Title Sponsor</p>
+        <div class="sponsor-logos">
+          <span class="sponsor-logo sponsor-logo--main">洛央銀行</span>
+        </div>
+      </div>
+      <div class="sponsor-tier fade-in">
+        <p class="sponsor-tier-label">Gold Partners</p>
+        <div class="sponsor-logos">
+          <span class="sponsor-logo">ホライゾン<br>セミコンダクター</span>
+          <span class="sponsor-logo">京都リファイン工業</span>
+          <span class="sponsor-logo">ネクサス<br>エレクトロニクス</span>
+        </div>
+      </div>
+      <div class="sponsor-tier fade-in">
+        <p class="sponsor-tier-label">Official Partners</p>
+        <div class="sponsor-logos">
+          <span class="sponsor-logo">グリーンラボ製薬</span>
+          <span class="sponsor-logo">アルペン観光ホテルズ</span>
+          <span class="sponsor-logo">クリスタルテキスタイル</span>
+          <span class="sponsor-logo">山城不動産グループ</span>
+        </div>
+      </div>
+
+      <div style="text-align:center;margin-top:52px" class="fade-in">
+        <p style="font-size:0.82rem;color:var(--gray-400);margin-bottom:20px">スポンサーシップ・協賛のお問い合わせは下記よりご連絡ください</p>
+        <a href="#contact" class="btn-outline">スポンサー申請</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-en">Contact</span>
+        <h2 class="section-title">お問い合わせ</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-item fade-in">
+          <h3 class="contact-item-title">一般お問い合わせ</h3>
+          <p class="contact-item-body">
+            チケット・グッズ・試合に関するご質問はこちらからお気軽にお問い合わせください。<br><br>
+            受付時間：平日 10:00〜17:00<br>
+            TEL：075-XXX-XXXX<br>
+            <a href="mailto:info@kyoto-phoenix.example">info@kyoto-phoenix.example</a>
+          </p>
+        </div>
+        <div class="contact-item fade-in" style="transition-delay:0.1s">
+          <h3 class="contact-item-title">スポンサーシップ・メディア</h3>
+          <p class="contact-item-body">
+            スポンサーシップ提携・メディア取材・選手出演依頼等は専用窓口にてご対応いたします。<br><br>
+            受付時間：平日 10:00〜17:00<br>
+            TEL：075-XXX-XXXX<br>
+            <a href="mailto:pr@kyoto-phoenix.example">pr@kyoto-phoenix.example</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY / LEGAL -->
+  <section class="legal-section" id="privacy">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-en">Privacy Policy</span>
+        <h2 class="section-title">プライバシーポリシー</h2>
+      </div>
+      <div class="legal-text fade-in">
+        <p>京都フェニックスFC（以下「当クラブ」）は、お客様の個人情報を適切に管理・保護することを重要な責務と考えております。以下の方針に従い、個人情報の取り扱いを行います。</p>
+        <h3>個人情報の収集について</h3>
+        <p>当クラブは、チケット購入・ファンクラブ入会・各種お問い合わせに際して、氏名・住所・電話番号・メールアドレス等の個人情報をご提供いただく場合があります。</p>
+        <h3>個人情報の利用目的</h3>
+        <p>収集した個人情報は、サービスの提供・会員管理・商品の発送・重要なお知らせの送付・アンケートの実施を目的として使用します。</p>
+        <h3>第三者への提供</h3>
+        <p>当クラブは、法令に基づく場合を除き、お客様の事前同意なく第三者に個人情報を提供することはありません。</p>
+        <h3>個人情報の安全管理</h3>
+        <p>個人情報の漏洩・紛失・改ざん等を防止するため、適切なセキュリティ対策を実施します。</p>
+        <h3>お問い合わせ</h3>
+        <p>個人情報の開示・修正・削除に関するお問い合わせは、上記お問い合わせ窓口までご連絡ください。</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">
+          <div class="footer-crest"></div>
+          <div>
+            <p class="footer-club">KYOTO PHOENIX FC</p>
+            <p class="footer-tagline">RISE. FIGHT. NEVER YIELD.</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer-social">
+        <a href="#" class="social-btn" aria-label="Twitter/X">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="YouTube">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-nav">
+      <div class="footer-nav-col">
+        <h4>Club</h4>
+        <a href="#overview">クラブ概要</a>
+        <a href="#history">クラブ史</a>
+        <a href="#philosophy">クラブ理念</a>
+        <a href="#sponsors">スポンサー</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Team</h4>
+        <a href="../players/">選手一覧</a>
+        <a href="../schedule/">試合日程・結果</a>
+        <a href="../news/">ニュース</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Tickets</h4>
+        <a href="../tickets/">チケット購入</a>
+        <a href="../tickets/#fanclub">ファン・クラブ</a>
+        <a href="#">グッズショップ</a>
+      </div>
+      <div class="footer-nav-col">
+        <h4>Info</h4>
+        <a href="../stadium/">スタジアムアクセス</a>
+        <a href="#contact">お問い合わせ</a>
+        <a href="#privacy">プライバシーポリシー</a>
+      </div>
+    </nav>
+    <div class="footer-bottom">
+      <p class="footer-addr">〒615-8501 京都市西京区桂北大路町1番地 京都パープルスタジアム内</p>
+      <p class="footer-copy">&copy; 2026 KYOTO PHOENIX FC. All Rights Reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script src="../subpage.js"></script>
+</body>
+</html>

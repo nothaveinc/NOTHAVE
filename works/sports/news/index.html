@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ニュース | KYOTO PHOENIX FC</title>
+  <meta name="description" content="京都フェニックスFCの最新ニュース。試合速報・選手情報・クラブ情報を随時更新。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../common.css">
+  <style>
+    .news-page { padding: 80px 0 100px; background: #f3f3f3; }
+
+    /* Filter tabs */
+    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
+    .filter-btn {
+      font-family: var(--font-ja); font-size: 0.82rem; font-weight: 700;
+      padding: 8px 20px; border-radius: 20px; border: 1.5px solid var(--gray-200);
+      background: var(--white); color: var(--gray-600); cursor: pointer; transition: all var(--ease);
+    }
+    .filter-btn:hover, .filter-btn.is-active { background: var(--purple); border-color: var(--purple); color: var(--white); }
+
+    /* News grid */
+    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .news-card {
+      background: var(--white); border-radius: 6px; overflow: hidden;
+      display: flex; flex-direction: column; transition: transform var(--ease), box-shadow var(--ease);
+    }
+    .news-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.09); }
+
+    .news-img { height: 200px; background-size: cover; background-position: center; }
+    .news-img--1  { background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--2  { background-image: url('https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--3  { background-image: url('https://images.unsplash.com/photo-1524015368236-bbf8a5de3e3f?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--4  { background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--5  { background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--6  { background-image: url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--7  { background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--8  { background-image: url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=600&q=80'); }
+    .news-img--9  { background-image: url('https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=600&q=80'); }
+
+    .news-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
+    .news-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .news-cat {
+      font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 2px; letter-spacing: 0.04em; white-space: nowrap;
+    }
+    .news-cat--match  { background: #fef3c7; color: #b45309; }
+    .news-cat--player { background: #ede9fe; color: var(--purple); }
+    .news-cat--club   { background: #dcfce7; color: #15803d; }
+    .news-date { font-family: var(--font-en); font-size: 0.72rem; color: var(--gray-400); }
+    .news-title {
+      font-size: 0.88rem; font-weight: 700; line-height: 1.65; color: var(--black); margin-bottom: 8px;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+    .news-excerpt {
+      font-size: 0.78rem; color: var(--gray-600); line-height: 1.85; flex: 1;
+      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
+    }
+
+    /* Pagination */
+    .pagination { display: flex; justify-content: center; gap: 6px; margin-top: 52px; }
+    .page-btn {
+      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-en); font-size: 0.82rem; font-weight: 700;
+      border: 1.5px solid var(--gray-200); border-radius: var(--radius);
+      background: var(--white); color: var(--gray-600); cursor: pointer; transition: all var(--ease);
+    }
+    .page-btn:hover, .page-btn.is-active { background: var(--purple); border-color: var(--purple); color: var(--white); }
+
+    @media (max-width: 900px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .news-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
+  </style>
+</head>
+<body>
+
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="../" class="header-logo">
+        <div class="header-crest" aria-hidden="true"></div>
+        <div class="header-logo-text"><span>KYOTO</span><em>PHOENIX FC</em></div>
+      </a>
+      <nav class="header-nav" id="headerNav">
+        <a href="./" class="is-current">ニュース</a>
+        <a href="../schedule/">試合日程</a>
+        <a href="../players/">選手</a>
+        <a href="../club/">クラブ</a>
+        <a href="../tickets/" class="header-btn">チケット購入</a>
+      </nav>
+      <button class="header-toggle" id="headerToggle" aria-label="メニューを開く" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <div class="page-hero">
+    <div class="page-hero-inner">
+      <nav class="breadcrumb" aria-label="パンくずリスト">
+        <a href="../">HOME</a>
+        <span class="breadcrumb-sep">›</span>
+        <span>NEWS</span>
+      </nav>
+      <span class="page-hero-label">NEWS</span>
+      <h1 class="page-hero-title">ニュース</h1>
+      <p class="page-hero-sub">試合速報・選手情報・クラブ情報</p>
+    </div>
+  </div>
+
+  <section class="news-page">
+    <div class="container">
+      <div class="filter-tabs fade-in">
+        <button class="filter-btn is-active" data-filter="all">すべて</button>
+        <button class="filter-btn" data-filter="match">試合速報</button>
+        <button class="filter-btn" data-filter="player">選手情報</button>
+        <button class="filter-btn" data-filter="club">クラブ情報</button>
+      </div>
+
+      <div class="news-grid">
+        <a href="#" class="news-card fade-in" data-category="match">
+          <div class="news-img news-img--1" role="img" aria-label="J1第15節 勝利の瞬間"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--match">試合速報</span><time class="news-date" datetime="2026-04-27">2026.04.27</time></div>
+            <h3 class="news-title">【速報】J1第15節 vs セントラル大阪FC 2-0で勝利！5連勝・首位浮上</h3>
+            <p class="news-excerpt">ホーム・京都パープルスタジアムで行われたJ1リーグ第15節。橘 蓮の2ゴールでセントラル大阪FCを2-0で撃破し、5連勝を達成。ついに単独首位に立った。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="player">
+          <div class="news-img news-img--2" role="img" aria-label="橘 蓮 日本代表招集"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--player">選手情報</span><time class="news-date" datetime="2026-04-22">2026.04.22</time></div>
+            <h3 class="news-title">橘 蓮選手、日本代表に追加招集。国際Aマッチに向け合流</h3>
+            <p class="news-excerpt">日本サッカー協会は本日、6月国際Aマッチに向けた追加招集選手を発表。MF橘 蓮選手（24）が選出された。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="club">
+          <div class="news-img news-img--3" role="img" aria-label="京都パープルスタジアム リニューアル"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--club">クラブ情報</span><time class="news-date" datetime="2026-04-18">2026.04.18</time></div>
+            <h3 class="news-title">京都パープルスタジアム リニューアル完了。こけら落とし記念イベント開催決定</h3>
+            <p class="news-excerpt">全面改修を終えた京都パープルスタジアムが完成。5月3日のホームゲームをこけら落としとし、記念セレモニー・限定グッズ販売などの特別企画を実施。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="match">
+          <div class="news-img news-img--4" role="img" aria-label="J1第13節 vs 北浦和ユナイテッドFC 試合"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--match">試合速報</span><time class="news-date" datetime="2026-04-13">2026.04.13</time></div>
+            <h3 class="news-title">【速報】J1第13節 vs 北浦和ユナイテッドFC 3-1で快勝。4連勝スタート</h3>
+            <p class="news-excerpt">アウェイの難しい環境の中、ルカス・シルバのハットトリックで北浦和ユナイテッドFCを3-1で下した。これで4連勝、上位争いに加速。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="player">
+          <div class="news-img news-img--6" role="img" aria-label="ルカス・シルバ 10ゴール達成"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--player">選手情報</span><time class="news-date" datetime="2026-04-08">2026.04.08</time></div>
+            <h3 class="news-title">ルカス・シルバ選手、今季通算10ゴール達成。得点王争いトップに</h3>
+            <p class="news-excerpt">FWルカス・シルバ（27）が第11節でリーグ10ゴール目を記録し、得点王争いトップに立った。「チームのために戦い続ける」と意気込みを語った。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="club">
+          <div class="news-img news-img--5" role="img" aria-label="2026シーズン ホームキット発表"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--club">クラブ情報</span><time class="news-date" datetime="2026-04-10">2026.04.10</time></div>
+            <h3 class="news-title">2026シーズン ホームキット発表。「平安の紫」をコンセプトに新デザイン</h3>
+            <p class="news-excerpt">京都フェニックスFCは本日、2026シーズンの公式ユニフォームを発表。「平安の紫」をコンセプトに、深みのある新デザインを採用した。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="match">
+          <div class="news-img news-img--7" role="img" aria-label="J1第9節 vs 広島パシフィックFC 試合"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--match">試合速報</span><time class="news-date" datetime="2026-04-12">2026.04.12</time></div>
+            <h3 class="news-title">【速報】J1第9節 vs 広島パシフィックFC 4-1の大勝！橘・ルカス・山本がゴール</h3>
+            <p class="news-excerpt">ホームで迎えた広島パシフィックFC戦、橘 蓮が2ゴール1アシストの大活躍。ルカス・シルバ、山本 雄介もゴールを決め快勝した。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="player">
+          <div class="news-img news-img--8" role="img" aria-label="橘 蓮 月間MVP受賞"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--player">選手情報</span><time class="news-date" datetime="2026-04-01">2026.04.01</time></div>
+            <h3 class="news-title">橘 蓮選手、J1リーグ3月の月間MVPを受賞。「サポーターへの感謝」</h3>
+            <p class="news-excerpt">Jリーグは3月の月間MVPにMF橘 蓮（京都フェニックスFC）を選出した。3月に4試合5ゴール2アシストの活躍が評価された。</p>
+          </div>
+        </a>
+        <a href="#" class="news-card fade-in" data-category="club">
+          <div class="news-img news-img--9" role="img" aria-label="アカデミー新入団選手発表"></div>
+          <div class="news-body">
+            <div class="news-meta"><span class="news-cat news-cat--club">クラブ情報</span><time class="news-date" datetime="2026-03-28">2026.03.28</time></div>
+            <h3 class="news-title">フェニックスアカデミー2026年度新入団選手17名を発表</h3>
+            <p class="news-excerpt">京都フェニックスFCジュニアアカデミーの2026年度新入団選手17名を発表。近畿圏を中心に全国から有望な選手が集結した。</p>
+          </div>
+        </a>
+      </div>
+
+      <div class="pagination fade-in">
+        <button class="page-btn is-active">1</button>
+        <button class="page-btn">2</button>
+        <button class="page-btn">3</button>
+        <button class="page-btn">›</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-crest" aria-hidden="true"></div>
+          <div><p class="footer-club">KYOTO PHOENIX FC</p><p class="footer-tagline">翔け、不死鳥よ。</p></div>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-btn" aria-label="X"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.741l7.73-8.835L1.254 2.25H8.08l4.259 5.626zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg></a>
+          <a href="#" class="social-btn" aria-label="YouTube"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-nav-col"><h4>クラブ情報</h4><a href="../club/">クラブ概要</a><a href="../players/">チーム情報</a><a href="../stadium/">スタジアム</a></div>
+        <div class="footer-nav-col"><h4>試合・選手</h4><a href="../schedule/">試合日程・結果</a><a href="../players/">選手・スタッフ</a><a href="./">ニュース</a></div>
+        <div class="footer-nav-col"><h4>チケット・グッズ</h4><a href="../tickets/">チケット購入</a><a href="../tickets/#fanclub">ファンクラブ</a></div>
+        <div class="footer-nav-col"><h4>その他</h4><a href="../stadium/#access">スタジアムアクセス</a><a href="../club/#contact">お問い合わせ</a><a href="../club/#privacy">プライバシーポリシー</a></div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-addr">〒615-0802 京都府京都市西京区桂北大路町1番地 京都パープルスタジアム内</p>
+        <p class="footer-copy">&copy; 2026 KYOTO PHOENIX FC. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../subpage.js"></script>
+</body>
+</html>
