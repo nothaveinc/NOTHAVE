@@ -136,3 +136,51 @@ if (contactForm) {
     submitBtn.disabled = false;
   });
 }
+
+// ========================================
+// 数値カウンターアニメーション
+// [data-count] 属性を持つ要素が画面内に入ったとき
+// 0 から目標値まで 60 フレームかけてカウントアップする
+// ========================================
+(function () {
+  var countEls = document.querySelectorAll("[data-count]");
+  if (!countEls.length) return;
+
+  var FRAMES = 60;
+
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute("data-count"), 10);
+    if (isNaN(target)) return;
+
+    var current = 0;
+    var increment = target / FRAMES;
+    var frame = 0;
+
+    var timer = setInterval(function () {
+      frame++;
+      current += increment;
+      if (frame >= FRAMES) {
+        el.textContent = target;
+        clearInterval(timer);
+      } else {
+        el.textContent = Math.floor(current);
+      }
+    }, 1000 / 60); // ~60fps
+  }
+
+  var countObserver = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          animateCount(entry.target);
+          countObserver.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.3, rootMargin: "0px 0px -40px 0px" }
+  );
+
+  countEls.forEach(function (el) {
+    countObserver.observe(el);
+  });
+})();
