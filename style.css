@@ -224,6 +224,15 @@ img {
   line-height: 1.4;
 }
 
+.hero__sub {
+  font-size: clamp(0.875rem, 2vw, 1.1rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.75);
+  margin-bottom: 2.5rem;
+  margin-top: -1.5rem;
+}
+
 .hero__cta {
   display: inline-block;
   padding: 0.875rem 2.5rem;
