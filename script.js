@@ -49,3 +49,43 @@ const observer = new IntersectionObserver(
 fadeElements.forEach(function (el) {
   observer.observe(el);
 });
+
+// Contact form submission
+const contactForm = document.getElementById("contact-form");
+
+if (contactForm) {
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const submitBtn = document.getElementById("contact-submit");
+    const successMsg = document.getElementById("contact-success");
+    const errorMsg = document.getElementById("contact-error");
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "送信中...";
+    successMsg.hidden = true;
+    errorMsg.hidden = true;
+
+    try {
+      const response = await fetch(contactForm.action, {
+        method: "POST",
+        body: new FormData(contactForm),
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        contactForm.reset();
+        successMsg.hidden = false;
+        submitBtn.textContent = "送信する";
+      } else {
+        errorMsg.hidden = false;
+        submitBtn.textContent = "送信する";
+      }
+    } catch {
+      errorMsg.hidden = false;
+      submitBtn.textContent = "送信する";
+    }
+
+    submitBtn.disabled = false;
+  });
+}
