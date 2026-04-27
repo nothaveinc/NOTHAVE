@@ -31,8 +31,8 @@ html {
 
 body {
   font-family: "Noto Sans JP", "Inter", sans-serif;
-  color: #1a1a1a;
-  background-color: #fafafa;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-light);
   line-height: 1.8;
   -webkit-font-smoothing: antialiased;
 }
@@ -90,7 +90,7 @@ img {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
   transition: color 0.3s;
 }
 
@@ -103,17 +103,17 @@ img {
   font-family: "Inter", sans-serif;
   font-size: 0.875rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  color: #555;
+  letter-spacing: var(--letter-spacing-base);
+  color: var(--color-text-secondary);
   transition: color 0.3s;
 }
 
 .header__nav-link:hover {
-  color: #1a1a1a;
+  color: var(--color-text-primary);
 }
 
 .header__nav-link--active {
-  color: #1a1a1a;
+  color: var(--color-text-primary);
 }
 
 /* Header: white text on dark backgrounds (not scrolled, desktop) */
@@ -161,7 +161,7 @@ img {
   display: block;
   width: 100%;
   height: 2px;
-  background-color: #1a1a1a;
+  background-color: var(--color-text-primary);
   transition: transform 0.3s, opacity 0.3s, background-color 0.3s;
 }
 
@@ -231,7 +231,7 @@ img {
   color: #fff;
   font-size: 0.9rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -290,7 +290,7 @@ img {
    Page Hero (sub-pages)
    ======================================== */
 .page-hero {
-  min-height: 300px;
+  min-height: 360px;
   padding-top: 60px;
   background-color: #111;
   color: #fff;
@@ -308,8 +308,8 @@ img {
 .page-hero__label {
   font-family: "Inter", sans-serif;
   font-size: 0.7rem;
-  color: #555;
-  letter-spacing: 0.14em;
+  color: #888;
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
   margin-bottom: 0.6rem;
 }
@@ -326,7 +326,7 @@ img {
    Intro (index.html)
    ======================================== */
 .intro {
-  padding: 6rem 0;
+  padding: var(--spacing-section) 0;
   background-color: #fff;
   text-align: center;
 }
@@ -350,14 +350,14 @@ img {
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
   border-bottom: 1px solid transparent;
   padding-bottom: 2px;
   transition: border-color 0.3s;
 }
 
 .intro__nav-item:hover {
-  border-color: #1a1a1a;
+  border-color: var(--color-text-primary);
 }
 
 /* ========================================
@@ -367,7 +367,7 @@ img {
   font-family: "Inter", sans-serif;
   font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
   margin-bottom: 3rem;
   text-align: center;
 }
@@ -376,7 +376,7 @@ img {
    About
    ======================================== */
 .about {
-  padding: 6rem 0;
+  padding: var(--spacing-section) 0;
   background-color: #fff;
 }
 
@@ -390,7 +390,7 @@ img {
 .about__avatar {
   width: 100%;
   aspect-ratio: 1;
-  background-color: #1a1a1a;
+  background-color: var(--color-text-primary);
   position: relative;
 }
 
@@ -405,7 +405,7 @@ img {
   font-family: "Inter", sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
   margin-bottom: 0.25rem;
 }
 
@@ -460,8 +460,8 @@ img {
    Works
    ======================================== */
 .works {
-  padding: 6rem 0;
-  background-color: #fafafa;
+  padding: var(--spacing-section) 0;
+  background-color: var(--color-bg-light);
 }
 
 .works__grid {
@@ -525,7 +525,7 @@ img {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.55) 60%, rgba(0,0,0,0.3) 100%);
   opacity: 0;
   transition: opacity 0.4s;
 }
@@ -547,15 +547,15 @@ img {
   color: #ccc;
   border: 1px solid #888;
   padding: 0.2rem 0.75rem;
-  border-radius: 2px;
-  letter-spacing: 0.04em;
+  border-radius: var(--border-radius-base);
+  letter-spacing: var(--letter-spacing-base);
 }
 
 /* ========================================
    Skills
    ======================================== */
 .skills {
-  padding: 6rem 0;
+  padding: var(--spacing-section) 0;
   background-color: #f0f0f0;
 }
 
@@ -569,12 +569,14 @@ img {
 .skills__card {
   background-color: #f0f0f0;
   padding: 2rem 1.75rem;
-  border-top: 2px solid #1a1a1a;
-  transition: background-color 0.3s;
+  border: 1px solid var(--color-border);
+  border-top: 2px solid var(--color-text-primary);
+  transition: background-color 0.3s, border-color 0.25s;
 }
 
 .skills__card:hover {
-  background-color: #e8e8e8;
+  background-color: #fff;
+  border-color: #999;
 }
 
 .skills__card-name {
@@ -582,20 +584,20 @@ img {
   font-weight: 700;
   letter-spacing: 0.02em;
   margin-bottom: 0.4rem;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
 }
 
 .skills__card-sub {
   font-size: 0.75rem;
   color: #888;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
 }
 
 /* ========================================
    Strengths (index.html)
    ======================================== */
 .strengths {
-  padding: 6rem 0;
+  padding: var(--spacing-section) 0;
   background-color: #111;
   color: #fff;
 }
@@ -622,15 +624,15 @@ img {
   font-family: "Inter", sans-serif;
   font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  color: #555;
+  letter-spacing: var(--letter-spacing-wide);
+  color: var(--color-text-secondary);
   margin-bottom: 1.25rem;
 }
 
 .strengths__title {
   font-size: 1rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
   color: #fff;
   margin-bottom: 1rem;
 }
@@ -650,15 +652,15 @@ img {
 }
 
 .plan-consult a {
-  color: #1a1a1a;
-  border-bottom: 1px solid #1a1a1a;
+  color: var(--color-text-primary);
+  border-bottom: 1px solid var(--color-text-primary);
   padding-bottom: 1px;
   transition: color 0.3s, border-color 0.3s;
 }
 
 .plan-consult a:hover {
-  color: #555;
-  border-color: #555;
+  color: var(--color-text-secondary);
+  border-color: var(--color-text-secondary);
 }
 
 /* Contact reply note */
@@ -693,14 +695,14 @@ img {
    Contact
    ======================================== */
 .contact {
-  padding: 6rem 0;
-  background-color: #fafafa;
+  padding: var(--spacing-section) 0;
+  background-color: var(--color-bg-light);
 }
 
 .contact__email {
   text-align: center;
   font-size: 1rem;
-  color: #555;
+  color: var(--color-text-secondary);
   margin-bottom: 3rem;
   letter-spacing: 0.02em;
 }
@@ -729,10 +731,10 @@ img {
   padding: 0.75rem 1rem;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 0.95rem;
-  border: 1px solid #ccc;
-  border-radius: 2px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-base);
   background-color: #fff;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
   transition: border-color 0.3s;
 }
 
@@ -748,7 +750,7 @@ img {
 .contact__select:focus,
 .contact__textarea:focus {
   outline: none;
-  border-color: #555;
+  border-color: var(--color-text-secondary);
 }
 
 .contact__textarea {
@@ -759,14 +761,14 @@ img {
   display: block;
   width: 100%;
   padding: 0.875rem;
-  background-color: #1a1a1a;
+  background-color: var(--color-text-primary);
   color: #fff;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 0.95rem;
   font-weight: 500;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
   border: none;
-  border-radius: 2px;
+  border-radius: var(--border-radius-base);
   cursor: pointer;
   transition: background-color 0.3s;
 }
@@ -783,7 +785,7 @@ img {
 .contact__status {
   margin-top: 1rem;
   padding: 0.75rem 1rem;
-  border-radius: 2px;
+  border-radius: var(--border-radius-base);
   font-size: 0.9rem;
   text-align: center;
 }
@@ -799,7 +801,7 @@ img {
 }
 
 .contact__form-group--highlighted .contact__select {
-  border-color: #1a1a1a;
+  border-color: var(--color-text-primary);
   box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.12);
   transition: border-color 0.3s, box-shadow 0.3s;
 }
@@ -808,14 +810,14 @@ img {
    Plan
    ======================================== */
 .plan-cards-section {
-  padding: 6rem 0 4rem;
-  background-color: #fafafa;
+  padding: var(--spacing-section) 0 4rem;
+  background-color: var(--color-bg-light);
 }
 
 .plan-intro {
   text-align: center;
   font-size: 0.95rem;
-  color: #555;
+  color: var(--color-text-secondary);
   line-height: 2;
   margin-bottom: 3.5rem;
 }
@@ -828,16 +830,27 @@ img {
 }
 
 .plan-card {
-  background-color: #fafafa;
+  background-color: var(--color-bg-light);
   padding: 2rem 1.25rem;
-  border-top: 2px solid #1a1a1a;
+  border-top: 2px solid var(--color-text-primary);
   display: flex;
   flex-direction: column;
   position: relative;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+.plan-card--featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.14);
 }
 
 .plan-card--featured {
-  background-color: #1a1a1a;
+  background-color: var(--color-text-primary);
   border-top-color: #fff;
 }
 
@@ -846,7 +859,7 @@ img {
   top: -1px;
   right: 1.5rem;
   background-color: #fff;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
   font-family: "Inter", sans-serif;
   font-size: 0.65rem;
   font-weight: 700;
@@ -872,7 +885,7 @@ img {
   font-family: "Inter", sans-serif;
   font-size: clamp(1.1rem, 1.4vw, 1.5rem);
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
   letter-spacing: -0.02em;
   margin-bottom: 0.5rem;
   line-height: 1;
@@ -881,7 +894,7 @@ img {
 .plan-card__note {
   font-size: 0.7rem;
   color: #aaa;
-  letter-spacing: 0.04em;
+  letter-spacing: var(--letter-spacing-base);
   margin-bottom: 1.25rem;
 }
 
@@ -911,7 +924,7 @@ img {
 
 .plan-card__summary li {
   font-size: 0.85rem;
-  color: #555;
+  color: var(--color-text-secondary);
   padding: 0.5rem 0;
   border-bottom: 1px solid #e8e8e8;
 }
@@ -937,13 +950,13 @@ img {
   font-size: 0.8rem;
   font-weight: 600;
   letter-spacing: 0.06em;
-  border: 1px solid #1a1a1a;
-  color: #1a1a1a;
+  border: 1px solid var(--color-text-primary);
+  color: var(--color-text-primary);
   transition: background-color 0.3s, color 0.3s;
 }
 
 .plan-card__cta:hover {
-  background-color: #1a1a1a;
+  background-color: var(--color-text-primary);
   color: #fff;
 }
 
@@ -954,13 +967,13 @@ img {
 
 .plan-card__cta--featured:hover {
   background-color: #fff;
-  color: #1a1a1a;
+  color: var(--color-text-primary);
 }
 
 /* Comparison table */
 .plan-table-section {
-  padding: 4rem 0 6rem;
-  background-color: #fafafa;
+  padding: 4rem 0 var(--spacing-section);
+  background-color: var(--color-bg-light);
 }
 
 .plan-table-title {
@@ -993,8 +1006,8 @@ img {
   text-transform: uppercase;
   padding: 1rem 1.25rem;
   text-align: center;
-  border-bottom: 2px solid #1a1a1a;
-  color: #1a1a1a;
+  border-bottom: 2px solid var(--color-text-primary);
+  color: var(--color-text-primary);
 }
 
 .plan-table__feature {
@@ -1003,12 +1016,12 @@ img {
 }
 
 .plan-table__th--featured {
-  background-color: #1a1a1a;
+  background-color: var(--color-text-primary);
   color: #fff !important;
 }
 
 .plan-table tbody tr:nth-child(even) {
-  background-color: #f4f4f4;
+  background-color: var(--color-bg-lighter);
 }
 
 .plan-table tbody td {
@@ -1022,7 +1035,7 @@ img {
 .plan-table__label {
   text-align: left !important;
   font-weight: 500;
-  color: #1a1a1a !important;
+  color: var(--color-text-primary) !important;
 }
 
 .plan-table__td--featured {
@@ -1034,7 +1047,7 @@ img {
 }
 
 .plan-table__check {
-  color: #1a1a1a;
+  color: var(--color-text-primary);
   font-weight: 700;
   font-size: 1rem;
 }
@@ -1096,6 +1109,7 @@ img {
   background-color: #111;
   color: #777;
   text-align: center;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer__copy {
@@ -1154,11 +1168,11 @@ img {
 
   .header__nav-link {
     font-size: 1.125rem;
-    color: #555;
+    color: var(--color-text-secondary);
   }
 
   .header__nav-link--active {
-    color: #1a1a1a;
+    color: var(--color-text-primary);
   }
 
   .page-hero {

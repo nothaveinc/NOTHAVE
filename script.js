@@ -22,6 +22,19 @@ hamburger.addEventListener("click", function () {
   hamburger.setAttribute("aria-expanded", isOpen);
 });
 
+// Close menu on outside click
+document.addEventListener("click", function (e) {
+  if (
+    nav.classList.contains("header__nav--open") &&
+    !nav.contains(e.target) &&
+    !hamburger.contains(e.target)
+  ) {
+    nav.classList.remove("header__nav--open");
+    hamburger.classList.remove("hamburger--active");
+    hamburger.setAttribute("aria-expanded", "false");
+  }
+});
+
 // Close menu on link click
 nav.querySelectorAll(".header__nav-link").forEach(function (link) {
   link.addEventListener("click", function () {
@@ -43,7 +56,7 @@ const observer = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.15 }
+  { threshold: 0.1, rootMargin: "0px 0px -40px 0px" }
 );
 
 fadeElements.forEach(function (el) {
@@ -62,7 +75,11 @@ document.querySelectorAll(".plan-card__cta[data-plan]").forEach(function (link) 
       planSelect.value = planName;
     }
     if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
+      const headerHeight = document.getElementById("header")
+        ? document.getElementById("header").offsetHeight
+        : 64;
+      const top = contactSection.getBoundingClientRect().top + window.scrollY - headerHeight;
+      window.scrollTo({ top: top, behavior: "smooth" });
     }
     if (planSelect) {
       setTimeout(function () {
@@ -88,6 +105,7 @@ if (contactForm) {
     const errorMsg = document.getElementById("contact-error");
 
     submitBtn.disabled = true;
+    submitBtn.setAttribute("aria-busy", "true");
     submitBtn.textContent = "送信中...";
     successMsg.hidden = true;
     errorMsg.hidden = true;
@@ -114,6 +132,7 @@ if (contactForm) {
       submitBtn.textContent = "送信する";
     }
 
+    submitBtn.setAttribute("aria-busy", "false");
     submitBtn.disabled = false;
   });
 }
