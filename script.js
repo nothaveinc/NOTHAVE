@@ -52,10 +52,26 @@ fadeElements.forEach(function (el) {
 
 // Pre-select plan from plan card CTA
 document.querySelectorAll(".plan-card__cta[data-plan]").forEach(function (link) {
-  link.addEventListener("click", function () {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const planName = this.dataset.plan;
     const planSelect = document.getElementById("plan-select");
+    const contactSection = document.getElementById("contact");
+
     if (planSelect) {
-      planSelect.value = this.dataset.plan;
+      planSelect.value = planName;
+    }
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
+    }
+    if (planSelect) {
+      setTimeout(function () {
+        planSelect.focus();
+        planSelect.closest(".contact__form-group").classList.add("contact__form-group--highlighted");
+        setTimeout(function () {
+          planSelect.closest(".contact__form-group").classList.remove("contact__form-group--highlighted");
+        }, 1800);
+      }, 600);
     }
   });
 });
@@ -84,7 +100,9 @@ if (contactForm) {
       });
 
       if (response.ok) {
-        contactForm.reset();
+        document.getElementById("name").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("message").value = "";
         successMsg.hidden = false;
         submitBtn.textContent = "送信する";
       } else {

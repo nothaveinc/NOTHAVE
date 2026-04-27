@@ -1,4 +1,19 @@
 /* ========================================
+   CSS Custom Properties
+   ======================================== */
+:root {
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #555;
+  --color-bg-light: #fafafa;
+  --color-bg-lighter: #f4f4f4;
+  --color-border: #ccc;
+  --spacing-section: 6rem;
+  --letter-spacing-base: 0.04em;
+  --letter-spacing-wide: 0.14em;
+  --border-radius-base: 2px;
+}
+
+/* ========================================
    Reset & Base
    ======================================== */
 *,
@@ -418,7 +433,7 @@ img {
    Concept (about page)
    ======================================== */
 .concept {
-  padding: 7rem 0;
+  padding: var(--spacing-section) 0;
   background-color: #111;
   color: #fff;
   text-align: center;
@@ -781,6 +796,12 @@ img {
 .contact__status--error {
   background-color: #ffebee;
   color: #c62828;
+}
+
+.contact__form-group--highlighted .contact__select {
+  border-color: #1a1a1a;
+  box-shadow: 0 0 0 3px rgba(26, 26, 26, 0.12);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 
 /* ========================================

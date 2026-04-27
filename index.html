@@ -110,7 +110,7 @@
         </p>
         <p class="plan-consult fade-in">どのプランか迷う方は、まず<a href="#contact">無料相談</a>からどうぞ。</p>
         <div class="plan-cards fade-in">
-          <div class="plan-card">
+          <article class="plan-card">
             <p class="plan-card__name">Starter</p>
             <p class="plan-card__price">
               ¥50,000<span class="plan-card__price-suffix">〜</span>
@@ -121,9 +121,9 @@
               <li>5日〜15日</li>
             </ul>
             <a href="#contact" class="plan-card__cta" data-plan="Starter">お問い合わせ</a>
-          </div>
+          </article>
 
-          <div class="plan-card">
+          <article class="plan-card">
             <p class="plan-card__name">Light</p>
             <p class="plan-card__price">
               ¥300,000<span class="plan-card__price-suffix">〜</span>
@@ -134,9 +134,9 @@
               <li>10日〜30日</li>
             </ul>
             <a href="#contact" class="plan-card__cta" data-plan="Light">お問い合わせ</a>
-          </div>
+          </article>
 
-          <div class="plan-card plan-card--featured">
+          <article class="plan-card plan-card--featured">
             <p class="plan-card__badge">人気</p>
             <p class="plan-card__name">Standard</p>
             <p class="plan-card__price">
@@ -150,9 +150,9 @@
             <a href="#contact" class="plan-card__cta plan-card__cta--featured" data-plan="Standard"
               >お問い合わせ</a
             >
-          </div>
+          </article>
 
-          <div class="plan-card">
+          <article class="plan-card">
             <p class="plan-card__name">Pro</p>
             <p class="plan-card__price">
               ¥700,000<span class="plan-card__price-suffix">〜</span>
@@ -163,9 +163,9 @@
               <li>30日〜60日</li>
             </ul>
             <a href="#contact" class="plan-card__cta" data-plan="Pro">お問い合わせ</a>
-          </div>
+          </article>
 
-          <div class="plan-card">
+          <article class="plan-card">
             <p class="plan-card__name">Enterprise</p>
             <p class="plan-card__price">
               ¥1,500,000<span class="plan-card__price-suffix">〜</span>
@@ -176,7 +176,7 @@
               <li>30日〜90日</li>
             </ul>
             <a href="#contact" class="plan-card__cta" data-plan="Enterprise">お問い合わせ</a>
-          </div>
+          </article>
         </div>
       </div>
     </section>
@@ -187,6 +187,7 @@
         <h2 class="plan-table-title fade-in">プラン比較</h2>
         <div class="plan-table-wrap fade-in">
           <table class="plan-table">
+            <caption hidden>プラン別機能比較表</caption>
             <thead>
               <tr>
                 <th class="plan-table__feature"></th>
@@ -225,19 +226,19 @@
               <tr>
                 <td class="plan-table__label">拡張型投稿機能</td>
                 <td>
-                  <span class="plan-table__cross" aria-label="なし">—</span>
+                  <span class="plan-table__cross" aria-label="対応なし">—</span>
                 </td>
                 <td>
-                  <span class="plan-table__cross" aria-label="なし">—</span>
+                  <span class="plan-table__cross" aria-label="対応なし">—</span>
                 </td>
                 <td class="plan-table__td--featured">
-                  <span class="plan-table__cross" aria-label="なし">—</span>
+                  <span class="plan-table__cross" aria-label="対応なし">—</span>
                 </td>
                 <td>
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
                 <td>
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
               </tr>
               <tr>
@@ -251,19 +252,19 @@
               <tr>
                 <td class="plan-table__label">スマホ対応</td>
                 <td>
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
                 <td>
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
                 <td class="plan-table__td--featured">
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
                 <td>
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
                 <td>
-                  <span class="plan-table__check" aria-label="あり">✓</span>
+                  <span class="plan-table__check" aria-label="対応あり">✓</span>
                 </td>
               </tr>
             </tbody>
@@ -332,7 +333,7 @@
               required
             ></textarea>
           </div>
-          <button type="submit" class="contact__submit" id="contact-submit">
+          <button type="submit" class="contact__submit" id="contact-submit" aria-busy="false">
             送信する
           </button>
           <p
