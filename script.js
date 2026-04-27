@@ -53,7 +53,7 @@ fadeElements.forEach(function (el) {
 // Pre-select plan from plan card CTA
 document.querySelectorAll(".plan-card__cta[data-plan]").forEach(function (link) {
   link.addEventListener("click", function () {
-    const planSelect = document.getElementById("plan");
+    const planSelect = document.getElementById("plan-select");
     if (planSelect) {
       planSelect.value = this.dataset.plan;
     }
