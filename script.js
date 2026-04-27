@@ -50,6 +50,16 @@ fadeElements.forEach(function (el) {
   observer.observe(el);
 });
 
+// Pre-select plan from plan card CTA
+document.querySelectorAll(".plan-card__cta[data-plan]").forEach(function (link) {
+  link.addEventListener("click", function () {
+    const planSelect = document.getElementById("plan");
+    if (planSelect) {
+      planSelect.value = this.dataset.plan;
+    }
+  });
+});
+
 // Contact form submission
 const contactForm = document.getElementById("contact-form");
 

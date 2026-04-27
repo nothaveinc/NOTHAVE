@@ -120,7 +120,7 @@
               <li>1ページ</li>
               <li>5日〜15日</li>
             </ul>
-            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+            <a href="#contact" class="plan-card__cta" data-plan="Starter">お問い合わせ</a>
           </div>
 
           <div class="plan-card">
@@ -133,7 +133,7 @@
               <li>1ページ</li>
               <li>10日〜30日</li>
             </ul>
-            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+            <a href="#contact" class="plan-card__cta" data-plan="Light">お問い合わせ</a>
           </div>
 
           <div class="plan-card plan-card--featured">
@@ -147,7 +147,7 @@
               <li>3ページ</li>
               <li>20日〜40日</li>
             </ul>
-            <a href="#contact" class="plan-card__cta plan-card__cta--featured"
+            <a href="#contact" class="plan-card__cta plan-card__cta--featured" data-plan="Standard"
               >お問い合わせ</a
             >
           </div>
@@ -162,7 +162,7 @@
               <li>5ページ</li>
               <li>30日〜60日</li>
             </ul>
-            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+            <a href="#contact" class="plan-card__cta" data-plan="Pro">お問い合わせ</a>
           </div>
 
           <div class="plan-card">
@@ -175,7 +175,7 @@
               <li>応相談</li>
               <li>30日〜90日</li>
             </ul>
-            <a href="#contact" class="plan-card__cta">お問い合わせ</a>
+            <a href="#contact" class="plan-card__cta" data-plan="Enterprise">お問い合わせ</a>
           </div>
         </div>
       </div>
@@ -308,6 +308,18 @@
               placeholder="example@email.com"
               required
             />
+          </div>
+          <div class="contact__form-group">
+            <label for="plan" class="contact__label">ご希望のプラン</label>
+            <select id="plan" name="plan" class="contact__select">
+              <option value="">選択してください（任意）</option>
+              <option value="Starter">Starter（¥50,000〜）</option>
+              <option value="Light">Light（¥300,000〜）</option>
+              <option value="Standard">Standard（¥500,000〜）</option>
+              <option value="Pro">Pro（¥700,000〜）</option>
+              <option value="Enterprise">Enterprise（¥1,500,000〜）</option>
+              <option value="未定・まず相談したい">未定・まず相談したい</option>
+            </select>
           </div>
           <div class="contact__form-group">
             <label for="message" class="contact__label">メッセージ</label>
