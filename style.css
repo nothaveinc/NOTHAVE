@@ -182,16 +182,17 @@ img {
    ======================================== */
 .hero {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-end;
+  justify-content: flex-start;
   min-height: 100vh;
   background-color: #111;
   background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80');
   background-size: cover;
   background-position: center;
   color: #fff;
-  text-align: center;
-  padding: 0 1.5rem;
+  text-align: left;
+  padding: 0 5%;
+  padding-bottom: 7rem;
   position: relative;
 }
 
@@ -199,12 +200,20 @@ img {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.65);
+  background: linear-gradient(
+    110deg,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.65) 45%,
+    rgba(0, 0, 0, 0.30) 100%
+  );
 }
 
 .hero__content {
   position: relative;
   z-index: 1;
+  max-width: 640px;
+  padding-left: 2rem;
+  border-left: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .hero__label {
@@ -217,11 +226,11 @@ img {
 }
 
 .hero__title {
-  font-size: clamp(1.75rem, 5vw, 3.5rem);
+  font-size: clamp(2.25rem, 6.5vw, 4.75rem);
   font-weight: 700;
   letter-spacing: 0.06em;
   margin-bottom: 1.5rem;
-  line-height: 1.4;
+  line-height: 1.25;
 }
 
 .hero__sub {
@@ -245,17 +254,18 @@ img {
   margin-top: 1.5rem;
 }
 
-.hero__cta:hover {
+.hero__cta:hover,
+.hero__cta:focus-visible {
   background-color: #fff;
   color: #111;
+  outline: none;
 }
 
 /* Scroll indicator */
 .hero__scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
-  left: 50%;
-  transform: translateX(-50%);
+  right: 5%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -294,6 +304,35 @@ img {
 @keyframes scroll-drop {
   0%   { transform: translateY(-100%); }
   100% { transform: translateY(100%); }
+}
+
+/* Hero right-side vertical accent */
+.hero__aside {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.hero__aside-line {
+  width: 1px;
+  height: 56px;
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.hero__aside-text {
+  writing-mode: vertical-rl;
+  font-family: "Inter", sans-serif;
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.32);
+  text-transform: uppercase;
 }
 
 /* ========================================
@@ -1142,10 +1181,10 @@ img {
   transform: translateY(0);
 }
 
-.hero .fade-in:nth-child(1) { animation-delay: 0s; }
-.hero .fade-in:nth-child(2) { animation-delay: 0.15s; }
-.hero .fade-in:nth-child(3) { animation-delay: 0.3s; }
-.hero .fade-in:nth-child(4) { animation-delay: 0.45s; }
+.hero .fade-in:nth-child(1) { transition-delay: 0.1s; }
+.hero .fade-in:nth-child(2) { transition-delay: 0.3s; }
+.hero .fade-in:nth-child(3) { transition-delay: 0.5s; }
+.hero .fade-in:nth-child(4) { transition-delay: 0.7s; }
 
 /* ========================================
    Mobile (max-width: 768px)
@@ -1228,6 +1267,24 @@ img {
 
   .plan-card--featured .plan-card__badge {
     display: none;
+  }
+
+  .hero {
+    padding: 0 1.5rem;
+    padding-bottom: 5.5rem;
+  }
+
+  .hero__content {
+    max-width: 100%;
+    padding-left: 1.25rem;
+  }
+
+  .hero__aside {
+    display: none;
+  }
+
+  .hero__scroll-indicator {
+    right: 1.5rem;
   }
 }
 
