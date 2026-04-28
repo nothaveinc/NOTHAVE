@@ -220,7 +220,7 @@ img {
   font-size: clamp(1.75rem, 5vw, 3.5rem);
   font-weight: 700;
   letter-spacing: 0.06em;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   line-height: 1.4;
 }
 
@@ -230,7 +230,7 @@ img {
   letter-spacing: 0.08em;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 2.5rem;
-  margin-top: -1.5rem;
+  line-height: 1.6;
 }
 
 .hero__cta {
@@ -242,6 +242,7 @@ img {
   font-weight: 500;
   letter-spacing: var(--letter-spacing-base);
   transition: background-color 0.3s, color 0.3s;
+  margin-top: 1.5rem;
 }
 
 .hero__cta:hover {
@@ -343,7 +344,7 @@ img {
 .intro__text {
   font-size: 1rem;
   color: #444;
-  line-height: 2.1;
+  line-height: 1.9;
   margin-bottom: 2.5rem;
 }
 
@@ -430,7 +431,7 @@ img {
 .about__desc {
   font-size: 0.95rem;
   color: #444;
-  line-height: 1.95;
+  line-height: 1.9;
   margin-bottom: 1rem;
 }
 
@@ -450,17 +451,17 @@ img {
 
 .concept__quote {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   letter-spacing: 0.1em;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   font-style: normal;
 }
 
 .concept__body {
   font-size: 0.95rem;
   color: #888;
-  line-height: 2.1;
+  line-height: 1.9;
   max-width: 540px;
   margin: 0 auto;
 }
@@ -577,7 +578,7 @@ img {
 
 .skills__card {
   background-color: #f0f0f0;
-  padding: 2rem 1.75rem;
+  padding: 2rem;
   border: 1px solid var(--color-border);
   border-top: 2px solid var(--color-text-primary);
   transition: background-color 0.3s, border-color 0.25s;
@@ -600,6 +601,7 @@ img {
   font-size: 0.75rem;
   color: #888;
   letter-spacing: var(--letter-spacing-base);
+  line-height: 1.75;
 }
 
 /* ========================================
@@ -620,7 +622,7 @@ img {
 
 .strengths__card {
   background-color: #111;
-  padding: 2.5rem 2rem;
+  padding: 2rem;
   border-top: 1px solid #333;
   transition: background-color 0.3s;
 }
@@ -649,7 +651,7 @@ img {
 .strengths__desc {
   font-size: 0.875rem;
   color: #888;
-  line-height: 1.95;
+  line-height: 1.9;
 }
 
 /* Plan consult link */
@@ -819,7 +821,7 @@ img {
    Plan
    ======================================== */
 .plan-cards-section {
-  padding: var(--spacing-section) 0 4rem;
+  padding: var(--spacing-section) 0;
   background-color: var(--color-bg-light);
 }
 
@@ -840,7 +842,7 @@ img {
 
 .plan-card {
   background-color: var(--color-bg-light);
-  padding: 2rem 1.25rem;
+  padding: 2rem 1.5rem;
   border-top: 2px solid var(--color-text-primary);
   display: flex;
   flex-direction: column;
@@ -981,7 +983,7 @@ img {
 
 /* Comparison table */
 .plan-table-section {
-  padding: 4rem 0 var(--spacing-section);
+  padding: var(--spacing-section) 0;
   background-color: var(--color-bg-light);
 }
 
@@ -1081,7 +1083,7 @@ img {
 
 /* Plan CTA section */
 .plan-cta-section {
-  padding: 6rem 0;
+  padding: var(--spacing-section) 0;
   background-color: #111;
   text-align: center;
 }
@@ -1139,6 +1141,11 @@ img {
   opacity: 1;
   transform: translateY(0);
 }
+
+.hero .fade-in:nth-child(1) { animation-delay: 0s; }
+.hero .fade-in:nth-child(2) { animation-delay: 0.15s; }
+.hero .fade-in:nth-child(3) { animation-delay: 0.3s; }
+.hero .fade-in:nth-child(4) { animation-delay: 0.45s; }
 
 /* ========================================
    Mobile (max-width: 768px)
@@ -1234,7 +1241,7 @@ img {
    Skills Stats（実績数値バー）
    ======================================== */
 .skills-stats {
-  padding: var(--spacing-section) 0 3rem;
+  padding: var(--spacing-section) 0;
   background-color: #fff;
 }
 
@@ -1247,7 +1254,7 @@ img {
 
 .stats__item {
   background-color: #fff;
-  padding: 2.5rem 1.5rem;
+  padding: 2rem 1.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -1301,12 +1308,12 @@ img {
 
 .skills-flow__title {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   letter-spacing: var(--letter-spacing-base);
   color: var(--color-text-primary);
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   line-height: 1.6;
 }
 
@@ -1325,7 +1332,7 @@ img {
   background-color: #fff;
   border: 1px solid var(--color-border);
   border-top: 2px solid var(--color-text-primary);
-  padding: 1.75rem 1.25rem;
+  padding: 1.75rem 1.5rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -1451,12 +1458,12 @@ img {
 
 .skills-why__title {
   font-family: "Noto Sans JP", sans-serif;
-  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-size: clamp(1.5rem, 3vw, 2rem);
   font-weight: 700;
   letter-spacing: var(--letter-spacing-base);
   color: #fff;
   text-align: center;
-  margin-bottom: 3.5rem;
+  margin-bottom: 3rem;
   line-height: 1.6;
 }
 
@@ -1469,7 +1476,7 @@ img {
 
 .why-card {
   background-color: #111;
-  padding: 2.5rem 2rem;
+  padding: 2rem;
   border-top: 1px solid #333;
   transition: background-color 0.3s;
 }
@@ -1499,7 +1506,7 @@ img {
 .why-card__desc {
   font-size: 0.875rem;
   color: #888;
-  line-height: 1.95;
+  line-height: 1.9;
 }
 
 /* plan-cta-section内のクラス名統一（skills/index.html用） */
