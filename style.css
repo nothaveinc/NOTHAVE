@@ -191,8 +191,7 @@ img {
   background-position: center;
   color: #fff;
   text-align: left;
-  padding: 0 5%;
-  padding-bottom: 7rem;
+  padding: 0 5% 7rem max(5%, calc((100% - 1080px) / 2));
   position: relative;
 }
 
@@ -1270,8 +1269,7 @@ img {
   }
 
   .hero {
-    padding: 0 1.5rem;
-    padding-bottom: 5.5rem;
+    padding: 0 1.5rem 5.5rem;
   }
 
   .hero__content {
