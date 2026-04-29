@@ -239,12 +239,10 @@ img {
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: 2.5rem;
   line-height: 1.6;
-  text-align: center;
 }
 
 .hero__cta {
-  display: block;
-  text-align: center;
+  display: inline-block;
   padding: 0.875rem 2.5rem;
   border: 1px solid #fff;
   color: #fff;
@@ -252,7 +250,6 @@ img {
   font-weight: 500;
   letter-spacing: var(--letter-spacing-base);
   transition: background-color 0.3s, color 0.3s;
-  margin-top: 1.5rem;
 }
 
 .hero__cta:hover,
@@ -266,7 +263,7 @@ img {
 .hero__scroll-indicator {
   position: absolute;
   bottom: 2.5rem;
-  right: 5%;
+  right: 2.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
