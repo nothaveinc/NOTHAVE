@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYNAPSE｜次世代クラウドAIプラットフォーム</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo">SYNAPSE</a>
+      <nav class="nav">
+        <ul class="nav-list" id="navList">
+          <li><a href="#features">Features</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#company">Company</a></li>
+          <li><a href="#cta" class="nav-cta">Get Started</a></li>
+        </ul>
+        <button class="nav-toggle" id="navToggle" aria-label="メニューを開く">
+          <span></span><span></span><span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero" id="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-badge fade-in">次世代クラウドAIプラットフォーム</div>
+        <h1 class="hero-title fade-in">
+          AIが、ビジネスの<br>
+          <span class="grad-text">意思決定を加速する。</span>
+        </h1>
+        <p class="hero-desc fade-in">
+          SYNAPSEは、リアルタイム分析・予測モデリング・自動最適化を<br class="pc-only">
+          ひとつのプラットフォームに統合した次世代AIクラウドです。
+        </p>
+        <div class="hero-actions fade-in">
+          <a href="#cta" class="btn-primary">無料で始める</a>
+          <a href="#features" class="btn-ghost">機能を見る</a>
+        </div>
+      </div>
+
+      <!-- UI Mockup (CSS only) -->
+      <div class="hero-mockup fade-in" aria-hidden="true">
+        <div class="mockup-window">
+          <div class="mockup-topbar">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+            <span class="mockup-title-bar">synapse.ai — dashboard</span>
+          </div>
+          <div class="mockup-body">
+            <div class="mockup-sidebar">
+              <div class="sidebar-item active">
+                <span class="sidebar-icon">▣</span>
+                <span>Dashboard</span>
+              </div>
+              <div class="sidebar-item">
+                <span class="sidebar-icon">◈</span>
+                <span>Analytics</span>
+              </div>
+              <div class="sidebar-item">
+                <span class="sidebar-icon">◆</span>
+                <span>Models</span>
+              </div>
+              <div class="sidebar-item">
+                <span class="sidebar-icon">◉</span>
+                <span>Settings</span>
+              </div>
+            </div>
+            <div class="mockup-main">
+              <div class="mockup-stat-row">
+                <div class="mockup-stat">
+                  <div class="mockup-stat-label">Uptime</div>
+                  <div class="mockup-stat-val">99.99<span>%</span></div>
+                  <div class="mockup-trend up">+0.01%</div>
+                </div>
+                <div class="mockup-stat">
+                  <div class="mockup-stat-label">Response</div>
+                  <div class="mockup-stat-val">200<span>ms</span></div>
+                  <div class="mockup-trend up">-12ms</div>
+                </div>
+              </div>
+              <div class="mockup-chart">
+                <div class="chart-label">AI Inference Load</div>
+                <div class="chart-bars">
+                  <div class="chart-bar" style="--h: 40%"></div>
+                  <div class="chart-bar" style="--h: 65%"></div>
+                  <div class="chart-bar" style="--h: 50%"></div>
+                  <div class="chart-bar" style="--h: 80%"></div>
+                  <div class="chart-bar" style="--h: 60%"></div>
+                  <div class="chart-bar" style="--h: 90%"></div>
+                  <div class="chart-bar" style="--h: 75%"></div>
+                  <div class="chart-bar active" style="--h: 85%"></div>
+                </div>
+              </div>
+              <div class="mockup-code">
+                <div class="code-line"><span class="code-key">const</span> <span class="code-var">result</span> = <span class="code-fn">synapse</span>.<span class="code-fn">predict</span>({</div>
+                <div class="code-line code-indent"><span class="code-key">model</span>: <span class="code-str">"forecaster-v3"</span>,</div>
+                <div class="code-line code-indent"><span class="code-key">data</span>: <span class="code-var">stream</span></div>
+                <div class="code-line">});</div>
+                <div class="code-line code-out"><span class="code-cmt">// → confidence: 0.98</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="mockup-glow"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="section features-section" id="features">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Features</span>
+        <h2 class="section-title">インテリジェンスを、実装する。</h2>
+        <p class="section-desc">SYNAPSEの三つのコア機能が、ビジネスの意思決定を根本から変える。</p>
+      </div>
+      <div class="features-grid">
+
+        <div class="feature-card fade-in">
+          <div class="feature-number">01</div>
+          <div class="feature-icon-wrap">
+            <div class="feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" stroke="url(#g1)" stroke-width="1.5"/>
+                <path d="M10 26 L15 18 L20 22 L27 12 L32 18" stroke="url(#g1)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="32" cy="18" r="2" fill="#4361EE"/>
+                <defs>
+                  <linearGradient id="g1" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4361EE"/>
+                    <stop offset="1" stop-color="#7B2FBE"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <h3 class="feature-title">リアルタイム分析</h3>
+          <p class="feature-desc">膨大なデータを瞬時に処理し、ビジネスのボトルネックを可視化。ストリーミング処理で遅延ゼロのインサイトを提供します。</p>
+          <div class="feature-tag">Stream Processing</div>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-number">02</div>
+          <div class="feature-icon-wrap">
+            <div class="feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" stroke="url(#g2)" stroke-width="1.5"/>
+                <path d="M12 28 Q20 10 28 20" stroke="url(#g2)" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="3 2"/>
+                <circle cx="28" cy="20" r="2.5" fill="#7B2FBE"/>
+                <path d="M28 20 L34 16" stroke="#7B2FBE" stroke-width="1.2" stroke-linecap="round"/>
+                <defs>
+                  <linearGradient id="g2" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4361EE"/>
+                    <stop offset="1" stop-color="#7B2FBE"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <h3 class="feature-title">予測モデリング</h3>
+          <p class="feature-desc">機械学習で将来のトレンドを予測。在庫・需要・リスクを先読みし、先手を打つ経営判断を支援します。</p>
+          <div class="feature-tag">Machine Learning</div>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-number">03</div>
+          <div class="feature-icon-wrap">
+            <div class="feature-icon">
+              <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="18" stroke="url(#g3)" stroke-width="1.5"/>
+                <path d="M14 20 A6 6 0 1 1 20 26" stroke="url(#g3)" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M20 26 L18 23 L23 23 Z" fill="#4361EE"/>
+                <circle cx="20" cy="20" r="2" fill="url(#g3)"/>
+                <defs>
+                  <linearGradient id="g3" x1="0" y1="0" x2="40" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#4361EE"/>
+                    <stop offset="1" stop-color="#7B2FBE"/>
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <h3 class="feature-title">自動最適化</h3>
+          <p class="feature-desc">AIが継続的にプロセスを改善。人間の判断を拡張し、運用コストの削減と品質向上を同時に実現します。</p>
+          <div class="feature-tag">AutoML / RL</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-section" id="stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item fade-in">
+          <div class="stat-number">
+            <span class="counter" data-count="9999" data-decimal="2">0</span>
+            <span class="stat-unit">%</span>
+          </div>
+          <div class="stat-label">Uptime SLA</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-number">
+            <span class="counter" data-count="200">0</span>
+            <span class="stat-unit">ms</span>
+          </div>
+          <div class="stat-label">Avg Response Time</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-number">
+            <span class="counter" data-count="50000">0</span>
+            <span class="stat-unit">+</span>
+          </div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-item fade-in">
+          <div class="stat-number">
+            <span class="counter" data-count="03" data-decimal="1">0</span>
+            <span class="stat-unit">s</span>
+          </div>
+          <div class="stat-label">AI Inference Speed</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing -->
+  <section class="section pricing-section" id="pricing">
+    <div class="container">
+      <div class="section-header fade-in">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-title">シンプルな料金体系</h2>
+        <p class="section-desc">スタートアップから大企業まで、成長に合わせたプランを選択。</p>
+      </div>
+      <div class="pricing-grid">
+
+        <div class="pricing-card fade-in">
+          <div class="pricing-plan">Starter</div>
+          <div class="pricing-price">
+            <span class="price-currency">¥</span>
+            <span class="price-amount">29,800</span>
+            <span class="price-period">/月</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> 5ユーザー</li>
+            <li><span class="check">✓</span> 100GB ストレージ</li>
+            <li><span class="check">✓</span> リアルタイム分析</li>
+            <li><span class="check">✓</span> メールサポート</li>
+            <li class="disabled"><span class="check">—</span> 予測モデリング</li>
+            <li class="disabled"><span class="check">—</span> 自動最適化</li>
+          </ul>
+          <a href="#cta" class="btn-outline">今すぐ始める</a>
+        </div>
+
+        <div class="pricing-card pricing-featured fade-in">
+          <div class="pricing-badge">Most Popular</div>
+          <div class="pricing-plan">Pro</div>
+          <div class="pricing-price">
+            <span class="price-currency">¥</span>
+            <span class="price-amount">89,800</span>
+            <span class="price-period">/月</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> 25ユーザー</li>
+            <li><span class="check">✓</span> 1TB ストレージ</li>
+            <li><span class="check">✓</span> リアルタイム分析</li>
+            <li><span class="check">✓</span> 予測モデリング</li>
+            <li><span class="check">✓</span> 自動最適化</li>
+            <li><span class="check">✓</span> 優先サポート</li>
+          </ul>
+          <a href="#cta" class="btn-primary">今すぐ始める</a>
+        </div>
+
+        <div class="pricing-card fade-in">
+          <div class="pricing-plan">Enterprise</div>
+          <div class="pricing-price pricing-price-contact">
+            <span class="price-contact">要相談</span>
+          </div>
+          <ul class="pricing-features">
+            <li><span class="check">✓</span> ユーザー数無制限</li>
+            <li><span class="check">✓</span> ストレージ無制限</li>
+            <li><span class="check">✓</span> 全機能利用可能</li>
+            <li><span class="check">✓</span> 専任サポート</li>
+            <li><span class="check">✓</span> SLA保証</li>
+            <li><span class="check">✓</span> オンプレミス対応</li>
+          </ul>
+          <a href="#cta" class="btn-outline">お問い合わせ</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="cta">
+    <div class="cta-bg-glow" aria-hidden="true"></div>
+    <div class="container">
+      <div class="cta-inner fade-in">
+        <div class="cta-label">Start Free Trial</div>
+        <h2 class="cta-title">今すぐ無料で始める</h2>
+        <p class="cta-desc">クレジットカード不要。14日間のフルアクセス無料トライアル。<br>セットアップは3分で完了します。</p>
+        <div class="cta-actions">
+          <a href="#" class="btn-primary btn-large">無料トライアルを開始</a>
+          <a href="#" class="cta-sub-link">セールスに相談する →</a>
+        </div>
+        <div class="cta-badges">
+          <span class="cta-badge">SOC 2 Type II</span>
+          <span class="cta-badge">ISO 27001</span>
+          <span class="cta-badge">GDPR対応</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer" id="company">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">SYNAPSE</div>
+          <p class="footer-tagline">次世代クラウドAIプラットフォーム</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <div class="footer-col-title">Product</div>
+            <ul>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">API Reference</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Company</div>
+            <ul>
+              <li><a href="#">About</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Careers</a></li>
+              <li><a href="#">Press</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <div class="footer-col-title">Support</div>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Status</a></li>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 SYNAPSE Inc. All rights reserved.</p>
+        <div class="footer-lang">
+          <span>日本語</span>
+          <span>English</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

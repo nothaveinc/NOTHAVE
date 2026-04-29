@@ -566,6 +566,36 @@ img {
   background-position: center;
 }
 
+.works__card-image--fashion {
+  background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center top;
+}
+
+.works__card-image--realestate {
+  background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.works__card-image--tech {
+  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.works__card-image--wedding {
+  background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
+.works__card-image--music {
+  background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center;
+}
+
 .works__card-overlay {
   position: absolute;
   inset: 0;
