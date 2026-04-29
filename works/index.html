@@ -46,85 +46,162 @@
 
     <section class="works">
       <div class="container">
-        <p class="plan-intro fade-in">飲食・コーポレート・ファッション・不動産・テック・ウェディング・音楽など、<br />10のジャンルにわたる制作実績をご覧ください。</p>
-        <div class="works__grid">
-          <a href="restaurant/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--restaurant"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">Cafe MOKUREN</h2>
-              <span class="works__card-tag">飲食店</span>
-            </div>
-          </a>
-          <a href="corporate/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--corporate"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">株式会社ネクストブリッジ</h2>
-              <span class="works__card-tag">コーポレート</span>
-            </div>
-          </a>
-          <a href="creative/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--creative"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">VOID CREATIVE</h2>
-              <span class="works__card-tag">クリエイティブ</span>
-            </div>
-          </a>
-          <a href="wellness/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--wellness"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">LUMIERE Wellness</h2>
-              <span class="works__card-tag">ウェルネス</span>
-            </div>
-          </a>
-          <a href="sports/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--sports"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">KYOTO PHOENIX FC</h2>
-              <span class="works__card-tag">スポーツチーム</span>
-            </div>
-          </a>
-          <a href="fashion/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--fashion"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">MAISON NOIR</h2>
-              <span class="works__card-tag">ファッション</span>
-            </div>
-          </a>
-          <a href="realestate/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--realestate"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">ARCH PROPERTIES</h2>
-              <span class="works__card-tag">不動産</span>
-            </div>
-          </a>
-          <a href="tech/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--tech"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">SYNAPSE</h2>
-              <span class="works__card-tag">テック / SaaS</span>
-            </div>
-          </a>
-          <a href="wedding/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--wedding"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">Fleur &amp; Co.</h2>
-              <span class="works__card-tag">ウェディング</span>
-            </div>
-          </a>
-          <a href="music/" class="works__card fade-in">
-            <div class="works__card-image works__card-image--music"></div>
-            <div class="works__card-overlay">
-              <h2 class="works__card-title">ECHO SESSIONS</h2>
-              <span class="works__card-tag">音楽 / エンタメ</span>
-            </div>
-          </a>
+        <p class="works__lead fade-in">
+          飲食・コーポレート・ファッションなど10ジャンルの制作実績。<br />
+          あなたのビジネスに近い事例から、制作のイメージをつかんでください。
+        </p>
+
+        <!-- カテゴリーフィルター -->
+        <div class="works__filter fade-in" role="group" aria-label="カテゴリで絞り込む">
+          <button class="works__filter-btn is-active" data-filter="all">All <span class="works__filter-count">10</span></button>
+          <button class="works__filter-btn" data-filter="restaurant">飲食</button>
+          <button class="works__filter-btn" data-filter="corporate">コーポレート</button>
+          <button class="works__filter-btn" data-filter="creative">クリエイティブ</button>
+          <button class="works__filter-btn" data-filter="wellness">ウェルネス</button>
+          <button class="works__filter-btn" data-filter="sports">スポーツ</button>
+          <button class="works__filter-btn" data-filter="fashion">ファッション</button>
+          <button class="works__filter-btn" data-filter="realestate">不動産</button>
+          <button class="works__filter-btn" data-filter="tech">テック</button>
+          <button class="works__filter-btn" data-filter="wedding">ウェディング</button>
+          <button class="works__filter-btn" data-filter="music">音楽</button>
         </div>
+
+        <div class="works__grid" id="works-grid">
+
+          <a href="restaurant/" class="works__card fade-in" data-category="restaurant">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--restaurant"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">飲食店</span>
+              <h2 class="works__card-title">Cafe MOKUREN</h2>
+              <p class="works__card-desc">隠れ家カフェのブランドWebリニューアル。温かみのあるデザインで来店予約を増加。</p>
+            </div>
+          </a>
+
+          <a href="corporate/" class="works__card fade-in" data-category="corporate">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--corporate"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">コーポレート</span>
+              <h2 class="works__card-title">株式会社ネクストブリッジ</h2>
+              <p class="works__card-desc">ITコンサル企業のコーポレートサイト。採用・信頼性強化を目的としたオリジナル設計。</p>
+            </div>
+          </a>
+
+          <a href="creative/" class="works__card fade-in" data-category="creative">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--creative"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">クリエイティブ</span>
+              <h2 class="works__card-title">VOID CREATIVE</h2>
+              <p class="works__card-desc">クリエイティブスタジオのポートフォリオ。作品の世界観を前面に出した全画面デザイン。</p>
+            </div>
+          </a>
+
+          <a href="wellness/" class="works__card fade-in" data-category="wellness">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--wellness"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">ウェルネス</span>
+              <h2 class="works__card-title">LUMIERE Wellness</h2>
+              <p class="works__card-desc">ウェルネス施設のトータルブランディング。予約フォーム連動でオンライン予約を一元化。</p>
+            </div>
+          </a>
+
+          <a href="sports/" class="works__card fade-in" data-category="sports">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--sports"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">スポーツチーム</span>
+              <h2 class="works__card-title">KYOTO PHOENIX FC</h2>
+              <p class="works__card-desc">地域サッカークラブの公式サイト。試合情報・選手・チケット販売を統合構築。</p>
+            </div>
+          </a>
+
+          <a href="fashion/" class="works__card fade-in" data-category="fashion">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--fashion"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">ファッション</span>
+              <h2 class="works__card-title">MAISON NOIR</h2>
+              <p class="works__card-desc">ハイエンドブランドのECサイト。高級感を引き出す余白重視のUI設計とカート連動。</p>
+            </div>
+          </a>
+
+          <a href="realestate/" class="works__card fade-in" data-category="realestate">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--realestate"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">不動産</span>
+              <h2 class="works__card-title">ARCH PROPERTIES</h2>
+              <p class="works__card-desc">不動産会社のコーポレートサイト。物件検索と問い合わせ動線を最適化。</p>
+            </div>
+          </a>
+
+          <a href="tech/" class="works__card fade-in" data-category="tech">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--tech"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">テック / SaaS</span>
+              <h2 class="works__card-title">SYNAPSE</h2>
+              <p class="works__card-desc">SaaS企業のサービスサイト。機能説明から資料DLまでのCVR最適化導線を設計。</p>
+            </div>
+          </a>
+
+          <a href="wedding/" class="works__card fade-in" data-category="wedding">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--wedding"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">ウェディング</span>
+              <h2 class="works__card-title">Fleur &amp; Co.</h2>
+              <p class="works__card-desc">ウェディングプランナーのブランドサイト。情緒的な世界観でカウンセリング予約を促進。</p>
+            </div>
+          </a>
+
+          <a href="music/" class="works__card fade-in" data-category="music">
+            <div class="works__card-thumb">
+              <div class="works__card-image works__card-image--music"></div>
+              <div class="works__card-hover-layer"><span class="works__card-view">View →</span></div>
+            </div>
+            <div class="works__card-body">
+              <span class="works__card-tag">音楽 / エンタメ</span>
+              <h2 class="works__card-title">ECHO SESSIONS</h2>
+              <p class="works__card-desc">音楽イベントのプロモーションサイト。ライブ情報とSNS連動で集客をサポート。</p>
+            </div>
+          </a>
+
+        </div>
+
+        <p class="works__empty-msg" id="works-empty" hidden>
+          該当する制作事例はありません。
+        </p>
       </div>
     </section>
 
     <section class="plan-cta-section">
       <div class="container">
-        <p class="plan-cta-text fade-in">あなたのビジネスに合ったWebサイトをご提案します。</p>
+        <p class="plan-cta-text fade-in">
+          気になる事例はありましたか？<br />
+          同じ業種・近いイメージでのご依頼、大歓迎です。
+        </p>
         <a href="../#contact" class="plan-cta-btn fade-in">無料相談・お問い合わせ</a>
       </div>
     </section>
@@ -136,5 +213,30 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+      (function () {
+        var btns = document.querySelectorAll('.works__filter-btn');
+        var cards = document.querySelectorAll('.works__card');
+        var emptyMsg = document.getElementById('works-empty');
+
+        btns.forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            var filter = btn.dataset.filter;
+
+            btns.forEach(function (b) { b.classList.remove('is-active'); });
+            btn.classList.add('is-active');
+
+            var visible = 0;
+            cards.forEach(function (card) {
+              var match = filter === 'all' || card.dataset.category === filter;
+              card.hidden = !match;
+              if (match) visible++;
+            });
+
+            emptyMsg.hidden = visible > 0;
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
