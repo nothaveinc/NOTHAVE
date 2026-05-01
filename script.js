@@ -120,6 +120,7 @@ if (contactForm) {
       if (response.ok) {
         document.getElementById("name").value = "";
         document.getElementById("email").value = "";
+        document.getElementById("plan-select").value = "";
         document.getElementById("message").value = "";
         successMsg.hidden = false;
         submitBtn.textContent = "送信する";

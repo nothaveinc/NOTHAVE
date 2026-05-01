@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>404 | NOTHAVE</title>
+    <meta name="robots" content="noindex" />
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      .notfound {
+        min-height: 100vh;
+        background-color: #111;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+      }
+      .notfound__inner {
+        max-width: 480px;
+      }
+      .notfound__code {
+        font-family: "Inter", sans-serif;
+        font-size: clamp(6rem, 20vw, 10rem);
+        font-weight: 700;
+        letter-spacing: -0.04em;
+        color: #fff;
+        line-height: 1;
+        margin-bottom: 1.5rem;
+      }
+      .notfound__label {
+        font-family: "Inter", sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: #555;
+        margin-bottom: 1.5rem;
+      }
+      .notfound__text {
+        font-size: 0.95rem;
+        color: #888;
+        line-height: 1.9;
+        margin-bottom: 3rem;
+      }
+      .notfound__back {
+        display: inline-block;
+        padding: 0.875rem 2.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        color: rgba(255, 255, 255, 0.7);
+        font-family: "Inter", sans-serif;
+        font-size: 0.875rem;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        transition: border-color 0.3s, color 0.3s;
+      }
+      .notfound__back:hover {
+        border-color: #fff;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notfound">
+      <div class="notfound__inner">
+        <p class="notfound__label">Page Not Found</p>
+        <p class="notfound__code">404</p>
+        <p class="notfound__text">
+          お探しのページは見つかりませんでした。<br />
+          URLをご確認いただくか、トップページへお戻りください。
+        </p>
+        <a href="/" class="notfound__back">← トップへ戻る</a>
+      </div>
+    </div>
+  </body>
+</html>

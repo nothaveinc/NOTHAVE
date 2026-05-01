@@ -438,6 +438,9 @@ img {
   width: 100%;
   aspect-ratio: 1;
   background-color: var(--color-text-primary);
+  background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80');
+  background-size: cover;
+  background-position: center top;
   position: relative;
 }
 
@@ -1256,14 +1259,14 @@ img {
   text-align: center;
 }
 
-.plan-cta-text {
+.plan-cta__text {
   font-size: 1rem;
   color: #888;
   margin-bottom: 2rem;
   line-height: 1.9;
 }
 
-.plan-cta-btn {
+.plan-cta__btn {
   display: inline-block;
   padding: 0.875rem 2.5rem;
   border: 1px solid #fff;
@@ -1275,7 +1278,7 @@ img {
   transition: background-color 0.3s, color 0.3s;
 }
 
-.plan-cta-btn:hover {
+.plan-cta__btn:hover {
   background-color: #fff;
   color: #111;
 }
@@ -1703,30 +1706,6 @@ img {
   line-height: 1.9;
 }
 
-/* plan-cta-section内のクラス名統一（skills/index.html用） */
-.plan-cta__text {
-  font-size: 1rem;
-  color: #888;
-  margin-bottom: 2rem;
-  line-height: 1.9;
-}
-
-.plan-cta__btn {
-  display: inline-block;
-  padding: 0.875rem 2.5rem;
-  border: 1px solid #fff;
-  color: #fff;
-  font-family: "Inter", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  letter-spacing: 0.06em;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.plan-cta__btn:hover {
-  background-color: #fff;
-  color: #111;
-}
 
 /* ========================================
    レスポンシブ追加分（768px以下）
@@ -1791,5 +1770,139 @@ img {
 
   .stat__number {
     font-size: 2.25rem;
+  }
+}
+
+/* ========================================
+   Testimonials（Voice）
+   ======================================== */
+.testimonials {
+  padding: var(--spacing-section) 0;
+  background-color: #fff;
+}
+
+.testimonials__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background-color: #e8e8e8;
+}
+
+.testimonial {
+  background-color: #fff;
+  padding: 2rem;
+  border-top: 2px solid var(--color-text-primary);
+  display: flex;
+  flex-direction: column;
+}
+
+.testimonial::before {
+  content: '\201C';
+  font-family: "Inter", sans-serif;
+  font-size: 2.75rem;
+  font-weight: 700;
+  color: #e8e8e8;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.testimonial__quote {
+  font-size: 0.875rem;
+  color: #444;
+  line-height: 1.9;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.testimonial__footer {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 1rem;
+}
+
+.testimonial__name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  letter-spacing: 0.02em;
+}
+
+.testimonial__meta {
+  font-size: 0.75rem;
+  color: #999;
+  letter-spacing: var(--letter-spacing-base);
+  margin-top: 0.2rem;
+}
+
+/* ========================================
+   FAQ
+   ======================================== */
+.faq {
+  padding: var(--spacing-section) 0;
+  background-color: var(--color-bg-lighter);
+}
+
+.faq__list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq__item {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.faq__item:first-child {
+  border-top: 1px solid #e0e0e0;
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  list-style: none;
+}
+
+.faq__question::-webkit-details-marker {
+  display: none;
+}
+
+.faq__question::after {
+  content: '+';
+  font-family: "Inter", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 300;
+  color: #bbb;
+  flex-shrink: 0;
+  transition: transform 0.25s, color 0.25s;
+}
+
+.faq__item[open] .faq__question::after {
+  transform: rotate(45deg);
+  color: var(--color-text-primary);
+}
+
+.faq__answer {
+  padding: 0 0 1.4rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.9;
+  max-width: 640px;
+}
+
+@media (max-width: 768px) {
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .faq__question {
+    font-size: 0.85rem;
   }
 }
