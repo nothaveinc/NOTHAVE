@@ -1312,6 +1312,36 @@ img {
   border-top: 1px solid var(--color-border);
 }
 
+.footer__sns {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.footer__sns-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #777;
+  transition: color 0.25s;
+  text-decoration: none;
+}
+
+.footer__sns-link:hover {
+  color: #fff;
+}
+
+.footer__sns-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.footer__sns-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
 .footer__copy {
   font-size: 0.8rem;
   letter-spacing: 0.02em;
