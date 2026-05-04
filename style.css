@@ -259,6 +259,13 @@ img {
   outline: none;
 }
 
+.hero__price-note {
+  margin-top: 1rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: var(--letter-spacing-base);
+}
+
 /* Scroll indicator */
 .hero__scroll-indicator {
   position: absolute;
@@ -512,6 +519,17 @@ img {
 .works {
   padding: var(--spacing-section) 0;
   background-color: var(--color-bg-light);
+}
+
+.works__notice {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .works__lead {
