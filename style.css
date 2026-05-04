@@ -186,7 +186,7 @@ img {
   justify-content: center;
   min-height: 100vh;
   background-color: #111;
-  background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1920&q=80');
+  background-image: url('assets/images/hero.jpg');
   background-size: cover;
   background-position: center;
   color: #fff;
@@ -438,9 +438,9 @@ img {
   width: 100%;
   aspect-ratio: 1;
   background-color: var(--color-text-primary);
-  background-image: url('https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/about-avatar.svg');
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   position: relative;
 }
 
@@ -608,61 +608,61 @@ img {
 }
 
 .works__card-image--restaurant {
-  background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-restaurant.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--corporate {
-  background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-corporate.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--creative {
-  background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-creative.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--wellness {
-  background-image: url('https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-wellness.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--sports {
-  background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-sports.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--fashion {
-  background-image: url('https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-fashion.jpg');
   background-size: cover;
   background-position: center top;
 }
 
 .works__card-image--realestate {
-  background-image: url('https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-realestate.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--tech {
-  background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-tech.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--wedding {
-  background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-wedding.jpg');
   background-size: cover;
   background-position: center;
 }
 
 .works__card-image--music {
-  background-image: url('https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=800&q=80');
+  background-image: url('assets/images/works-music.jpg');
   background-size: cover;
   background-position: center;
 }

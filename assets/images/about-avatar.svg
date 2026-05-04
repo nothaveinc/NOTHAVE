@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <!-- Background -->
+  <rect width="400" height="400" fill="#111"/>
+
+  <!-- Subtle scanline texture -->
+  <rect width="400" height="400" fill="url(#scanlines)" opacity="0.04"/>
+  <defs>
+    <pattern id="scanlines" width="1" height="3" patternUnits="userSpaceOnUse">
+      <rect width="1" height="1" fill="#fff"/>
+    </pattern>
+  </defs>
+
+  <!-- Suit body / shoulders -->
+  <path d="
+    M 40 410
+    L 40 272
+    C 40 248 65 232 95 222
+    L 158 207
+    L 200 292
+    L 242 207
+    L 305 222
+    C 335 232 360 248 360 272
+    L 360 410
+    Z
+  " fill="#181818" stroke="rgba(255,255,255,0.1)" stroke-width="1.5" stroke-linejoin="round"/>
+
+  <!-- Left lapel -->
+  <path d="M 158 207 L 190 252 L 200 292 L 200 258 L 178 232 Z"
+        fill="#1e1e1e" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-linejoin="round"/>
+
+  <!-- Right lapel -->
+  <path d="M 242 207 L 210 252 L 200 292 L 200 258 L 222 232 Z"
+        fill="#1e1e1e" stroke="rgba(255,255,255,0.07)" stroke-width="1" stroke-linejoin="round"/>
+
+  <!-- Tie -->
+  <polygon points="200,212 211,236 205,318 195,318 189,236"
+           fill="#161616" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+
+  <!-- Head — completely dark, no face (Anonymous) -->
+  <circle cx="200" cy="143" r="72" fill="#111" stroke="rgba(255,255,255,0.13)" stroke-width="1.5"/>
+</svg>
