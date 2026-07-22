@@ -1,0 +1,171 @@
+
+    .club-page { padding: 80px 0 0; }
+
+    /* ── Overview section ── */
+    .overview-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;
+      padding: 80px 0;
+    }
+    .overview-crest {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      gap: 28px;
+    }
+    .crest-large {
+      width: 180px; height: 200px;
+      background: linear-gradient(155deg, var(--purple-dark) 0%, var(--purple) 100%);
+      clip-path: polygon(50% 0%, 100% 18%, 100% 62%, 50% 100%, 0% 62%, 0% 18%);
+      position: relative; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 20px 60px rgba(91,33,182,0.35);
+    }
+    .crest-large::after {
+      content: "K"; position: absolute;
+      font-family: var(--font-en); font-weight: 900; font-size: 4.5rem;
+      color: var(--gold); line-height: 1;
+    }
+    .crest-subtitle { font-family: var(--font-en); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; color: var(--gray-400); text-transform: uppercase; }
+
+    .overview-info-table { width: 100%; }
+    .overview-info-table tr { border-bottom: 1px solid var(--gray-100); }
+    .overview-info-table td { padding: 12px 0; font-size: 0.84rem; vertical-align: top; line-height: 1.65; }
+    .overview-info-table td:first-child { color: var(--gray-400); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.04em; min-width: 100px; padding-right: 16px; }
+
+    /* ── Philosophy ── */
+    .philosophy-section {
+      background: linear-gradient(155deg, var(--purple-deep) 0%, var(--purple-dark) 100%);
+      padding: 100px 0;
+      color: var(--white);
+    }
+    .philosophy-inner { max-width: 780px; margin: 0 auto; text-align: center; }
+    .philosophy-quote {
+      font-size: clamp(1.4rem, 3.5vw, 2.1rem); font-weight: 700; line-height: 1.7;
+      margin-bottom: 28px; letter-spacing: 0.04em;
+    }
+    .philosophy-quote em {
+      font-style: normal; color: var(--gold); display: inline-block;
+    }
+    .philosophy-sub { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.9; }
+
+    .mission-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 64px; }
+    .mission-card {
+      background: rgba(255,255,255,0.07); border-radius: 8px; padding: 32px 24px;
+      border: 1px solid rgba(255,255,255,0.1); text-align: center;
+    }
+    .mission-icon {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(245,158,11,0.15); display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 1.6rem;
+    }
+    .mission-title { font-weight: 700; font-size: 1rem; margin-bottom: 10px; color: var(--gold); }
+    .mission-desc { font-size: 0.8rem; color: rgba(255,255,255,0.55); line-height: 1.85; }
+
+    /* ── History ── */
+    .history-section { padding: 100px 0; background: var(--white); }
+    .history-timeline { position: relative; max-width: 720px; margin: 0 auto; }
+    .history-timeline::before {
+      content: ''; position: absolute; left: 80px; top: 0; bottom: 0;
+      width: 2px; background: var(--gray-200);
+    }
+    .history-item { display: flex; gap: 32px; margin-bottom: 40px; position: relative; }
+    .history-year {
+      min-width: 80px; text-align: right; padding-top: 2px;
+      font-family: var(--font-en); font-size: 0.78rem; font-weight: 800; color: var(--purple);
+      letter-spacing: 0.04em; flex-shrink: 0;
+    }
+    .history-dot {
+      position: absolute; left: 72px; top: 6px;
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--white); border: 3px solid var(--purple); flex-shrink: 0;
+      z-index: 1;
+    }
+    .history-dot--gold { border-color: var(--gold); }
+    .history-content { padding-left: 32px; }
+    .history-event { font-weight: 700; font-size: 0.9rem; margin-bottom: 4px; }
+    .history-detail { font-size: 0.8rem; color: var(--gray-600); line-height: 1.75; }
+    .history-badge {
+      display: inline-block; font-family: var(--font-en); font-size: 0.62rem; font-weight: 800;
+      letter-spacing: 0.08em; padding: 3px 8px; border-radius: 2px;
+      background: var(--gold); color: var(--black); margin-top: 4px;
+    }
+
+    /* ── Management ── */
+    .management-section { padding: 100px 0; background: var(--gray-100); }
+    .mgmt-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+    .mgmt-card {
+      background: var(--white); border-radius: 8px; padding: 28px 24px; text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    .mgmt-avatar {
+      width: 80px; height: 80px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple-dark), var(--purple));
+      margin: 0 auto 14px; display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-en); font-size: 1.5rem; font-weight: 900; color: var(--gold);
+    }
+    .mgmt-role { font-family: var(--font-en); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--purple); margin-bottom: 6px; }
+    .mgmt-name { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    .mgmt-bio { font-size: 0.76rem; color: var(--gray-600); line-height: 1.75; }
+
+    /* ── Achievements ── */
+    .achievements-section { padding: 100px 0; background: var(--black); }
+    .achievements-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .achievement-card {
+      text-align: center; padding: 36px 20px;
+      border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      background: rgba(255,255,255,0.03);
+    }
+    .achievement-num {
+      font-family: var(--font-en); font-size: clamp(2.2rem, 4vw, 3rem); font-weight: 900;
+      color: var(--gold); line-height: 1; margin-bottom: 8px;
+    }
+    .achievement-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); letter-spacing: 0.04em; }
+
+    /* ── Sponsors ── */
+    .sponsors-section { padding: 100px 0; background: var(--white); }
+    .sponsor-tier { margin-bottom: 52px; }
+    .sponsor-tier-label {
+      font-family: var(--font-en); font-size: 0.65rem; font-weight: 800;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--gray-400);
+      margin-bottom: 20px; display: flex; align-items: center; gap: 12px;
+    }
+    .sponsor-tier-label::after { content: ''; flex: 1; height: 1px; background: var(--gray-200); }
+    .sponsor-logos { display: flex; flex-wrap: wrap; gap: 16px; }
+    .sponsor-logo {
+      background: var(--gray-100); border-radius: 6px; padding: 18px 28px;
+      display: flex; align-items: center; justify-content: center;
+      min-width: 160px; height: 68px;
+      font-family: var(--font-en); font-size: 0.78rem; font-weight: 700; color: var(--gray-600);
+      letter-spacing: 0.06em; transition: background var(--ease);
+    }
+    .sponsor-logo:hover { background: var(--gray-200); }
+    .sponsor-logo--main { min-width: 220px; height: 82px; font-size: 0.88rem; background: #f3f0ff; color: var(--purple); }
+
+    /* ── Contact ── */
+    .contact-section { padding: 80px 0; background: var(--gray-100); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+    .contact-item { background: var(--white); border-radius: 8px; padding: 32px; }
+    .contact-item-title { font-weight: 700; font-size: 1rem; margin-bottom: 12px; }
+    .contact-item-body { font-size: 0.82rem; color: var(--gray-600); line-height: 1.85; }
+    .contact-item-body a { color: var(--purple); }
+
+    /* ── Privacy / Legal ── */
+    .legal-section { padding: 64px 0; background: var(--white); }
+    .legal-text { max-width: 760px; }
+    .legal-text h3 { font-size: 0.95rem; font-weight: 700; margin: 28px 0 8px; }
+    .legal-text p { font-size: 0.82rem; color: var(--gray-600); line-height: 1.85; margin-bottom: 8px; }
+
+    /* ── Responsive ── */
+    @media (max-width: 900px) {
+      .overview-grid { grid-template-columns: 1fr; gap: 40px; }
+      .mission-grid { grid-template-columns: 1fr; max-width: 440px; margin: 48px auto 0; }
+      .mgmt-grid { grid-template-columns: 1fr 1fr; }
+      .achievements-grid { grid-template-columns: 1fr 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .mgmt-grid { grid-template-columns: 1fr; }
+      .achievements-grid { grid-template-columns: 1fr 1fr; }
+      .history-timeline::before { left: 60px; }
+      .history-dot { left: 52px; }
+      .history-year { min-width: 60px; }
+    }
+  

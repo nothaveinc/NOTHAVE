@@ -9,68 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../common.css">
-  <style>
-    .news-page { padding: 80px 0 100px; background: #f3f3f3; }
-
-    /* Filter tabs */
-    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 40px; }
-    .filter-btn {
-      font-family: var(--font-ja); font-size: 0.82rem; font-weight: 700;
-      padding: 8px 20px; border-radius: 20px; border: 1.5px solid var(--gray-200);
-      background: var(--white); color: var(--gray-600); cursor: pointer; transition: all var(--ease);
-    }
-    .filter-btn:hover, .filter-btn.is-active { background: var(--purple); border-color: var(--purple); color: var(--white); }
-
-    /* News grid */
-    .news-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .news-card {
-      background: var(--white); border-radius: 6px; overflow: hidden;
-      display: flex; flex-direction: column; transition: transform var(--ease), box-shadow var(--ease);
-    }
-    .news-card:hover { transform: translateY(-4px); box-shadow: 0 10px 32px rgba(0,0,0,0.09); }
-
-    .news-img { height: 200px; background-size: cover; background-position: center; }
-    .news-img--1  { background-image: url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--2  { background-image: url('https://images.unsplash.com/photo-1543326727-cf6c39e8f84c?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--3  { background-image: url('https://images.unsplash.com/photo-1524015368236-bbf8a5de3e3f?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--4  { background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--5  { background-image: url('https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--6  { background-image: url('https://images.unsplash.com/photo-1560272564-c83b66b1ad12?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--7  { background-image: url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--8  { background-image: url('https://images.unsplash.com/photo-1517927033932-b3d18e61fb3a?auto=format&fit=crop&w=600&q=80'); }
-    .news-img--9  { background-image: url('https://images.unsplash.com/photo-1553778263-73a83bab9b0c?auto=format&fit=crop&w=600&q=80'); }
-
-    .news-body { padding: 22px; flex: 1; display: flex; flex-direction: column; }
-    .news-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
-    .news-cat {
-      font-size: 0.68rem; font-weight: 700; padding: 3px 10px; border-radius: 2px; letter-spacing: 0.04em; white-space: nowrap;
-    }
-    .news-cat--match  { background: #fef3c7; color: #b45309; }
-    .news-cat--player { background: #ede9fe; color: var(--purple); }
-    .news-cat--club   { background: #dcfce7; color: #15803d; }
-    .news-date { font-family: var(--font-en); font-size: 0.72rem; color: var(--gray-400); }
-    .news-title {
-      font-size: 0.88rem; font-weight: 700; line-height: 1.65; color: var(--black); margin-bottom: 8px;
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-    }
-    .news-excerpt {
-      font-size: 0.78rem; color: var(--gray-600); line-height: 1.85; flex: 1;
-      display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;
-    }
-
-    /* Pagination */
-    .pagination { display: flex; justify-content: center; gap: 6px; margin-top: 52px; }
-    .page-btn {
-      width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-en); font-size: 0.82rem; font-weight: 700;
-      border: 1.5px solid var(--gray-200); border-radius: var(--radius);
-      background: var(--white); color: var(--gray-600); cursor: pointer; transition: all var(--ease);
-    }
-    .page-btn:hover, .page-btn.is-active { background: var(--purple); border-color: var(--purple); color: var(--white); }
-
-    @media (max-width: 900px) { .news-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .news-grid { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; } }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 

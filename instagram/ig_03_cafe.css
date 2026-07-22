@@ -1,0 +1,138 @@
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 1080px;
+    height: 1350px;
+    overflow: hidden;
+    background: #FDF8F2;
+    font-family: 'Noto Sans JP', sans-serif;
+    color: #3A2E2E;
+  }
+  .canvas {
+    width: 1080px;
+    height: 1350px;
+    position: relative;
+    padding: 135px 80px;
+    display: flex;
+    flex-direction: column;
+  }
+  .top-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #6B4226;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+  }
+  .top-zone .label {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .top-zone .works {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 700;
+    font-size: 28px;
+    letter-spacing: 0.1em;
+  }
+  .top-zone .dash { letter-spacing: 0; color: #6B4226; }
+  .top-zone .cat { font-size: 22px; }
+  .top-zone .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 26px;
+    color: #6B4226;
+  }
+  .main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 60px;
+  }
+  .card {
+    border: 2px solid #6B4226;
+    padding: 90px 60px 70px;
+    text-align: center;
+    background: #FDF8F2;
+    position: relative;
+  }
+  .card::before, .card::after {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    border: 2px solid #6B4226;
+  }
+  .card::before { top: -10px; left: -10px; border-right: none; border-bottom: none; }
+  .card::after { bottom: -10px; right: -10px; border-left: none; border-top: none; }
+  .card .overline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    letter-spacing: 0.4em;
+    color: #6B4226;
+    margin-bottom: 30px;
+  }
+  .card .name {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 96px;
+    line-height: 1;
+    letter-spacing: 0.01em;
+    color: #3A2E2E;
+  }
+  .card .sub {
+    margin-top: 36px;
+    font-size: 26px;
+    color: #6B4226;
+    letter-spacing: 0.25em;
+    font-family: 'Noto Serif JP', serif;
+  }
+  .grad-line {
+    width: 240px;
+    height: 2px;
+    margin: 44px auto 0;
+    background: linear-gradient(90deg, transparent, #6B4226 50%, transparent);
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  .feature {
+    text-align: center;
+    padding: 30px 10px;
+    border: 1px solid rgba(107, 66, 38, 0.3);
+    border-radius: 6px;
+  }
+  .feature .ico {
+    font-size: 48px;
+    margin-bottom: 14px;
+  }
+  .feature .txt {
+    font-size: 24px;
+    color: #3A2E2E;
+    font-weight: 700;
+  }
+  .bottom-zone {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .stack {
+    font-size: 22px;
+    color: #6B4226;
+    letter-spacing: 0.15em;
+    font-family: 'Inter', 'Noto Sans JP', sans-serif;
+  }
+  .stack span + span::before {
+    content: '｜';
+    margin: 0 12px;
+    color: rgba(107, 66, 38, 0.5);
+  }
+  .credit {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 24px;
+    color: #6B4226;
+    letter-spacing: 0.08em;
+  }
