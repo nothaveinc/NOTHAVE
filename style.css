@@ -7,6 +7,8 @@
   --color-bg-light: #fafafa;
   --color-bg-lighter: #f4f4f4;
   --color-border: #ccc;
+  --color-accent: #1F3D2E;
+  --color-accent-hover: #2A5240;
   --spacing-section: 6rem;
   --letter-spacing-base: 0.04em;
   --letter-spacing-wide: 0.14em;
@@ -244,6 +246,7 @@ img {
 .hero__cta {
   display: inline-block;
   padding: 0.875rem 2.5rem;
+  background-color: var(--color-accent);
   border: 1px solid #fff;
   color: #fff;
   font-size: 0.9rem;
@@ -254,8 +257,8 @@ img {
 
 .hero__cta:hover,
 .hero__cta:focus-visible {
-  background-color: #fff;
-  color: #111;
+  background-color: var(--color-accent-hover);
+  color: #fff;
   outline: none;
 }
 
@@ -961,7 +964,7 @@ img {
   display: block;
   width: 100%;
   padding: 0.875rem;
-  background-color: var(--color-text-primary);
+  background-color: var(--color-accent);
   color: #fff;
   font-family: "Noto Sans JP", sans-serif;
   font-size: 0.95rem;
@@ -974,7 +977,7 @@ img {
 }
 
 .contact__submit:hover {
-  background-color: #333;
+  background-color: var(--color-accent-hover);
 }
 
 .contact__submit:disabled {
@@ -1156,18 +1159,19 @@ img {
 }
 
 .plan-card__cta:hover {
-  background-color: var(--color-text-primary);
+  background-color: var(--color-accent-hover);
   color: #fff;
 }
 
 .plan-card__cta--featured {
+  background-color: var(--color-accent);
   border-color: #fff;
   color: #fff;
 }
 
 .plan-card__cta--featured:hover {
-  background-color: #fff;
-  color: var(--color-text-primary);
+  background-color: var(--color-accent-hover);
+  color: #fff;
 }
 
 /* Comparison table */
