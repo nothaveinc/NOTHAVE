@@ -429,6 +429,11 @@ img {
   text-align: center;
 }
 
+.section-title--ja {
+  font-family: "Noto Sans JP", sans-serif;
+  letter-spacing: var(--letter-spacing-base);
+}
+
 /* ========================================
    About
    ======================================== */
@@ -794,6 +799,23 @@ img {
   color: #888;
   letter-spacing: var(--letter-spacing-base);
   line-height: 1.75;
+}
+
+/* ========================================
+   Skills Catalog CTA
+   ======================================== */
+.skills__catalog-cta {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--color-accent);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: var(--letter-spacing-base);
+  transition: color 0.3s;
+}
+
+.skills__catalog-cta:hover {
+  color: var(--color-accent-hover);
 }
 
 /* ========================================
@@ -1306,6 +1328,37 @@ img {
 }
 
 /* ========================================
+   Catalog
+   ======================================== */
+.catalog-section {
+  padding: var(--spacing-section) 0;
+  background-color: #fff;
+  text-align: center;
+}
+
+.catalog__text {
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  line-height: 1.9;
+}
+
+.catalog__btn {
+  display: inline-block;
+  max-width: 100%;
+  padding: 0.875rem 2.5rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: var(--letter-spacing-base);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.catalog__btn:hover {
+  background-color: var(--color-accent-hover);
+}
+
+/* ========================================
    Footer
    ======================================== */
 .footer {
@@ -1481,6 +1534,12 @@ img {
 }
 
 @media (max-width: 480px) {
+  .catalog__btn {
+    width: 100%;
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+
   .plan-cards {
     grid-template-columns: 1fr;
   }
